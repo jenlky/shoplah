@@ -32,6 +32,11 @@ class App extends Component {
     return body;
   };
 
+  // add callback
+  addCart = (obj) => {
+
+  }
+
   render() {
     return (
       <div>

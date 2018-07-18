@@ -50,17 +50,19 @@ body {
   }
 }
 
-.horizontal-line {
-  background-color: rgb(219, 219, 219);
-  height: 8px;
-  width: 90%;
-  margin: 3rem auto;
+.horizontal {
+  &-ruler {
+    background-color: rgb(219, 219, 219);
+    height: 8px;
+    width: 90%;
+    margin: 3rem auto;
+  }
 }
 
 .shopping-cart {
   text-align: center;
 
-  &-menu {
+  &-header {
     position: relative;
     width: 70%;
     margin: 0 auto;
@@ -68,18 +70,19 @@ body {
 
     span {
       position: absolute;
-      left: 8rem;
+      padding: 1rem;
+      left: 10%;
 
       &:nth-child(2) {
-        left: 30rem;
+        left: 40%;
       }
 
       &:nth-child(3) {
-        left: 45rem;
+        left: 60%;
       }
 
       &:nth-child(4) {
-        left: 60rem;
+        left: 85%;
       }
     }
   }

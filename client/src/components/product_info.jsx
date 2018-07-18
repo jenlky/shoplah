@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 export default class ProductInfo extends Component {
   // class fields - Not a part of ECMAScript specification yet. But if you're using a Babel transpiler, this syntax should work.
-  state = { cart: false };
+  // change state to take in array or obj
+  state = { 
+    cart: false 
+  };
 
   addCart = () => {
     this.setState({ cart: true });

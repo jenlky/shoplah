@@ -6,15 +6,14 @@ const ShoppingCart = () => {
   // change 3
   return (
     <div className='shopping-cart'>
-      <div className='horizontal-line'></div>
-      <h2>Shopping Cart - 3 items</h2>
-      <div>
-        <div className='shopping-cart-menu'>
+      <div className='horizontal-ruler'></div>
+      <div className='shopping-cart-menu'>
+        <h3>SHOPPING CART - 3 items</h3>
+        <div className='shopping-cart-header'>
           <span>Product</span>
           <span>Price</span>
           <span>Quantity</span>
           <span>Total</span>
-          
         </div>
         <ShoppingCartItems /> 
       </div>

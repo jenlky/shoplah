@@ -33,7 +33,7 @@ body {
     .product div > p:last-of-type {
       margin-top: 2px; }
 
-.horizontal-line {
+.horizontal-ruler {
   background-color: #dbdbdb;
   height: 8px;
   width: 90%;
@@ -41,19 +41,20 @@ body {
 
 .shopping-cart {
   text-align: center; }
-  .shopping-cart-menu {
+  .shopping-cart-header {
     position: relative;
     width: 70%;
     margin: 0 auto;
     border: 2px solid #dbdbdb; }
-    .shopping-cart-menu span {
+    .shopping-cart-header span {
       position: absolute;
-      left: 8rem; }
-      .shopping-cart-menu span:nth-child(2) {
-        left: 30rem; }
-      .shopping-cart-menu span:nth-child(3) {
-        left: 45rem; }
-      .shopping-cart-menu span:nth-child(4) {
-        left: 60rem; }
+      padding: 1rem;
+      left: 10%; }
+      .shopping-cart-header span:nth-child(2) {
+        left: 40%; }
+      .shopping-cart-header span:nth-child(3) {
+        left: 60%; }
+      .shopping-cart-header span:nth-child(4) {
+        left: 85%; }
 
 /*# sourceMappingURL=index.css.map */
