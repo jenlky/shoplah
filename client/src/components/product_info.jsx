@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 
 export default class ProductInfo extends Component {
-  // class fields - Not a part of ECMAScript specification yet. But if you're using a Babel transpiler, this syntax should work.
-  // change state to take in array or obj
-  state = { 
-    cart: false 
-  };
 
-  addCart = () => {
-    this.setState({ cart: true });
+  handleClick = () => {
+    console.log(this.props);
+    this.props.addCart(this.props.number, this.props.product);
   }
 
   render() {
@@ -18,7 +14,7 @@ export default class ProductInfo extends Component {
           <p>Product {this.props.number}</p>      
           <p>{this.props.product.currency + " " + this.props.product.price}</p>
         </div>
-        <button onClick={this.addCart}>Add to cart</button>
+        <button onClick={this.handleClick}>Add to cart</button>
       </div>
     );
   }

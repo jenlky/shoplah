@@ -1,7 +1,7 @@
 import React from 'react';
 import ShoppingCartItems from './shopping_cart_items';
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
 
   // change 3
   return (
@@ -15,7 +15,7 @@ const ShoppingCart = () => {
           <span>Quantity</span>
           <span>Total</span>
         </div>
-        <ShoppingCartItems /> 
+        <ShoppingCartItems num={props.num} item={props.item} qty={props.qty} /> 
       </div>
     </div>
   );
