@@ -35,8 +35,8 @@ class App extends Component {
     return body;
   }
 
-  // has a bug in qty: [1, -1: NaN]
   addCart = (num, item) => {
+    // if num array doesn't have that element, insert that element
     if (!this.state.num.includes(num)) {
       let updatedNum = this.state.num.concat(num); 
       let updatedItem = this.state.item.concat(item);
@@ -45,20 +45,18 @@ class App extends Component {
         num: updatedNum,
         item: updatedItem,
         qty: updatedQty
-      })
+      });
+
+      console.log(this.state);
+    // if element is present in array already, increase qty of it by 1
     } else {
-      console.log('num', num);
-
+      let index = this.state.num.indexOf(num);
       let updatedQty = this.state.qty.slice(0);
-      console.log('after slice', updatedQty);
-      let index = updatedQty.indexOf(num);
-      console.log('index', index);
       updatedQty[index] += 1;
-      console.log('after +1', updatedQty);
-
       this.setState({qty: updatedQty});
+
+      console.log(this.state);
     }
-    console.log(this.state);
   }
   
   render() {
