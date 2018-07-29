@@ -6,7 +6,7 @@ const Product = (props) => {
     <div className='product'>
       <img src={props.product.image} alt={props.product.name} className='img'></img>
       <ProductInfo product={props.product} number={props.number} 
-        addCart={props.addCart} totalPrice={props.totalPrice} />
+        addCart={props.addCart} total={props.total} />
     </div>
   );
 }

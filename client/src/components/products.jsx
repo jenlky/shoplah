@@ -3,14 +3,14 @@ import ProductLarge from './product_large';
 //import ProductInfo from './product_info';
 import Product from './product';
 
-const Products = ({products, addCart, totalPrice}) => {
+const Products = ({products, addCart, total}) => {
   return (
     <div className='img-container'>
       {products.map((product, index) => {
         let number = index + 1;
         return (
           <Product product={product} number={number} key={product.name} 
-            addCart={addCart} totalPrice={totalPrice} />
+            addCart={addCart} total={total} />
         );
       })}
     </div>

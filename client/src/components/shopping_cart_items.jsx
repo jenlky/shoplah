@@ -9,12 +9,14 @@ const ShoppingCartItems = (props) => {
   if (props.num.length !== 0) {
     return (
       <div className='shopping-cart-items'>
-        <i className='far fa-window-close shopping-cart-cancel'></i>
-        <img src={item.image} alt={item.name} className='' />
-        <span className='item-label-product'>Product {num}</span>
-        <span className='item-label-price'>{item.currency + ' ' + item.price}</span>
+        <div className='shopping-cart-product'>
+          <i className='far fa-window-close shopping-cart-cancel'></i>
+          <img className='shopping-cart-img' src={item.image} alt={item.name} />
+          <span>Product {num}</span>
+        </div>
+        <span>{item.currency + ' ' + item.price}</span>
         <input className='item-input-qty' readOnly value={qty} type="text"/>
-        <span className='item-label-total'>{item.currency + ' ' + (qty * item.price).toFixed(2)}</span>
+        <span>{item.currency + ' ' + (qty * item.price).toFixed(2)}</span>
       </div>
     );
   } else {

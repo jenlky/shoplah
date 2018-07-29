@@ -3,20 +3,7 @@ import ShoppingCartItems from './shopping_cart_items';
 import ShoppingCartTotal from './shopping_cart_total';
 
 export default class ShoppingCart extends Component {
-  
-  totalPrice = () => {
-    // method doesn't work
-    // how do I return totalPrice to use as props for ShoppingCartTotal
-    let arr = [];
-    this.props.qty.map(qty => {
-      let index = this.props.qty.indexOf(qty);
-      return arr.push(qty * this.props.item[index]);
-    });
-    
-    return arr.reduce((acc, currentVal) => acc + currentVal);
-    console.log();
-  }
-  
+
   render() {
     return (
       <div className='shopping-cart'>
@@ -35,10 +22,9 @@ export default class ShoppingCart extends Component {
             return <ShoppingCartItems num={this.props.num[index]} item={this.props.item[index]} 
               qty={this.props.qty[index]} key={this.props.item[index].name} />;
           })}
-          <ShoppingCartTotal total={this.totalPrice} />
+          <ShoppingCartTotal item={this.props.item} qty={this.props.qty} />
         </div>
       </div>
     );
   }
-  //total={props.qty.length !== 0 ? totalQty: '0'} 
 }

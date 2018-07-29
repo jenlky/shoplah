@@ -42,40 +42,38 @@ body {
 .shopping-cart {
   text-align: center; }
   .shopping-cart-menu {
-    position: relative; }
-  .shopping-cart-header {
-    display: flex;
-    justify-content: space-evenly;
     position: relative;
     width: 70%;
-    margin: 0 auto;
+    margin: 0 auto; }
+  .shopping-cart-header {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     border: 2px solid #dbdbdb; }
     .shopping-cart-header > span {
-      display: inline-block;
-      padding: 1rem; }
+      padding: 1rem 0; }
+      .shopping-cart-header > span:nth-child(1) {
+        text-align: center; }
   .shopping-cart-items {
-    width: 70%;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
-    margin: 0 auto;
+    justify-items: flex-start;
     border: 2px #dbdbdb;
     border-style: none solid solid solid; }
-    .shopping-cart-items > img {
-      border: 2px solid #dbdbdb;
-      width: auto;
-      height: 83px;
-      margin: 1rem 0; }
   .shopping-cart-cancel {
     font-size: 20px;
     cursor: pointer; }
+  .shopping-cart-img {
+    border: 2px solid #dbdbdb;
+    width: 83px;
+    height: 83px;
+    margin: 1rem 2rem; }
+  .shopping-cart-product {
+    display: flex;
+    align-items: center;
+    justify-self: center; }
 
-.item-label-product {
-  left: 10%; }
-.item-label-price {
-  left: 40%; }
-.item-label-total {
-  left: 85%; }
 .item-input-qty {
   left: 60%;
   width: 5rem;
