@@ -13,7 +13,8 @@ class App extends Component {
       products: [],
       num: [],
       item: [],
-      qty: []
+      qty: [],
+      totalPrice: 0
     };
   }
 
@@ -21,7 +22,7 @@ class App extends Component {
     this.callApi()
       .then(res => {
         this.setState({ products: res.data });
-        console.log(this.state.products);
+        console.log(this.state);
       })
       .catch(err => console.log(err));
   }
@@ -36,26 +37,51 @@ class App extends Component {
   }
 
   addCart = (num, item) => {
+    let updatedNum = this.state.num;
+    let updatedItem = this.state.item;
+    let updatedQty = this.state.qty;
+
     // if num array doesn't have that element, insert that element
     if (!this.state.num.includes(num)) {
-      let updatedNum = this.state.num.concat(num); 
-      let updatedItem = this.state.item.concat(item);
-      let updatedQty = this.state.qty.concat(1);
+      updatedNum = this.state.num.concat(num); 
+      updatedItem = this.state.item.concat(item);
+      updatedQty = this.state.qty.concat(1);
+
       this.setState({
         num: updatedNum,
         item: updatedItem,
         qty: updatedQty
       });
 
-      console.log(this.state);
+      console.log(`array don't have element`, this.state);
     // if element is present in array already, increase qty of it by 1
     } else {
       let index = this.state.num.indexOf(num);
-      let updatedQty = this.state.qty.slice(0);
+      updatedQty = this.state.qty.slice(0);
       updatedQty[index] += 1;
       this.setState({qty: updatedQty});
 
-      console.log(this.state);
+      console.log(`array have that element`, this.state);
+    }
+
+    // when ADD TO CART is clicked, update state. after updating, calculate total price
+    this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+  }
+
+  calculateTotalPrice = (updatedNum, qty, item) => {
+    let arr = [];
+    console.log(updatedNum);
+
+    updatedNum.map(num => {
+      let index = updatedNum.indexOf(num);
+      arr.push(qty[index] * item[index].price);
+    });
+    console.log(arr);
+
+    if (arr.length > 0) {
+      let total = arr.reduce((acc, currentVal) => acc + currentVal);
+      console.log(total);
+      this.setState({ totalPrice: total });
     }
   }
   
@@ -63,7 +89,7 @@ class App extends Component {
     return (
       <div>
         <Products products={this.state.products} addCart={this.addCart} />
-        <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} />
+        <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} totalPrice={this.state.totalPrice} />
       </div>
     );
   }

@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import ProductLarge from './product_large';
-//import ProductInfo from './product_info';
+import React from 'react';
 import Product from './product';
+import ProductLarge from './product_large';
 
-const Products = ({products, addCart, total}) => {
+const Products = ({products, addCart}) => {
   return (
     <div className='img-container'>
       {products.map((product, index) => {
         let number = index + 1;
         return (
           <Product product={product} number={number} key={product.name} 
-            addCart={addCart} total={total} />
+            addCart={addCart} />
         );
       })}
     </div>
