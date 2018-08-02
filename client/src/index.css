@@ -5,12 +5,23 @@ body {
   background-color: #f4f3ed;
   font: 14px 'Lato', sans-serif; }
 
-.img {
+.img-size {
   border: 6px solid #dbdbdb;
   width: 29rem; }
-  .img-container {
-    display: flex;
-    flex-flow: row wrap; }
+.img-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem 2rem; }
+
+.first-product {
+  grid-column: 2/3;
+  grid-row: 1/3; }
+  .first-product .img-size {
+    border: 6px solid #dbdbdb;
+    width: 54rem; }
+
+.left-products {
+  justify-self: end; }
 
 .product {
   width: fit-content; }

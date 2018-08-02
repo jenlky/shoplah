@@ -8,13 +8,31 @@ body {
 }
 
 .img {
-  border: 6px solid rgb(219, 219, 219);
-  width: 29rem;
-
-  &-container {
-    display: flex;
-    flex-flow: row wrap;
+  &-size {
+    border: 6px solid rgb(219, 219, 219);
+    width: 29rem;
   }
+  
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem 2rem; 
+    //justify-items: left;
+  }
+}
+
+.first-product {
+  grid-column: 2/3;
+  grid-row: 1/3;
+
+  .img-size {
+    border: 6px solid rgb(219, 219, 219);
+    width: 54rem;
+  }
+}
+
+.left-products {
+  justify-self: end;
 }
 
 .product {

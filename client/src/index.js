@@ -36,7 +36,7 @@ class App extends Component {
     return body;
   }
 
-  addCart = (num, item) => {
+  addToCart = (num, item) => {
     let updatedNum = this.state.num;
     let updatedItem = this.state.item;
     let updatedQty = this.state.qty;
@@ -51,17 +51,21 @@ class App extends Component {
         num: updatedNum,
         item: updatedItem,
         qty: updatedQty
+      }, () => {
+        // added callback which will be executed when setState() is completed
+        console.log(`array don't have element`, this.state);
       });
 
-      console.log(`array don't have element`, this.state);
     // if element is present in array already, increase qty of it by 1
     } else {
       let index = this.state.num.indexOf(num);
       updatedQty = this.state.qty.slice(0);
       updatedQty[index] += 1;
-      this.setState({qty: updatedQty});
-
-      console.log(`array have that element`, this.state);
+      this.setState({
+        qty: updatedQty
+      }, () => {
+        console.log(`array have that element`, this.state);
+      }); 
     }
 
     // when ADD TO CART is clicked, update state. after updating, calculate total price
@@ -70,26 +74,49 @@ class App extends Component {
 
   calculateTotalPrice = (updatedNum, qty, item) => {
     let arr = [];
-    console.log(updatedNum);
+    console.log('updatedNum', updatedNum);
 
     updatedNum.map(num => {
       let index = updatedNum.indexOf(num);
       arr.push(qty[index] * item[index].price);
     });
-    console.log(arr);
 
     if (arr.length > 0) {
       let total = arr.reduce((acc, currentVal) => acc + currentVal);
-      console.log(total);
       this.setState({ totalPrice: total });
+    } else {
+      this.setState({ totalPrice: 0 });
     }
+  }
+
+  removeFromCart = (num) => { 
+    let updatedNum = this.state.num;
+    let updatedQty = this.state.qty;
+    let updatedItem = this.state.item;
+
+    let index = updatedNum.indexOf(num);
+
+    // remove clicked item with splice
+    updatedNum.splice(index, 1);
+    updatedQty.splice(index, 1);
+    updatedItem.splice(index, 1);
+
+    this.setState({
+      num: updatedNum,
+      item: updatedItem,
+      qty: updatedQty
+    });
+
+    // when item is removedFromCart, update totalPrice
+    this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
   }
   
   render() {
     return (
       <div>
-        <Products products={this.state.products} addCart={this.addCart} />
-        <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} totalPrice={this.state.totalPrice} />
+        <Products products={this.state.products} addToCart={this.addToCart} />
+        <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
+          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} />
       </div>
     );
   }

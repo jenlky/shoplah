@@ -17,8 +17,8 @@ const ShoppingCart = (props) => {
         </div>
         {props.num.map(num => {
           let index = props.num.indexOf(num);
-          return <ShoppingCartItems num={props.num[index]} item={props.item[index]} 
-            qty={props.qty[index]} key={props.item[index].name} />;
+          return <ShoppingCartItems num={props.num[index]} item={props.item[index]} qty={props.qty[index]} 
+            key={props.item[index].name} removeFromCart={props.removeFromCart} />;
         })}
         <ShoppingCartTotal totalPrice={props.totalPrice} />
       </div>

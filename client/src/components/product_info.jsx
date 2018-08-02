@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 export default class ProductInfo extends Component { 
 
   handleClick = () => {
-    console.log(this.props);
-    this.props.addCart(this.props.number, this.props.product);
+    this.props.addToCart(this.props.number, this.props.product);
   }
 
   render() {
