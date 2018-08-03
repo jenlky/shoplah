@@ -96,7 +96,7 @@ class App extends Component {
 
     let index = updatedNum.indexOf(num);
 
-    // remove clicked item with splice
+    // remove clicked item with splice, and update state
     updatedNum.splice(index, 1);
     updatedQty.splice(index, 1);
     updatedItem.splice(index, 1);
