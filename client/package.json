@@ -10,7 +10,7 @@
   },
   "proxy": "http://localhost:8080",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
