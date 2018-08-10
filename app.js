@@ -4,15 +4,16 @@ const path = require('path');
 const port = 8080;
 const routes = require('./server/routes/api');
 
-let dir = __dirname + 'public';
 // serve static files
-app.use(express.static(dir)); 
+app.use(express.static(path.join(__dirname, '/client/build'))); 
 
 // initialise routes
 app.use(routes); 
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
 }); 
 
 // start server
