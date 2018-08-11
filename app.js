@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 8080;
+const port = process.env.PORT || 8080;
 const routes = require('./server/routes/api');
 
 // serve static files
@@ -18,6 +18,6 @@ app.get('*', (req, res) => {
 
 // start server
 app.listen(port);
-console.log('Listening to port 8080...');
+console.log('Listening to port', port);
 
 module.exports = app; 
