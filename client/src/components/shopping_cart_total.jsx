@@ -6,7 +6,7 @@ const ShoppingCartTotal = (props) => {
     return (
       <div className='shopping-cart-total'>
         <span className='total-price'>
-          {'SGD ' + props.totalPrice.toFixed(2)}
+          {'$ ' + props.totalPrice.toFixed(2)}
         </span>
       </div>
     );

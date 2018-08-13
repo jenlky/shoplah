@@ -11,9 +11,9 @@ export default class ProductInfo extends Component {
       <div className='product-info'>
         <div>
           <p>Product {this.props.number}</p>      
-          <p>{this.props.product.currency + " " + this.props.product.price}</p>
+          <p>{"$ " + this.props.product.price}</p>
         </div>
-        <button onClick={this.handleClick}>Add to cart</button>
+        <button onClick={this.handleClick}>Add</button>
       </div>
     );
   }

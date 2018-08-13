@@ -17,12 +17,14 @@ export default class ShoppingCartItems extends Component {
         <div className='shopping-cart-items'>
           <div className='shopping-cart-product'>
             <i className='far fa-window-close shopping-cart-cancel' onClick={this.handleClick}></i>
-            <img className='shopping-cart-img' src={item.image} alt={item.name} />
-            <span>Product {num}</span>
+            <div className='product-details'>
+              <img className='shopping-cart-img' src={item.image} alt={item.name} />
+              <span>Product {num}</span>
+            </div>    
           </div>
-          <span>{item.currency + ' ' + item.price}</span>
+          <span>{'$ ' + item.price}</span>
           <input className='item-input-qty' readOnly value={qty} type="text"/>
-          <span>{item.currency + ' ' + (qty * item.price).toFixed(2)}</span>
+          <span>{'$ ' + (qty * item.price).toFixed(2)}</span>
         </div>
       );
     } else {
