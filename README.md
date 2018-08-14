@@ -1,9 +1,11 @@
-# FullStackTest
+# Shopping-cart
 
-In FullStackTest folder, run `nodemon app`
+Link: https://jenlky-shopping-cart.herokuapp.com/
 
-In FullStackTest/client folder, run `npm run start`
+This was created for a Full Stack coding test (the reasons as to why that didn't pan out why make for a story another time).
 
-It's not completed yet, I will probably finish doing it in a few days time...
+I used React, SASS, Node.js, Express, Mocha and Chai. 
 
-Gg have fun
+The appearance is based on the mockup I was given, although I made a few changes here and there like making it responsive.
+
+I plan to build on and improve this in the near future....
