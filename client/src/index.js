@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import './index.css';
 import Products from './components/products';
 import ShoppingCart from './components/shopping_cart';
 // import registerServiceWorker from './registerServiceWorker';
+
+/* setting up Redux store and initialState
+const initialState = {
+  products: [],
+  num: [],
+  item: [],
+  qty: [],
+  totalPrice: 0
+};
+
+function reducer(state = initialState, action) {
+  return state;
+}
+
+const store = createStore(reducer); 
+*/
 
 class App extends Component {
   constructor(props) {
@@ -16,11 +34,17 @@ class App extends Component {
       qty: [],
       totalPrice: 0
     };
-  }
+  } 
 
   componentDidMount() {
     this.callApi()
       .then(res => {
+        /*
+        store.dispatch({
+          type: 'RES_DATA_SUCCESS',
+          products: res.data
+        });*/
+        console.log(res);
         this.setState({ products: res.data });
         console.log(this.state);
       })
@@ -110,7 +134,7 @@ class App extends Component {
     // when item is removedFromCart, update totalPrice
     this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
   }
-  
+
   render() {
     return (
       <div>

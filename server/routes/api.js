@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const faker = require('faker');
 
 // api object
-const obj = {
+const object = {
   "data": [
     {
       "image": "https://kommercio.id/full-stack-test/assets/product-1.jpg",
@@ -37,9 +38,24 @@ const obj = {
   ]
 };
 
+function fakeProducts() {
+  let combinedObject = [];
+
+  for (let x = 0; x < 10; x++) {
+    let image = faker.image.image();
+    let price = faker.commerce.price();
+    let name = faker.commerce.productName();
+    let object = {'image': image, 'price': price, 'name': name};
+    
+    combinedObject.push(object);
+  }
+
+  return combinedObject;
+}
+
 // object route
-router.get('/products.json', (req, res) => {
-  res.json(obj);
+router.get('/products.json', (req, res) => {  
+  res.json(object);
 });
 
 module.exports = router;

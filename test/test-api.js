@@ -21,9 +21,9 @@ describe('API', () => {
     });
   });
   
-  // test if each object have image, price, currency, name property
-  describe('Each Object', () => {
-    it('it should have image, price, current and name property', done => {
+  // test if each object have image, price, name property
+  describe("each object's property", () => {
+    it('it should have image, price and name property', done => {
       chai.request(server)
         .get('/products.json')
         .end((err, res) => {
@@ -34,7 +34,6 @@ describe('API', () => {
           for (let x = 0; x < res.body.data.length; x++) {
             res.body.data[x].should.have.property('image');
             res.body.data[x].should.have.property('price');
-            res.body.data[x].should.have.property('currency');
             res.body.data[x].should.have.property('name');
           }
           done();
@@ -42,8 +41,3 @@ describe('API', () => {
     });
   }); 
 });
-
-
-describe('front-end', () => {
-  
-}); 
