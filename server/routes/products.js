@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const faker = require('faker');
 
-// api object
-const object = {
+// products object
+const productsObject = {
   "data": [
     {
       "image": "https://kommercio.id/full-stack-test/assets/product-1.jpg",
@@ -55,12 +55,38 @@ function fakeProducts() {
 } */
 
 router.get('/', (req, res, next) => {  
-  res.status(200).json(object);
+  res.status(200).json(productsObject);
 });
 
 router.post('/', (req, res, next) => {  
   res.status(200).json({
     message: 'Handling POST requests to /products'
+  });
+});
+
+router.get('/:productId', (req, res, next) => {
+  const id = req.params.productId;
+  if (id === 'special') {
+    res.status(200).json({
+      message: 'You discovered the special ID',
+      id: id
+    });
+  } else {
+    res.status(200).json({
+      message: 'You passed an ID'
+    });
+  }
+});
+
+router.patch('/:productId', (req, res, next) => {  
+  res.status(200).json({
+    message: 'Updated product!'
+  });
+});
+
+router.delete('/:productId', (req, res, next) => {  
+  res.status(200).json({
+    message: 'Deleted product!'
   });
 });
 
