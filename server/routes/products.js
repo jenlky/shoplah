@@ -38,6 +38,7 @@ const object = {
   ]
 };
 
+/* trying to create more products
 function fakeProducts() {
   let combinedObject = [];
 
@@ -51,11 +52,16 @@ function fakeProducts() {
   }
 
   return combinedObject;
-}
+} */
 
-// object route
-router.get('/products.json', (req, res) => {  
-  res.json(object);
+router.get('/', (req, res, next) => {  
+  res.status(200).json(object);
+});
+
+router.post('/', (req, res, next) => {  
+  res.status(200).json({
+    message: 'Handling POST requests to /products'
+  });
 });
 
 module.exports = router;

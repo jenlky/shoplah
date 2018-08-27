@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = process.env.PORT || 8080;
-const routes = require('./server/routes/api');
+const routes = require('./server/routes/products');
 
 // serve static files
 app.use(express.static(path.join(__dirname, '/client/build'))); 
 
 // initialise routes
-app.use(routes); 
+app.use('/products', routes); 
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
