@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const faker = require('faker');
 
 // products object
 const productsObject = {
@@ -37,22 +36,6 @@ const productsObject = {
     }
   ]
 };
-
-/* trying to create more products
-function fakeProducts() {
-  let combinedObject = [];
-
-  for (let x = 0; x < 10; x++) {
-    let image = faker.image.image();
-    let price = faker.commerce.price();
-    let name = faker.commerce.productName();
-    let object = {'image': image, 'price': price, 'name': name};
-    
-    combinedObject.push(object);
-  }
-
-  return combinedObject;
-} */
 
 router.get('/', (req, res, next) => {  
   res.status(200).json(productsObject);
