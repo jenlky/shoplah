@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ProductInfo extends Component { 
+export default class ProductInfo extends Component {
 
   handleClick = () => {
     this.props.addToCart(this.props.number, this.props.product);

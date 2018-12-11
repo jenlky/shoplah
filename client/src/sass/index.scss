@@ -178,7 +178,7 @@ body {
   &-total {
     border: 2px solid rgb(219, 219, 219);
     border-style: none solid solid solid;
-    padding: 1rem 0;
+    padding: 5px 0;
     margin-bottom: 4rem;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -188,6 +188,15 @@ body {
 
 .total-price {
   grid-column: 4/5;
+  padding: 5px 0;
+}
+
+.checkout {
+  grid-column: 4/5;
+  width: 75%;
+  justify-self: center;
+  margin: 5px 0;
+  padding: 3px;
 }
 
 .item {

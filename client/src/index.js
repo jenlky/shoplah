@@ -135,12 +135,16 @@ class App extends Component {
     this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
   }
 
+  redirectCart = () => {
+    window.location.href = "/auth/cart";
+  }
+
   render() {
     return (
       <div>
         <Products products={this.state.products} addToCart={this.addToCart} />
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
-          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} />
+          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} redirectCart={this.redirectCart} />
       </div>
     );
   }

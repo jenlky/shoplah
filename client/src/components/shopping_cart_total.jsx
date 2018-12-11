@@ -8,6 +8,7 @@ const ShoppingCartTotal = (props) => {
         <span className='total-price'>
           {'$ ' + props.totalPrice.toFixed(2)}
         </span>
+        <button className='checkout' onClick={props.redirectCart}>Checkout</button>
       </div>
     );
   } else {
