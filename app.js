@@ -10,6 +10,7 @@ const productRoutes = require('./server/routes/products');
 const orderRoutes = require('./server/routes/orders');
 const authRoutes = require('./server/routes/auth-routes');
 
+/*
 const connection = mysql.createConnection({
   host: process.env.host,
   user: process.env.user,
@@ -24,7 +25,7 @@ connection.connect((err) => {
   }
  
   console.log('connected as id ' + connection.threadId);
-});
+}); */
 
 // serve static files
 app.use(express.static(path.join(__dirname, '/client/build'))); 

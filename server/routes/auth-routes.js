@@ -9,4 +9,9 @@ router.get('/logout', (req, res) => {
   res.send('logout successful');
 });
 
+router.get('/cart', (req, res) => {
+  console.log('checkout successful');
+  res.send('checkout successful');
+});
+
 module.exports = router;

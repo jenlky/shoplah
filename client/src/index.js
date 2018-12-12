@@ -136,13 +136,13 @@ class App extends Component {
   }
 
   redirectCart = () => {
-    window.location.href = "/auth/cart";
+    window.location.href = "/auth/login";
   }
 
   render() {
     return (
       <div>
-        <Products products={this.state.products} addToCart={this.addToCart} />
+        <Products products={this.state.products} addToCart={this.addToCart} redirectCart={this.redirectCart} />
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
           totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} redirectCart={this.redirectCart} />
       </div>
