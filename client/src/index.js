@@ -135,7 +135,31 @@ class App extends Component {
     this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
   }
 
+  handleClick = (event, num) => {
+    let updatedNum = this.state.num;
+    let updatedQty = this.state.qty;
+    let updatedItem = this.state.item;
+
+    const altText = String(event.target.alt);
+    let index = updatedNum.indexOf(num);
+
+    if (altText.includes('Minus')) {
+      updatedQty[index] -= 1;
+    } else {
+      updatedQty[index] += 1;
+    }
+
+    this.setState({ qty: updatedQty });
+    this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+  }
+
+  inputChange = (event) => {
+    console.log(event);
+    this.setState({ qty : event.target.value });
+  }
+
   redirectCart = () => {
+    // put if/switch to check /auth/logout, /auth/cart
     window.location.href = "/auth/login";
   }
 
@@ -144,7 +168,8 @@ class App extends Component {
       <div>
         <Products products={this.state.products} addToCart={this.addToCart} redirectCart={this.redirectCart} />
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
-          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} redirectCart={this.redirectCart} />
+          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} redirectCart={this.redirectCart} 
+          inputChange={this.inputChange} handleClick={this.handleClick} />
       </div>
     );
   }

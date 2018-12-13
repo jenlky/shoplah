@@ -54,64 +54,64 @@ body {
   width: 90%;
   margin: 3rem auto; }
 
-.shopping-cart {
+.shoplah {
   text-align: center; }
-  .shopping-cart-menu {
+  .shoplah-menu {
     position: relative;
     width: 100%;
     margin: 0 auto; }
     @media (min-width: 640px) {
-      .shopping-cart-menu {
+      .shoplah-menu {
         width: 85%; } }
     @media (min-width: 850px) {
-      .shopping-cart-menu {
+      .shoplah-menu {
         width: 70%; } }
     @media (min-width: 1024px) {
-      .shopping-cart-menu {
+      .shoplah-menu {
         width: 60%; } }
     @media (min-width: 1280px) {
-      .shopping-cart-menu {
+      .shoplah-menu {
         width: 55%; } }
     @media (min-width: 1440px) {
-      .shopping-cart-menu {
+      .shoplah-menu {
         width: 50%; } }
-  .shopping-cart-header {
+  .shoplah-header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     border: 2px solid #dbdbdb; }
-    .shopping-cart-header > span {
+    .shoplah-header > span {
       display: inline-block;
       padding: 1rem 0; }
-      .shopping-cart-header > span:nth-child(1) {
+      .shoplah-header > span:nth-child(1) {
         text-align: center; }
-  .shopping-cart-items {
+  .shoplah-items {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
     border: 2px #dbdbdb;
     border-style: none solid solid solid; }
-  .shopping-cart-cancel {
+  .shoplah-cancel {
     font-size: 18px;
     cursor: pointer;
     margin-left: 1rem; }
     @media (min-width: 400px) {
-      .shopping-cart-cancel {
+      .shoplah-cancel {
         margin-right: 1rem; } }
-  .shopping-cart-img {
+  .shoplah-img {
     border: 2px solid #dbdbdb;
     width: 70px; }
     @media (min-width: 500px) {
-      .shopping-cart-img {
+      .shoplah-img {
         width: 90px; } }
     @media (min-width: 768px) {
-      .shopping-cart-img {
+      .shoplah-img {
         width: 100px; } }
-  .shopping-cart-product {
+  .shoplah-product {
     display: flex;
     align-items: center;
     justify-self: center; }
-  .shopping-cart-total {
+  .shoplah-total {
     border: 2px solid #dbdbdb;
     border-style: none solid solid solid;
     padding: 5px 0;
@@ -119,6 +119,58 @@ body {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-auto-flow: row; }
+  .shoplah-qty {
+    display: flex; }
+  .shoplah-btn-outline {
+    cursor: pointer;
+    padding: 0px 4px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: white;
+    /*
+    width: 2rem;
+    height: 2rem;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    //padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4,0,.6,1);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(0,0,0,.8);
+    */ }
+    .shoplah-btn-outline img {
+      display: inline-block;
+      width: 1.4rem;
+      height: 1.4rem;
+      font-size: 1rem;
+      vertical-align: middle; }
+  .shoplah-input {
+    width: 1.5rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-left: none;
+    border-right: none;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    cursor: text;
+    border-radius: 0; }
+    @media (min-width: 640px) {
+      .shoplah-input {
+        width: 2.75rem; } }
+    @media (min-width: 850px) {
+      .shoplah-input {
+        width: 3.25rem; } }
+    @media (min-width: 1024px) {
+      .shoplah-input {
+        width: 3.5rem; } }
 
 .total-price {
   grid-column: 4/5;
@@ -130,19 +182,5 @@ body {
   justify-self: center;
   margin: 5px 0;
   padding: 3px; }
-
-.item-input-qty {
-  width: 1.5rem;
-  text-align: center;
-  padding: 0.5rem 1rem; }
-  @media (min-width: 640px) {
-    .item-input-qty {
-      width: 3rem; } }
-  @media (min-width: 850px) {
-    .item-input-qty {
-      width: 4rem; } }
-  @media (min-width: 1024px) {
-    .item-input-qty {
-      width: 5rem; } }
 
 /*# sourceMappingURL=index.css.map */

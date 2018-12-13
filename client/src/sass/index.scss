@@ -90,8 +90,8 @@ body {
   }
 }
 
-//.shopping-cart-header and .shopping-cart-items have the same grid-template-columns
-.shopping-cart {
+//.shoplah-header and .shoplah-items have the same grid-template-columns
+.shoplah {
   text-align: center;
 
   &-menu {
@@ -183,7 +183,75 @@ body {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-auto-flow: row; 
-  } 
+  }
+
+  &-qty {
+    display: flex;
+
+  }
+
+  &-btn-outline {
+    cursor: pointer;
+    padding: 0px 4px;
+    border: 1px solid rgba(0, 0, 0,.09);
+    border-radius: 2px;
+    color: rgba(0,0,0,.8);
+    background-color: white;
+
+    //background: transparent;
+    /*
+    width: 2rem;
+    height: 2rem;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    //padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4,0,.6,1);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(0,0,0,.8);
+    */
+
+    img {
+      display: inline-block;
+      width: 1.4rem;
+      height: 1.4rem;
+      font-size: 1rem;
+      vertical-align: middle;
+      //fill: currentColor;
+      //position: relative;
+    }
+  }
+
+  &-input {
+    width: 1.5rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-left: none;
+    border-right: none;
+    border: 1px solid rgba(0,0,0,.09);
+    cursor: text;
+    border-radius: 0;
+
+    @media (min-width: 640px) {
+      width: 2.75rem;
+    }
+    
+    @media (min-width: 850px) {
+      width: 3.25rem;
+    }
+
+    @media (min-width: 1024px) {
+      width: 3.5rem;
+    }
+  }
 }
 
 .total-price {
@@ -197,25 +265,4 @@ body {
   justify-self: center;
   margin: 5px 0;
   padding: 3px;
-}
-
-.item {
-
-  &-input-qty {
-    width: 1.5rem;
-    text-align: center;
-    padding: 0.5rem 1rem;
-
-    @media (min-width: 640px) {
-      width: 3rem;
-    }
-    
-    @media (min-width: 850px) {
-      width: 4rem;
-    }
-
-    @media (min-width: 1024px) {
-      width: 5rem;
-    }
-  }
 }

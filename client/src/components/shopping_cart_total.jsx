@@ -2,9 +2,9 @@ import React from 'react';
 
 const ShoppingCartTotal = (props) => {
 
-  if (props.totalPrice !== 0) {
+  if (props.totalPrice > 0) {
     return (
-      <div className='shopping-cart-total'>
+      <div className='shoplah-total'>
         <span className='total-price'>
           {'$ ' + props.totalPrice.toFixed(2)}
         </span>
