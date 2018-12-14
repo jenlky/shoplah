@@ -12,6 +12,10 @@ export default class ShoppingCartItems extends Component {
     this.props.handleClick(event, this.props.num);
   }
 
+  handleChange(event) {
+    this.props.inputChange(event, this.props.num);
+  }
+
   render() {
     let item = this.props.item;
     let num = this.props.num;
@@ -30,11 +34,12 @@ export default class ShoppingCartItems extends Component {
           </div>
           <span>{'$ ' + item.price}</span>
           <div className='shoplah-qty'>
-            <button className='shoplah-btn-outline' onClick={(e) => this.handleClick(e)}>
+            <button id='minus' className='shoplah-btn-outline' onClick={(e) => this.handleClick(e)}>
               <img src={minus} alt="Minus sign" />
             </button>
-            <input className='shoplah-btn-outline shoplah-input' value={this.props.qty} onChange={this.inputChange} type="text"/>
-            <button className='shoplah-btn-outline' onClick={(e) => this.handleClick(e)}>
+            <input className='shoplah-btn-outline shoplah-input' value={qty} onChange={(e) => this.handleChange(e)} 
+              name='quantity' type="text" />
+            <button id='plus' className='shoplah-btn-outline' onClick={(e) => this.handleClick(e)}>
               <img src={plus} alt="Plus sign" />
             </button>
           </div>

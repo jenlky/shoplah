@@ -136,26 +136,39 @@ class App extends Component {
   }
 
   handleClick = (event, num) => {
+    console.log(event.currentTarget);
     let updatedNum = this.state.num;
     let updatedQty = this.state.qty;
     let updatedItem = this.state.item;
 
-    const altText = String(event.target.alt);
+    let id = event.currentTarget.id;
+    console.log(id);
     let index = updatedNum.indexOf(num);
 
-    if (altText.includes('Minus')) {
-      updatedQty[index] -= 1;
-    } else {
+    if (id === 'plus') {
       updatedQty[index] += 1;
+    } else if (id === 'minus') {
+      updatedQty[index] -= 1;
     }
 
     this.setState({ qty: updatedQty });
     this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
   }
 
-  inputChange = (event) => {
-    console.log(event);
-    this.setState({ qty : event.target.value });
+  inputChange = (event, num) => {
+    const regex = /^[0-9\b]+$/;
+
+    let updatedNum = this.state.num;
+    let updatedQty = this.state.qty;
+    let updatedItem = this.state.item;
+
+    let index = updatedNum.indexOf(num);
+    
+    if (regex.test(event.target.value)) {
+      updatedQty[index] = event.target.value;
+      this.setState({ qty: updatedQty });
+      this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+    }
   }
 
   redirectCart = () => {
