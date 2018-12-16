@@ -27,13 +27,15 @@ connection.connect((err) => {
   console.log('connected as id ' + connection.threadId);
 }); */
 
+app.set('view engine', 'ejs');
+
 // serve static files
-app.use(express.static(path.join(__dirname, '/client/build'))); 
+//app.use(express.static(path.join(__dirname, '/client/build'))); 
 
 app.use(morgan('dev'));
 
 // set up routes
-app.use('/products', productRoutes); 
+app.use('/products', productRoutes);
 app.use('/orders', orderRoutes); 
 app.use('/auth', authRoutes);
 

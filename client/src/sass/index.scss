@@ -19,6 +19,7 @@ body {
     grid-gap: 3rem 2rem; 
     justify-items: start;
     align-items: center;
+    margin-top: 10rem;
   }
 }
 
@@ -187,7 +188,6 @@ body {
 
   &-qty {
     display: flex;
-
   }
 
   &-btn-outline {

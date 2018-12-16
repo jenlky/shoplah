@@ -12,7 +12,8 @@ body {
   grid-template-columns: repeat(3, minmax(90px, 1fr));
   grid-gap: 3rem 2rem;
   justify-items: start;
-  align-items: center; }
+  align-items: center;
+  margin-top: 10rem; }
 
 .first-product {
   grid-area: 1/ 2/ 3/ 3; }

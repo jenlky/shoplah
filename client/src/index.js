@@ -136,7 +136,6 @@ class App extends Component {
   }
 
   handleClick = (event, num) => {
-    console.log(event.currentTarget);
     let updatedNum = this.state.num;
     let updatedQty = this.state.qty;
     let updatedItem = this.state.item;
@@ -165,7 +164,7 @@ class App extends Component {
     let index = updatedNum.indexOf(num);
     
     if (regex.test(event.target.value)) {
-      updatedQty[index] = event.target.value;
+      updatedQty[index] = Number(event.target.value);
       this.setState({ qty: updatedQty });
       this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
     }
