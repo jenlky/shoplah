@@ -170,17 +170,24 @@ class App extends Component {
     }
   }
 
-  redirectCart = () => {
-    // put if/switch to check /auth/logout, /auth/cart
-    window.location.href = "/auth/login";
-  }
+  /*
+  redirect = () => {
+    // put conditional statement to check if login, logout, or cart
+    if () {
+      window.location.href = "http://localhost:8080/auth/login";
+    } else if () {
+      window.location.href = "http://localhost:8080/auth/logout";
+    } else {
+      window.location.href = "http://localhost:8080/auth/cart";
+    }
+  } */
 
   render() {
     return (
       <div>
         <Products products={this.state.products} addToCart={this.addToCart} redirectCart={this.redirectCart} />
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
-          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} redirectCart={this.redirectCart} 
+          totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart} redirect={this.redirect} 
           inputChange={this.inputChange} handleClick={this.handleClick} />
       </div>
     );

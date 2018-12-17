@@ -29,6 +29,8 @@ const theme = createMuiTheme({
   }
 });
 
+//<Button color="inherit" onClick={props.redirectCart}>Login</Button>
+
 function Products(props) {
   const { classes } = props;
 
@@ -40,7 +42,7 @@ function Products(props) {
             <Typography variant="h4" color="inherit" className={classes.grow}>
               ShopLah
             </Typography>
-            <Button color="inherit" onClick={props.redirectCart}>Login</Button>
+            <a href="http://localhost:8080/auth/login">Login</a>
           </Toolbar>
         </AppBar>
       </MuiThemeProvider>

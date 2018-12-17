@@ -1,19 +1,34 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
 
-router.get('/login', (req, res) => {
+router.get('/login', 
+  passport.authenticate('auth0'), (req, res) => {
   res.send('login successful');
-  //res.sendFile('../client/src/views/home.ejs');
+});
+
+router.get('/login/callback', 
+  passport.authenticate('auth0', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
+  if (!req.user) {
+    throw new Error('user null');
+  }
+
+  res.redirect('http://localhost:3000/');
 });
 
 router.get('/logout', (req, res) => {
   res.send('logout successful');
+  /* 
+  req.logOut();
+  res.redirect('http://localhost:3000/'); 
+  */
 });
 
-router.get('/cart', (req, res) => {
-  console.log('checkout successful');
-  res.send('checkout successful');
-  //res.sendFile('../client/src/views/home.ejs');
+router.get('/cart', 
+  passport.authenticate('auth0', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
+  
+  res.redirect('http://localhost:3000/');
 });
 
 module.exports = router;

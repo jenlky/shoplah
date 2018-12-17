@@ -6,7 +6,7 @@ export default class ShoppingCartItems extends Component {
 
   removeFromCart = () => {
     this.props.removeFromCart(this.props.num);
-  }
+  } 
 
   handleClick(event) {
     this.props.handleClick(event, this.props.num);
