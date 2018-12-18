@@ -29,7 +29,7 @@ const theme = createMuiTheme({
   }
 });
 
-//<Button color="inherit" onClick={props.redirectCart}>Login</Button>
+//<Button color="inherit" onClick={props.redirect}>Login</Button>
 
 function Products(props) {
   const { classes } = props;

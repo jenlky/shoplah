@@ -13,21 +13,19 @@ router.get('/login/callback',
   if (!req.user) {
     throw new Error('user null');
   }
-
-  res.redirect('http://localhost:3000/');
-});
+  
+  res.send('callback successful');
+  //res.redirect('http://localhost:3000/');
+}); 
 
 router.get('/logout', (req, res) => {
   res.send('logout successful');
-  /* 
   req.logOut();
-  res.redirect('http://localhost:3000/'); 
-  */
+  //res.redirect('http://localhost:3000/'); 
 });
 
 router.get('/cart', 
   passport.authenticate('auth0', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
-  
   res.redirect('http://localhost:3000/');
 });
 
