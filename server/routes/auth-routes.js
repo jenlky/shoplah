@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const Auth0Strategy = require('passport-auth0');
 
 router.get('/login', 
-  passport.authenticate('auth0'), (req, res) => {
+  passport.authenticate('auth0', { scope: 'openid profile' }), (req, res) => {
   res.send('login successful');
 });
 

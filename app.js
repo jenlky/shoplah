@@ -5,6 +5,7 @@ const app = express();
 const path = require('path');
 const morgan = require('morgan');
 const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const port = process.env.PORT || 8080;
@@ -25,15 +26,14 @@ app.set('view engine', 'ejs');
 
 app.use(morgan('dev'));
 
-// app.use(passportConfig);
-
-// initialise passport
 app.use(session({
   secret: process.env.secret,
   cookie: {maxAge: 7200000},
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }));
+
+// initialise passport
 app.use(passport.initialize());
 app.use(passport.session());
 
