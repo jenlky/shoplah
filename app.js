@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 // serve static files
 //app.use(express.static(path.join(__dirname, '/client/build'))); 
 
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 
 app.use(session({
   secret: process.env.secret,
