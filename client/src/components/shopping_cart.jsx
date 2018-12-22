@@ -21,7 +21,7 @@ const ShoppingCart = (props) => {
             key={props.item[index].name} removeFromCart={props.removeFromCart} inputChange={props.inputChange} 
             handleClick={props.handleClick} />;
         })}
-        <ShoppingCartTotal totalPrice={props.totalPrice} redirect={props.redirect} />
+        <ShoppingCartTotal totalPrice={props.totalPrice} />
       </div>
     </div>
   );

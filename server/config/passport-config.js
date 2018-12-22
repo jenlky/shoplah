@@ -3,6 +3,7 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const User = require('../models/users');
 
 const strategy = new Auth0Strategy({
   domain: process.env.domain,
@@ -14,21 +15,38 @@ const strategy = new Auth0Strategy({
   // accessToken is the token to call Auth0 API (not needed in the most cases)
   // extraParams.id_token has the JSON Web Token
   // profile has all the information from the user
-  console.log('access token', accessToken);
-  console.log('refresh token', refreshToken);
-  console.log('extra params', extraParams);
-  console.log('profile', profile);
-  
-  return done(null, profile);
+  console.log(extraParams);
+  console.log(profile);
+
+  // check if user already exist in our database
+  User.findOne({ authID: profile.id }).then((currentUser) => {
+    if (currentUser) {
+      // user already in our DB
+      console.log('current user: ', currentUser);
+      done(null, currentUser);
+    } else {
+      // if not, create new User in our DB
+      new User({
+        username: profile.displayName,
+        userID: profile.id,
+        thumbnail: profile.picture
+      }).save().then((newUser) => {
+        console.log('new user created: ', newUser);
+        done(null, newUser);
+      });
+    }
+  });
 });
 
 // You can use this section to keep a smaller payload
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.id);
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  })
 });
 
 passport.use(strategy);

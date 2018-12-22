@@ -3,9 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 
 router.get('/login', 
-  passport.authenticate('auth0', { scope: 'openid profile' }), (req, res) => {
-  res.send('login successful');
-});
+  passport.authenticate('auth0', { scope: 'openid profile' })
+);
 
 router.get('/login/callback', 
   passport.authenticate('auth0', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
@@ -13,14 +12,13 @@ router.get('/login/callback',
     throw new Error('user null');
   }
   
-  res.send('callback successful');
-  //res.redirect('http://localhost:3000/');
+  res.redirect('http://localhost:3000/');
 }); 
 
 router.get('/logout', (req, res) => {
-  res.send('logout successful');
+  console.log('log out successfully');
   req.logOut();
-  //res.redirect('http://localhost:3000/'); 
+  res.redirect('http://localhost:3000/'); 
 });
 
 router.get('/cart', 

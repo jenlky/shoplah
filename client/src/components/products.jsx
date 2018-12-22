@@ -29,11 +29,9 @@ const theme = createMuiTheme({
   }
 });
 
-//<Button color="inherit" onClick={props.redirect}>Login</Button>
-
 function Products(props) {
   const { classes } = props;
-
+  
   return (
     <React.Fragment>
       <MuiThemeProvider theme={theme}>
@@ -42,7 +40,7 @@ function Products(props) {
             <Typography variant="h4" color="inherit" className={classes.grow}>
               ShopLah
             </Typography>
-            <a href="http://localhost:8080/auth/login">Login</a>
+            <Button color="inherit" href='http://localhost:8080/auth/login'>Login</Button>
           </Toolbar>
         </AppBar>
       </MuiThemeProvider>
