@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Product from './product';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,11 +6,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-
-// #ffcd38 considering, tool recommend #ffe9b4
-// #F4F3ED bg
-// #EFB784 btn color
+import { NavLink } from 'react-router-dom';
 
 const styles = {
   grow: {
@@ -29,37 +25,60 @@ const theme = createMuiTheme({
   }
 });
 
-function Products(props) {
-  const { classes } = props;
-  
+const Logged = (props) => {
   return (
-    <React.Fragment>
+    <Button {...props} href="http://localhost:8080/auth/logout" children='Logout' />
+  );
+};
+
+class Login extends Component {
+  static muiName = 'Button';
+
+  render() {
+    return (
+      <Button {...this.props} href="http://localhost:8080/auth/login" 
+        style={{ fontSize: '14px', position: 'absolute', right: '6px' }} children='Login' />
+    );
+  }
+}
+
+class Products extends Component {
+  render() {
+    return (
       <MuiThemeProvider theme={theme}>
         <AppBar>
           <Toolbar>
-            <Typography variant="h4" color="inherit" className={classes.grow}>
-              ShopLah
-            </Typography>
-            <Button color="inherit" href='http://localhost:8080/auth/login'>Login</Button>
+            <NavLink style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black', fontSize: '24px' }} 
+              className='' to='/' className={this.props.grow}>ShopLah</NavLink>
+
+            {this.props.user.isLoggedIn ? <Logged /> : <Login />}
           </Toolbar>
         </AppBar>
+          <div className='img-container'>
+            {this.props.products.map((product, index) => {
+              let number = index + 1;
+              return (
+                <Product product={product} number={number} key={product.name} 
+                  addToCart={this.props.addToCart} />
+              );
+            })}
+          </div>
       </MuiThemeProvider>
-      <div className='img-container'>
-        {props.products.map((product, index) => {
-          let number = index + 1;
-          return (
-            <Product product={product} number={number} key={product.name} 
-              addToCart={props.addToCart} />
-          );
-        })}
-      </div>
-    </React.Fragment>
-  );
+    );
+  }
 }
 
+// I'm not using Products.propTypes and export default withStyles(styles)(Products);
 Products.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}; 
+
+/*
+function Products(props) {
+  return (
+    
+  );
+} */
 
 /*
 const Products = ({products, addToCart}) => {
