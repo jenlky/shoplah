@@ -24,6 +24,14 @@ body {
 .order {
   order: 1; }
 
+.navbar-right-side {
+  position: absolute;
+  right: 6px; }
+  .navbar-right-side svg {
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 0.6rem; }
+
 .product-info {
   display: flex;
   flex-flow: row wrap;

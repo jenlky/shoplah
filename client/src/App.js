@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Products from './components/products';
 import ShoppingCart from './components/shopping_cart';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import CheckAuth from './components/checkAuth';
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +33,12 @@ class App extends Component {
         console.log(this.state);
       })
       .catch(err => console.log(err));
+    fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' }) 
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
+      .catch(error => console.error('Error:', error));
   }
   
   callApi = async () => {
@@ -159,6 +167,9 @@ class App extends Component {
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
           totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart}  
           inputChange={this.inputChange} handleClick={this.handleClick} />
+        <Switch>
+          <Route exact path='/auth/checkAuth' component={ CheckAuth } />
+        </Switch>
       </div>
     );
   }

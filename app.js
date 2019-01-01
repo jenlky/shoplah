@@ -40,7 +40,9 @@ app.use(passport.session());
 // set up routes
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes); 
-app.use('/auth', authRoutes);
+app.use('/auth', authRoutes, (req, res) => {
+  // res.header('Access-Control-Allow-Headers', 'http://localhost:8080')
+});
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

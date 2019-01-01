@@ -37,6 +37,17 @@ body {
   order: 1;
 }
 
+.navbar-right-side {
+  position: absolute;
+  right: 6px;
+
+  svg {
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 0.6rem;
+  }
+}
+
 .product {
   //width: fit-content;
 

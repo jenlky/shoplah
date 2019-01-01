@@ -19,7 +19,7 @@ const strategy = new Auth0Strategy({
   console.log(profile);
 
   // check if user already exist in our database
-  User.findOne({ authID: profile.id }).then((currentUser) => {
+  User.findOne({ userID: profile.id }).then((currentUser) => {
     if (currentUser) {
       // user already in our DB
       console.log('current user: ', currentUser);
