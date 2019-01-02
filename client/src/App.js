@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Products from './components/products';
 import ShoppingCart from './components/shopping_cart';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import CheckAuth from './components/checkAuth';
+import CheckAuth from './components/check_auth';
+import CartPage from './components/cart_page';
 
 class App extends Component {
   constructor(props) {
@@ -14,9 +15,7 @@ class App extends Component {
       item: [],
       qty: [],
       totalPrice: 0,
-      user: {
-        isLoggedIn: false
-      }
+      isLoggedIn: false
     };
   } 
 
@@ -33,12 +32,21 @@ class App extends Component {
         console.log(this.state);
       })
       .catch(err => console.log(err));
-    fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' }) 
+
+    fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' })
       .then(res => {
-        console.log(res);
-        return res.json();
+        if (!res.ok) {
+          throw Error();
+        }
+        return res;
       })
-      .catch(error => console.error('Error:', error));
+      .then(res => res.json())
+      .then(this.setState({ isLoggedIn: true }))
+      .then(console.log(this.state))
+      .catch(error => {
+        this.setState({ isLoggedIn: false })
+        console.error('Error:', error)
+      });
   }
   
   callApi = async () => {
@@ -160,15 +168,18 @@ class App extends Component {
     }
   }
 
+  // <Route exact path='/profile' component={  } />
+
   render() {
     return (
       <div>
-        <Products products={this.state.products} addToCart={this.addToCart} user={this.state.user} />
+        <Products products={this.state.products} addToCart={this.addToCart} isLoggedIn={this.state.isLoggedIn} />
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
           totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart}  
           inputChange={this.inputChange} handleClick={this.handleClick} />
         <Switch>
           <Route exact path='/auth/checkAuth' component={ CheckAuth } />
+          <Route exact path='/cart' render={ () => <CartPage /> } />
         </Switch>
       </div>
     );

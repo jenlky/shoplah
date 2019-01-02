@@ -8,6 +8,7 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const port = process.env.PORT || 8080;
 const productRoutes = require('./server/routes/products');
 const orderRoutes = require('./server/routes/orders');
@@ -37,12 +38,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+const corsOption = {
+  origin: 'http://localhost:3000',
+  credentials: true
+}
+
 // set up routes
+app.use(cors(corsOption));
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes); 
-app.use('/auth', authRoutes, (req, res) => {
-  // res.header('Access-Control-Allow-Headers', 'http://localhost:8080')
-});
+app.use('/auth', authRoutes);
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

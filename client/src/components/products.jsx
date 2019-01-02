@@ -36,7 +36,8 @@ const ShoppingCart = (props) => {
 // Material UI components cannot be styled with ordinary className, u must follow their method to override it. Probably need use withStyles.
 const Logged = (props) => {
   return (
-    <Button {...props} href="http://localhost:8080/auth/logout" children='Logout' />
+    <Button {...props} href="http://localhost:8080/auth/logout" 
+      style={{ fontSize: '14px' }} children='Logout' />
   );
 };
 
@@ -61,7 +62,7 @@ class Products extends Component {
               to='/' className=''>ShopLah</NavLink>
             <div className='navbar-right-side'>
               <ShoppingCart />
-              {this.props.user.isLoggedIn ? <Logged /> : <Login />}
+              {this.props.isLoggedIn ? <Logged /> : <Login />}
             </div>
           </Toolbar>
         </AppBar>
