@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from './components/navbar';
 import Products from './components/products';
 import ShoppingCart from './components/shopping_cart';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -15,7 +16,12 @@ class App extends Component {
       item: [],
       qty: [],
       totalPrice: 0,
-      isLoggedIn: false
+      user: {
+        username: '',
+        userID: '',
+        thumbnail: '',
+        isLoggedIn: false
+      }
     };
   } 
 
@@ -41,11 +47,23 @@ class App extends Component {
         return res;
       })
       .then(res => res.json())
-      .then(this.setState({ isLoggedIn: true }))
+      .then(this.setState(prevState => ({
+        user: {
+          ...prevState.user, 
+          isLoggedIn: true 
+        }
+      })))
       .then(console.log(this.state))
       .catch(error => {
-        this.setState({ isLoggedIn: false })
-        console.error('Error:', error)
+        this.setState({ 
+          user: {
+            username: '', 
+            userID: '',
+            thumbnail: '',
+            isLoggedIn: false 
+          }
+        });
+        console.error('Error:', error);
       });
   }
   
@@ -168,20 +186,22 @@ class App extends Component {
     }
   }
 
+  // checkAuth route is not being used to checkAuth, it's done in 
+  // <Route exact path='/auth/checkAuth' component={ CheckAuth } />
   // <Route exact path='/profile' component={  } />
 
   render() {
     return (
-      <div>
-        <Products products={this.state.products} addToCart={this.addToCart} isLoggedIn={this.state.isLoggedIn} />
+      <main>
+        <Navbar isLoggedIn={this.state.user.isLoggedIn} />
+        <Products products={this.state.products} addToCart={this.addToCart} />
         <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
           totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart}  
           inputChange={this.inputChange} handleClick={this.handleClick} />
         <Switch>
-          <Route exact path='/auth/checkAuth' component={ CheckAuth } />
-          <Route exact path='/cart' render={ () => <CartPage /> } />
+          <Route exact path='/cart' render={props => <CartPage {...props} />} />
         </Switch>
-      </div>
+      </main>
     );
   }
 }

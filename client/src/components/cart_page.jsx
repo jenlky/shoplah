@@ -1,23 +1,13 @@
-import Products from './products';
 import React, { Component } from 'react';
+import Navbar from './navbar';
 
-class CartPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
+const CartPage = (props) => {
+  return (
+    <div>
+      <Navbar />
       
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <Products />
-
-      </div>   
-    );
-  }
+    </div>   
+  );
 }
 
 export default CartPage;
