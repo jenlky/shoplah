@@ -39,6 +39,7 @@ class App extends Component {
       })
       .catch(err => console.log(err));
 
+    /*
     fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' })
       .then(res => {
         if (!res.ok) {
@@ -64,7 +65,7 @@ class App extends Component {
           }
         });
         console.error('Error:', error);
-      });
+      }); */
   }
   
   callApi = async () => {
@@ -188,7 +189,7 @@ class App extends Component {
 
   // checkAuth route is not being used to checkAuth, it's done in 
   // <Route exact path='/auth/checkAuth' component={ CheckAuth } />
-  // <Route exact path='/profile' component={  } />
+  // <Route exact path='/profile' component={ } />
 
   render() {
     return (

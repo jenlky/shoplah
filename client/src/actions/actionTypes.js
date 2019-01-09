@@ -1,0 +1,9 @@
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const CALCULATE_PRICE = "CALCULATE_PRICE";
+export const FETCH_PRODUCTs = "FETCH_PRODUCTS";
+export const FETCH_USER = "FETCH_USER";
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
+export const HANDLE_CLICK = "HANDLE_CLICK";
+export const INPUT_QUANTITY = "INPUT_QUANTITY";

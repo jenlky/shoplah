@@ -1,32 +1,34 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
-
+import thunk from 'redux-thunk';
+import ProductsReducer from './reducers/ProductsReducer';
+import PriceReducer from './reducers/PriceReducer';
+import UserReducer from './reducers/UserReducer';
 // import registerServiceWorker from './registerServiceWorker';
 
-/*
-const initialState = {
-  products: [],
-  num: [],
-  item: [],
-  qty: [],
-  totalPrice: 0
-};
+const rootReducer = combineReducers({
+  products: ProductsReducer,
+  price: PriceReduces,
+  user: UserReducer
+});
 
-function reducer(state = initialState, action) {
-  return state;
-}
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+); 
 
 const store = createStore(reducer); 
-*/
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, 
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>, 
   document.getElementById('root'));
 //registerServiceWorker();

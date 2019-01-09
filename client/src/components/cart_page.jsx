@@ -5,7 +5,8 @@ const CartPage = (props) => {
   return (
     <div>
       <Navbar />
-      
+      <h1>Testing</h1>
+      <p>Assalamualaikum</p>
     </div>   
   );
 }
