@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from '../actions/ActionTypes';
 
 const initialState = {
   products: [],
@@ -7,7 +7,7 @@ const initialState = {
   qty: []
 };
 
-function reducer(state = initialState, action) {
+const ProductsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS:
       return {
@@ -21,20 +21,22 @@ function reducer(state = initialState, action) {
 
     case actionTypes.REMOVE_FROM_CART:
       return {
-      
+        
       }
 
     case actionTypes.HANDLE_CLICK:
       return {
-      
+        
       }
 
     case actionTypes.INPUT_QUANTITY:
       return {
-      
+        
       }
 
     default: 
       return state;
   }
 }
+
+export default ProductsReducer;
