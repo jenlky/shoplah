@@ -7,7 +7,7 @@ const initialState = {
   isLoggedIn: false
 };
 
-function reducer(state = initialState, action) {
+const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_USER:
       return {
@@ -25,3 +25,5 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
+
+export default UserReducer;

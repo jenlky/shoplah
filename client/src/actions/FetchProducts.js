@@ -1,22 +1,32 @@
-// merge these two functions n create a function
-this.callApi()
-.then(res => {
-  /*
-  store.dispatch({
-    type: 'RES_DATA_SUCCESS',
-    products: res.data
-  });*/
-  console.log(res);
-  this.setState({ products: res.data });
-  console.log(this.state);
-})
-.catch(err => console.log(err));
+import FetchProductsRequest from './FetchProductsRequest';
+import FetchProductsSuccess from './FetchProductsSuccess';
 
-callApi = async () => {
-  const response = await fetch('/products');
-  const body = await response.json();
-
-  if (response.status !== 200) throw Error(body.message);
-
-  return body;
+const FetchProducts = () => {
+  return (dispatch) => {
+    fetch('/products')
+      .then(res => res.json())
+      .then(res => dispatch(FetchProductsSuccess(res)))
+      .catch(err => console.log(err))
+      dispatch(FetchProductsRequest());
+  }
 }
+
+export default FetchProducts;
+
+/*
+const FetchState = () => {
+  return(dispatch) => {
+      fetch('/api/categories', {
+          method: 'GET',
+          headers: {
+              'content-type': 'application/json'
+          }
+      })
+      .then(res => res.json())
+      .then(res => dispatch(FetchSuccess(res)))
+      .catch(err => console.log(err))
+      dispatch(FetchRequest());
+  }
+}
+export default FetchState;
+*/

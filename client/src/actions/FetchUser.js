@@ -1,4 +1,4 @@
-import * as ActionTypes from '../actions/actions';
+import * as actionTypes from './actions';
 
 const FetchUser = () => {
   return (dispatch) => {
@@ -11,12 +11,12 @@ const FetchUser = () => {
       })
       .then(res => res.json())
       .then(res => dispatch({
-        type: ActionTypes.LOGIN_USER,
+        type: actionTypes.LOGIN_USER,
         payload: {...res, isLoggedIn: true }
       }))
       .then(console.log(this.state))
       .catch(error => dispatch({
-        type: ActionTypes.LOGOUT_USER,
+        type: actionTypes.LOGOUT_USER,
         payload: {
           username: '',
           userID: '',

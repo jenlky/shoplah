@@ -7,6 +7,7 @@ import CheckAuth from './components/check_auth';
 import CartPage from './components/cart_page';
 
 class App extends Component {
+  /*
   constructor(props) {
     super(props);
 
@@ -28,18 +29,12 @@ class App extends Component {
   componentDidMount() {
     this.callApi()
       .then(res => {
-        /*
-        store.dispatch({
-          type: 'RES_DATA_SUCCESS',
-          products: res.data
-        });*/
         console.log(res);
         this.setState({ products: res.data });
         console.log(this.state);
       })
       .catch(err => console.log(err));
 
-    /*
     fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' })
       .then(res => {
         if (!res.ok) {
@@ -65,7 +60,7 @@ class App extends Component {
           }
         });
         console.error('Error:', error);
-      }); */
+      }); 
   }
   
   callApi = async () => {
@@ -75,7 +70,8 @@ class App extends Component {
     if (response.status !== 200) throw Error(body.message);
 
     return body;
-  }
+  } 
+  */
 
   addToCart = (num, item) => {
     let updatedNum = this.state.num;
