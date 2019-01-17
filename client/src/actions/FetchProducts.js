@@ -6,7 +6,7 @@ const FetchProducts = () => {
     fetch('/products')
       .then(res => res.json())
       .then(res => dispatch(FetchProductsSuccess(res)))
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
       dispatch(FetchProductsRequest());
   }
 }

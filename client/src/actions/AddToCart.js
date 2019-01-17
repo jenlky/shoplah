@@ -1,11 +1,10 @@
+import * as actionTypes from './actions';
 
-const AddToCart = (text) => {
-  const ADD_TO_CART_OBJ = {
-    type: ADD_TO_CART,
-    text
-  }
-
-  return ADD_TO_CART_OBJ;
-}
+let num = 0;
+const AddToCart = (num, product) => ({
+  type: actionTypes.ADD_TO_CART,
+  num: num++,
+  product
+});
 
 export default AddToCart;
