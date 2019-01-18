@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       products: [],
       num: [],
-      item: [],
+      cartItem: [],
       qty: [],
       totalPrice: 0,
       user: {
@@ -71,22 +71,21 @@ class App extends Component {
 
     return body;
   } 
-  */
 
   addToCart = (num, item) => {
     let updatedNum = this.state.num;
-    let updatedItem = this.state.item;
+    let updatedCart = this.state.cartItem;
     let updatedQty = this.state.qty;
 
     // if num array doesn't have that element, insert that element
     if (!this.state.num.includes(num)) {
       updatedNum = this.state.num.concat(num); 
-      updatedItem = this.state.item.concat(item);
+      updatedCart = this.state.cartItem.concat(item);
       updatedQty = this.state.qty.concat(1);
 
       this.setState({
         num: updatedNum,
-        item: updatedItem,
+        item: updatedCart,
         qty: updatedQty
       }, () => {
         // added callback which will be executed when setState() is completed
@@ -106,16 +105,16 @@ class App extends Component {
     }
 
     // when ADD TO CART is clicked, update state. after updating, calculate total price
-    this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+    this.calculateTotalPrice(updatedNum, updatedQty, updatedCart);
   }
 
-  calculateTotalPrice = (updatedNum, qty, item) => {
+  calculateTotalPrice = (updatedNum, updatedQty, updatedCart) => {
     let arr = [];
     console.log('updatedNum', updatedNum);
 
     updatedNum.map(num => {
       let index = updatedNum.indexOf(num);
-      arr.push(qty[index] * item[index].price);
+      arr.push(updatedQty[index] * updatedCart[index].price);
     });
 
     if (arr.length > 0) {
@@ -129,29 +128,29 @@ class App extends Component {
   removeFromCart = (num) => { 
     let updatedNum = this.state.num;
     let updatedQty = this.state.qty;
-    let updatedItem = this.state.item;
+    let updatedCart = this.state.cartItem;
 
     let index = updatedNum.indexOf(num);
 
     // remove clicked item with splice, and update state
     updatedNum.splice(index, 1);
     updatedQty.splice(index, 1);
-    updatedItem.splice(index, 1);
+    updatedCart.splice(index, 1);
 
     this.setState({
       num: updatedNum,
-      item: updatedItem,
+      cartItem: updatedCart,
       qty: updatedQty
     });
 
     // when item is removedFromCart, update totalPrice
-    this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+    this.calculateTotalPrice(updatedNum, updatedQty, updatedCart);
   }
 
   handleClick = (event, num) => {
     let updatedNum = this.state.num;
     let updatedQty = this.state.qty;
-    let updatedItem = this.state.item;
+    let updatedCart = this.state.cartItem;
 
     let id = event.currentTarget.id;
     console.log(id);
@@ -164,26 +163,26 @@ class App extends Component {
     }
 
     this.setState({ qty: updatedQty });
-    this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+    this.calculateTotalPrice(updatedNum, updatedQty, updatedCart);
   }
 
-  inputChange = (event, num) => {
+  inputQuantity = (event, num) => {
     const regex = /^[0-9\b]+$/;
 
     let updatedNum = this.state.num;
     let updatedQty = this.state.qty;
-    let updatedItem = this.state.item;
+    let updatedCart = this.state.cartItem;
 
     let index = updatedNum.indexOf(num);
     
     if (regex.test(event.target.value)) {
       updatedQty[index] = Number(event.target.value);
       this.setState({ qty: updatedQty });
-      this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+      this.calculateTotalPrice(updatedNum, updatedQty, updatedCart);
     }
   }
 
-  // checkAuth route is not being used to checkAuth, it's done in 
+  // checkAuth component is not being used to checkAuth, it's done in 
   // <Route exact path='/auth/checkAuth' component={ CheckAuth } />
   // <Route exact path='/profile' component={ } />
 
@@ -192,11 +191,23 @@ class App extends Component {
       <main>
         <Navbar isLoggedIn={this.state.user.isLoggedIn} />
         <Products products={this.state.products} addToCart={this.addToCart} />
-        <ShoppingCart num={this.state.num} item={this.state.item} qty={this.state.qty} 
+        <ShoppingCart num={this.state.num} cartItem={this.state.cartItem} qty={this.state.qty} 
           totalPrice={this.state.totalPrice} removeFromCart={this.removeFromCart}  
-          inputChange={this.inputChange} handleClick={this.handleClick} />
+          inputQuantity={this.inputQuantity} handleClick={this.handleClick} />
         <Switch>
           <Route exact path='/cart' render={props => <CartPage {...props} />} />
+        </Switch>
+      </main>
+    );
+  }
+  */
+
+  render() {
+    return (
+      <main>
+        <Switch> 
+          <Route exact path='/cart' render={() => <CartPage store={this.props.store} />} />
+          <Route exact path='/' render={() => <CartPage store={this.props.store} />} />
         </Switch>
       </main>
     );

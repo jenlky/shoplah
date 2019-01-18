@@ -12,7 +12,7 @@ const ProductsReducer = (state = initialState, action) => {
   let updatedNum = state.num;
   let updatedItem = state.item;
   let updatedQty = state.qty;
-  let index = updatedNum.indexOf(num);
+  let index = updatedNum.indexOf(action.num);
 
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_REQUEST:
@@ -31,8 +31,8 @@ const ProductsReducer = (state = initialState, action) => {
     case actionTypes.ADD_TO_CART:
       // if num array doesn't have that element, insert that element
       if (!state.num.includes(action.num)) {
-        updatedNum = state.num.concat(num); 
-        updatedItem = state.item.concat(item);
+        updatedNum = state.num.concat(action.num); 
+        updatedItem = state.item.concat(action.item);
         updatedQty = state.qty.concat(1);
 
         return {
@@ -72,7 +72,7 @@ const ProductsReducer = (state = initialState, action) => {
       this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
 
     case actionTypes.HANDLE_CLICK:
-      let id = event.currentTarget.id;
+      let id = action.event.currentTarget.id;
       console.log(id);
 
       if (id === 'plus') {
@@ -81,15 +81,20 @@ const ProductsReducer = (state = initialState, action) => {
         updatedQty[index] -= 1;
       }
 
-      return { 
+      return {
+        ...state,
         qty: updatedQty 
       }
       this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
 
     case actionTypes.INPUT_QUANTITY:
-      if (regex.test(event.target.value)) {
-        updatedQty[index] = Number(event.target.value);
-        return { 
+      const regex = /^[0-9\b]+$/;
+
+      if (regex.test(action.event.target.value)) {
+        updatedQty[index] = Number(action.event.target.value);
+
+        return {
+          ...state,
           qty: updatedQty 
         }
         this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);

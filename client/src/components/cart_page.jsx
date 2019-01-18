@@ -6,7 +6,7 @@ const CartPage = (props) => {
     <div>
       <Navbar />
       <h1>Testing</h1>
-      <p>Assalamualaikum</p>
+      <p>Testing Cart Page</p>
     </div>   
   );
 }

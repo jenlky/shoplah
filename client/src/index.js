@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
@@ -12,9 +12,9 @@ import UserReducer from './reducers/UserReducer';
 // import registerServiceWorker from './registerServiceWorker';
 
 const rootReducer = combineReducers({
-  products: ProductsReducer,
-  price: PriceReduces,
-  user: UserReducer
+  ProductsReducer,
+  PriceReducer,
+  UserReducer
 });
 
 const store = createStore(
@@ -22,12 +22,10 @@ const store = createStore(
   applyMiddleware(thunk)
 ); 
 
-const store = createStore(reducer); 
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <App store={store} />
     </BrowserRouter>
   </Provider>, 
   document.getElementById('root'));

@@ -13,11 +13,11 @@ export default class ShoppingCartItems extends Component {
   }
 
   handleChange(event) {
-    this.props.inputChange(event, this.props.num);
+    this.props.inputQuantity(event, this.props.num);
   }
 
   render() {
-    let item = this.props.item;
+    let item = this.props.cartItem;
     let num = this.props.num;
     let qty = this.props.qty;
 
