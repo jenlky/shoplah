@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Navbar from './components/navbar';
-import Products from './components/products';
-import ShoppingCart from './components/shopping_cart';
+import Navbar from './components/Navbar';
+import Products from './components/Products';
+import ShoppingCart from './components/ShoppingCart';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import CheckAuth from './components/check_auth';
-import CartPage from './components/cart_page';
+import CheckAuth from './components/CheckAuth';
+import CartPage from './components/CartPage';
 
 class App extends Component {
   /*
@@ -72,7 +72,7 @@ class App extends Component {
     return body;
   } 
 
-  addToCart = (num, item) => {
+  addToCart = (num, product) => {
     let updatedNum = this.state.num;
     let updatedCart = this.state.cartItem;
     let updatedQty = this.state.qty;
@@ -80,12 +80,12 @@ class App extends Component {
     // if num array doesn't have that element, insert that element
     if (!this.state.num.includes(num)) {
       updatedNum = this.state.num.concat(num); 
-      updatedCart = this.state.cartItem.concat(item);
+      updatedCart = this.state.cartItem.concat(product);
       updatedQty = this.state.qty.concat(1);
 
       this.setState({
         num: updatedNum,
-        item: updatedCart,
+        product: updatedCart,
         qty: updatedQty
       }, () => {
         // added callback which will be executed when setState() is completed
@@ -132,7 +132,7 @@ class App extends Component {
 
     let index = updatedNum.indexOf(num);
 
-    // remove clicked item with splice, and update state
+    // remove clicked product with splice, and update state
     updatedNum.splice(index, 1);
     updatedQty.splice(index, 1);
     updatedCart.splice(index, 1);
@@ -143,7 +143,7 @@ class App extends Component {
       qty: updatedQty
     });
 
-    // when item is removedFromCart, update totalPrice
+    // when product is removedFromCart, update totalPrice
     this.calculateTotalPrice(updatedNum, updatedQty, updatedCart);
   }
 
