@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar';
-import Products from './components/Products';
-import ShoppingCart from './components/ShoppingCart';
+// import Navbar from './components/Navbar';
+// import Products from './components/Products';
+// import ShoppingCart from './components/ShoppingCart';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import CheckAuth from './components/CheckAuth';
 import CartPage from './components/CartPage';
+import MainPage from './components/MainPage';
 
 class App extends Component {
   /*
@@ -85,7 +85,7 @@ class App extends Component {
 
       this.setState({
         num: updatedNum,
-        product: updatedCart,
+        cartItem: updatedCart,
         qty: updatedQty
       }, () => {
         // added callback which will be executed when setState() is completed
@@ -207,7 +207,7 @@ class App extends Component {
       <main>
         <Switch> 
           <Route exact path='/cart' render={() => <CartPage store={this.props.store} />} />
-          <Route exact path='/' render={() => <CartPage store={this.props.store} />} />
+          <Route exact path='/' render={() => <MainPage store={this.props.store} />} />
         </Switch>
       </main>
     );

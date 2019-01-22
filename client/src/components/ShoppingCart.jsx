@@ -44,8 +44,8 @@ const ShoppingCart = ({ num, cartItem, qty, totalPrice, removeFromCart, inputQua
       {num.map(num => {
         let index = num.indexOf(num);
         return <ShoppingCartItems num={num[index]} item={cartItem[index]} qty={qty[index]} 
-          key={cartItem[index].name} removeFromCart={removeFromCart} inputQuantity={inputQuantity} 
-          handleClick={handleClick} />;
+          key={cartItem[index].name} removeFromCart={removeFromCart}
+          inputQuantity={inputQuantity} handleClick={handleClick} />;
       })}
       <ShoppingCartTotal totalPrice={totalPrice} />
     </div>
@@ -54,7 +54,14 @@ const ShoppingCart = ({ num, cartItem, qty, totalPrice, removeFromCart, inputQua
 
 ShoppingCart.PropTypes = {
   num: PropTypes.array.isRequired,
-  cartItem: PropTypes.array.isRequired,
+  cartItem: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ).isRequired,
   qty: PropTypes.array.isRequired,
   totalPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
