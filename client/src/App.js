@@ -204,12 +204,10 @@ class App extends Component {
 
   render() {
     return (
-      <main>
-        <Switch> 
-          <Route exact path='/cart' render={() => <CartPage store={this.props.store} />} />
-          <Route exact path='/' render={() => <MainPage store={this.props.store} />} />
-        </Switch>
-      </main>
+      <Switch> 
+        <Route exact path='/cart' render={() => <CartPage store={this.props.store} />} />
+        <Route exact path='/' render={() => <MainPage store={this.props.store} />} />
+      </Switch>
     );
   }
 }

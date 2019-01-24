@@ -3,14 +3,14 @@ import * as actionTypes from '../actions/actions';
 const initialState = {
   products: [],
   num: [],
-  item: [],
+  cartItem: [],
   qty: [],
   status: ''
 };
 
 const ProductsReducer = (state = initialState, action) => {
   let updatedNum = state.num;
-  let updatedItem = state.item;
+  let updatedItem = state.cartItem;
   let updatedQty = state.qty;
   let index = updatedNum.indexOf(action.num);
 
@@ -32,13 +32,13 @@ const ProductsReducer = (state = initialState, action) => {
       // if num array doesn't have that element, insert that element
       if (!state.num.includes(action.num)) {
         updatedNum = state.num.concat(action.num); 
-        updatedItem = state.item.concat(action.item);
+        updatedItem = state.cartItem.concat(action.item);
         updatedQty = state.qty.concat(1);
 
         return {
           ...state,
           num: updatedNum,
-          item: updatedItem,
+          cartItem: updatedItem,
           qty: updatedQty
         }
       // if element is present in array already, increase qty of it by 1
@@ -64,7 +64,7 @@ const ProductsReducer = (state = initialState, action) => {
       return {
         ...state,
         num: updatedNum,
-        item: updatedItem,
+        cartItem: updatedItem,
         qty: updatedQty
       }
 

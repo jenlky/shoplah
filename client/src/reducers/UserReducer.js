@@ -7,6 +7,7 @@ const initialState = {
   isLoggedIn: false
 };
 
+// Action: FetchUser
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_USER:

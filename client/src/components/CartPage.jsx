@@ -3,11 +3,11 @@ import Navbar from './Navbar';
 
 const CartPage = (props) => {
   return (
-    <div>
+    <main>
       <Navbar />
       <h1>Testing</h1>
       <p>Testing Cart Page</p>
-    </div>   
+    </main>   
   );
 }
 
