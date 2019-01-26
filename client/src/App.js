@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import CartPage from './components/CartPage';
 import MainPage from './components/MainPage';
+import FetchProducts from './actions/FetchProducts';
+import FetchUser from './actions/FetchUser';
 
 class App extends Component {
   /*
@@ -197,10 +199,17 @@ class App extends Component {
         <Switch>
           <Route exact path='/cart' render={props => <CartPage {...props} />} />
         </Switch>
-      </main>
+      </main> 
     );
   }
   */
+
+  constructor(props) {
+    super(props);
+    //this.props.store.subscribe(() => this.forceUpdate());
+    this.props.store.dispatch(FetchProducts());
+    //this.props.store.dispatch(FetchUser());
+  }
 
   render() {
     return (

@@ -60,7 +60,7 @@ const ShoppingCartItems = ({ num, item, qty, removeFromCart, inputQuantity, hand
     return (
       <div className='shoplah-items'> 
         <div className='shoplah-product'>
-          <i className='far fa-window-close shoplah-cancel' onClick={() => removeFromCart(num)}></i>
+          <i className='far fa-window-close shoplah-cancel' onClick={removeFromCart}></i>
           <div className='product-details'>
             <img className='shoplah-img' src={item.image} alt={item.name} />
             <span>Product {num}</span>
@@ -68,12 +68,12 @@ const ShoppingCartItems = ({ num, item, qty, removeFromCart, inputQuantity, hand
         </div>
         <span>{'$ ' + item.price}</span>
         <div className='shoplah-qty'>
-          <button id='minus' className='shoplah-btn-outline' onClick={(e) => handleClick(e, num)}>
+          <button id='minus' className='shoplah-btn-outline' onClick={handleClick}>
             <img src={minus} alt="Minus sign" />
           </button>
-          <input className='shoplah-btn-outline shoplah-input' value={qty} onChange={(e) => inputQuantity(e, num)} 
+          <input className='shoplah-btn-outline shoplah-input' value={qty} onChange={inputQuantity} 
             name='quantity' type="text" />
-          <button id='plus' className='shoplah-btn-outline' onClick={(e) => handleClick(e, num)}>
+          <button id='plus' className='shoplah-btn-outline' onClick={handleClick}>
             <img src={plus} alt="Plus sign" />
           </button>
         </div>

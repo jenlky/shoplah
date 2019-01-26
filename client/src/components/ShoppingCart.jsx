@@ -34,7 +34,7 @@ const ShoppingCart = ({ num, cartItem, qty, totalPrice, removeFromCart, inputQua
     <div className='horizontal-ruler'></div>
     <div className='shoplah-menu'>
       <h3>SHOPPING CART - {qty.length !== 0 ? 
-        qty.reduce((acc, currentVal) => acc + currentVal): '0'} items</h3>
+        qty.reduce((acc, currentVal) => acc + currentVal) : '0'} items</h3>
       <div className='shoplah-header'>
         <span>Product</span>
         <span>Price</span>
@@ -52,7 +52,8 @@ const ShoppingCart = ({ num, cartItem, qty, totalPrice, removeFromCart, inputQua
   </div>
 );
 
-ShoppingCart.PropTypes = {
+/*
+ShoppingCart.propTypes = {
   num: PropTypes.array.isRequired,
   cartItem: PropTypes.arrayOf(
     PropTypes.shape({
@@ -67,6 +68,6 @@ ShoppingCart.PropTypes = {
   removeFromCart: PropTypes.func.isRequired,
   inputQuantity: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired
-};
+}; */
 
 export default ShoppingCart;
