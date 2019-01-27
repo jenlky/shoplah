@@ -206,9 +206,9 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    //this.props.store.subscribe(() => this.forceUpdate());
+    // this.props.store.subscribe(() => this.forceUpdate());
     this.props.store.dispatch(FetchProducts());
-    //this.props.store.dispatch(FetchUser());
+    // this.props.store.dispatch(FetchUser());
   }
 
   render() {
