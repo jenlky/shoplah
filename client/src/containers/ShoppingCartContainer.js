@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { CalculatePrice, InputQuantity, HandleClick, RemoveFromCart } from '../actions/actions';
+import CalculatePrice from '../actions/CalculatePrice';
+import InputQuantity from '../actions/InputQuantity';
+import HandleClick from '../actions/HandleClick';
+import RemoveFromCart from '../actions/RemoveFromCart';
 import ShoppingCart from './components/ShoppingCart';
 
 // reducer?

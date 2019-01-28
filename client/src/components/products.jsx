@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
-import FetchProducts from '../actions/FetchProducts';
+//import FetchProducts from '../actions/FetchProducts';
 
 const Products = ({ products, addToCart }) => {
   return (

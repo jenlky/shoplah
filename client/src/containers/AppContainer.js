@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
-import { FetchProducts } from '../actions/FetchProducts';
-import App from './App';
+import App from '../App';
+import FetchProducts from '../actions/FetchProducts';
+import FetchUser from '../actions/FetchUser';
 
+// Attempted import error: 'FetchProducts' is not exported from '../actions/FetchProducts'.
 const mapDispatchToProps = dispatch => ({
-  FetchProducts: () => dispatch(FetchProducts())
+  fetchProducts: () => dispatch(FetchProducts()),
+  fetchUser: () => dispatch(FetchUser())
 });
 
-export default connect(mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

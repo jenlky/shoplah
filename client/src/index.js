@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
+import AppContainer from './containers/AppContainer';
 import { BrowserRouter } from "react-router-dom";
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
@@ -29,7 +30,7 @@ const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer)
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App store={store} />
+      <AppContainer />
     </BrowserRouter>
   </Provider>, 
   document.getElementById('root'));

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { AddToCart } from '../actions/AddToCart';
+import AddToCart from '../actions/AddToCart';
 import ProductsReducer from './reducer/ProductsReducer';
 import Products from './components/Products';
 

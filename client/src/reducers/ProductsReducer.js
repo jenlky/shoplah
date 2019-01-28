@@ -32,7 +32,7 @@ const ProductsReducer = (state = initialState, action) => {
       // if num array doesn't have that element, insert that element
       if (!state.num.includes(action.num)) {
         updatedNum = state.num.concat(action.num); 
-        updatedItem = state.cartItem.concat(action.item);
+        updatedItem = state.cartItem.concat(action.cartItem);
         updatedQty = state.qty.concat(1);
 
         return {
