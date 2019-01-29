@@ -1,18 +1,14 @@
 import React from 'react';
 import Navbar from './Navbar';
-import Products from './Products';
-import ShoppingCart from './ShoppingCart';
+import ProductsContainer from '../containers/ProductsContainer';
+import ShoppingCartContainer from '../containers/ShoppingCartContainer';
 
-const MainPage = () => {
-  //console.log(store.getState());
-
-  return (
-    <main>
-      <Navbar />
-      <Products />
-      <ShoppingCart />
-    </main>
-  );
-}
+const MainPage = () => (
+  <main>
+    <Navbar />
+    <ProductsContainer />
+    <ShoppingCartContainer />
+  </main>
+);
 
 export default MainPage;

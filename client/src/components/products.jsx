@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
-//import FetchProducts from '../actions/FetchProducts';
 
 const Products = ({ products, addToCart }) => {
+  console.log(products);
+  console.log(addToCart);
+
   return (
     <div className='img-container'>
       {products.map((product, index) => {
         let num = index + 1;
         return (
-          <Product key={product.name} num={num} {...product} addToCart={addToCart} />
+          <Product key={product.name} image={product.image} name={product.name}
+            price={product.price} num={num} addToCart={addToCart} />
         );
       })}
     </div>

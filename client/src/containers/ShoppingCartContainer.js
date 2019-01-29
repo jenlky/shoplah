@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import CalculatePrice from '../actions/CalculatePrice';
+import RemoveFromCart from '../actions/RemoveFromCart';
 import InputQuantity from '../actions/InputQuantity';
 import HandleClick from '../actions/HandleClick';
-import RemoveFromCart from '../actions/RemoveFromCart';
-import ShoppingCart from './components/ShoppingCart';
+import CalculatePrice from '../actions/CalculatePrice';
+import ShoppingCart from '../components/ShoppingCart';
 
 // reducer?
 
@@ -17,9 +17,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  RemoveFromCart: (num, cartItem) => dispatch(RemoveFromCart(num, cartItem)),
   InputQuantity: (event, num) => dispatch(InputQuantity(event, num)),
   HandleClick: (event, num) => dispatch(HandleClick(event, num)),
-  RemoveFromCart: (num, cartItem) => dispatch(RemoveFromCart(num, cartItem)),
   CalculatePrice: (num, qty, cartItem) => dispatch(CalculatePrice(num, qty, cartItem))
 });
 

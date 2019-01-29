@@ -41,7 +41,7 @@ const Product = ({ image, name, price, num, addToCart }) => {
     );
   }
 
-  /* internal class conditional
+  /* internal className conditional
   return (
     <div className={'product ' + (num === 1 && 'first-product')}>
       <img src={image} alt={name} className='img-size'></img>
