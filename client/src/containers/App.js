@@ -5,34 +5,35 @@ import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
 import CartPage from '../components/CartPage';
 import MainPage from '../components/MainPage';
+import ProductsReducer from '../reducers/ProductsReducer';
 import UserReducer from '../reducers/UserReducer';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.props.fetchProducts();
-    // Unhandled Rejection (Error)
-    // this.props.fetchUser();
+    this.props.fetchUser();
+    console.log(this.props);
   }
   
   render() {
     return (
       <Switch> 
         <Route exact path='/cart' render={() => <CartPage />} />
-        <Route exact path='/' render={() => <MainPage />} />
+        <Route exact path='/' render={() => <MainPage store={this.props.store} />} />
       </Switch>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  products: ProductsReducer(state, FetchProducts),
   user: UserReducer(state, FetchUser)
 });
 
-// Attempted import error: 'FetchProducts' is not exported from '../actions/FetchProducts'.
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(FetchProducts()),
   fetchUser: () => dispatch(FetchUser())
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -29,8 +29,10 @@ const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer)
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <App store={store} />
     </BrowserRouter>
   </Provider>, 
   document.getElementById('root'));
 //registerServiceWorker();
+
+export default store;

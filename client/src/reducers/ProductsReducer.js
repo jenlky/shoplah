@@ -12,7 +12,11 @@ const ProductsReducer = (state = initialState, action) => {
   let updatedNum = state.num;
   let updatedItem = state.cartItem;
   let updatedQty = state.qty;
-  let index = updatedNum.indexOf(action.num);
+  let index;
+  
+  if (action.num !== undefined) {
+    index = updatedNum.indexOf(action.num);
+  }
 
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_REQUEST:

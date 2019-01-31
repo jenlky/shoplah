@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import AddToCart from '../actions/AddToCart';
 // import ProductsReducer from '../reducers/ProductsReducer';
 import Products from '../components/Products';
 
+/*
 const ProductsContainer = ({ products, addToCart }) => {
   console.log(products);
   return (
-    <Products products={products} addToCart={addToCart} />
+    
   );
+} */
+
+class ProductsContainer extends Component {
+  render() {
+    if (!this.props.products) {
+      return <div>loading</div>;
+    } 
+
+    return (
+      <Products products={this.props.products} addToCart={this.props.addToCart} />
+    );
+  }
 }
 
 // Actions: AddToCart

@@ -4,8 +4,12 @@ const FetchUser = () => {
   return (dispatch) => {
     fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' })
       .then(res => {
-        if (!res.ok) {
-          throw Error();
+        try {
+          if (!res.ok) {
+            throw new Error(res.statusText);
+          }
+        } catch(err) {
+          console.log(err);
         }
         return res;
       })
@@ -14,16 +18,18 @@ const FetchUser = () => {
         type: actionTypes.LOGIN_USER,
         payload: {...res, isLoggedIn: true }
       }))
-      .then(console.log(this.state))
-      .catch(error => dispatch({
-        type: actionTypes.LOGOUT_USER,
-        payload: {
-          username: '',
-          userID: '',
-          thumbnail: '',
-          isLoggedIn: false
-        }
-      }));
+      .catch(error => {
+        console.log(error);
+        dispatch({
+          type: actionTypes.LOGOUT_USER,
+          payload: {
+            username: '',
+            userID: '',
+            thumbnail: '',
+            isLoggedIn: false
+          }
+        })
+      });
   }
 }
 
