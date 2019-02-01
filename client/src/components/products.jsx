@@ -3,16 +3,15 @@ import Product from './Product';
 import PropTypes from 'prop-types';
 
 const Products = ({ products, addToCart }) => {
-  console.log(products);
-  console.log(addToCart);
+  console.log('products', products);
+  console.log('addtoCart', addToCart);
 
   return (
     <div className='img-container'>
       {products.map((product, index) => {
         let num = index + 1;
         return (
-          <Product key={product.name} image={product.image} name={product.name}
-            price={product.price} num={num} addToCart={addToCart} />
+          <Product key={product.name} product={product} num={num} addToCart={addToCart} />
         );
       })}
     </div>

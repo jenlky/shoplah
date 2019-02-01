@@ -7,11 +7,12 @@ const FetchUser = () => {
         try {
           if (!res.ok) {
             throw new Error(res.statusText);
-          }
+          } 
+          
+          return res;
         } catch(err) {
           console.log(err);
         }
-        return res;
       })
       .then(res => res.json())
       .then(res => dispatch({
@@ -23,7 +24,7 @@ const FetchUser = () => {
         dispatch({
           type: actionTypes.LOGOUT_USER,
           payload: {
-            username: '',
+            user: '',
             userID: '',
             thumbnail: '',
             isLoggedIn: false

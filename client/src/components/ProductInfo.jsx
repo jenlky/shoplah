@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-/*
-export default class ProductInfo extends Component {
+class ProductInfo extends Component {
 
   handleClick = () => {
-    this.props.addToCart(this.props.number, this.props.product);
+    this.props.addToCart(this.props.num, this.props.product);
   }
 
   render() {
     return (
       <div className='product-info'>
         <div>
-          <p>Product {this.props.number}</p>      
+          <p>Product {this.props.num}</p>      
           <p>{"$ " + this.props.product.price}</p>
         </div>
         <button onClick={this.handleClick}>Add</button>
@@ -20,8 +19,8 @@ export default class ProductInfo extends Component {
     );
   }
 }
-*/
 
+/*
 const ProductInfo = ({ num, price, addToCart }) => (
   <div className='product-info'>
     <div>
@@ -31,6 +30,7 @@ const ProductInfo = ({ num, price, addToCart }) => (
     <button onClick={addToCart}>Add</button>
   </div>
 );
+*/
 
 ProductInfo.PropTypes = {
   num: PropTypes.number.isRequired,

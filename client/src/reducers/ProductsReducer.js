@@ -56,7 +56,7 @@ const ProductsReducer = (state = initialState, action) => {
         }
       }
 
-      // when ADD TO CART is clicked, update state. after updating, calculate total price
+      // After updating store, use CalculatePrice action to calculate updated price.
       this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
 
     case actionTypes.REMOVE_FROM_CART:
@@ -71,8 +71,6 @@ const ProductsReducer = (state = initialState, action) => {
         cartItem: updatedItem,
         qty: updatedQty
       }
-
-      // when item is removed from cart, update totalPrice
       this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
 
     case actionTypes.HANDLE_CLICK:

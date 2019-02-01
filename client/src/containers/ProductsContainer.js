@@ -1,19 +1,14 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import AddToCart from '../actions/AddToCart';
-// import ProductsReducer from '../reducers/ProductsReducer';
+import ProductsReducer from '../reducers/ProductsReducer';
 import Products from '../components/Products';
 
-/*
-const ProductsContainer = ({ products, addToCart }) => {
-  console.log(products);
-  return (
-    
-  );
-} */
-
+// Actions: AddToCart
 class ProductsContainer extends Component {
   render() {
+    console.log(this.props);
+
     if (!this.props.products) {
       return <div>loading</div>;
     } 
@@ -24,13 +19,13 @@ class ProductsContainer extends Component {
   }
 }
 
-// Actions: AddToCart
 const mapStateToProps = state => ({
   products: state.products
 });
 
+// where does AddToCart(num, cartItem) parameters come from
 const mapDispatchToProps = dispatch => ({
-  AddToCart: (num, cartItem) => dispatch(AddToCart(num, cartItem))
+  AddToCart: () => dispatch(AddToCart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

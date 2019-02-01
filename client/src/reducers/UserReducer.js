@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actions';
 
 const initialState = {
-  username: '',
+  user: '',
   userID: '',
   thumbnail: '',
   isLoggedIn: false
@@ -9,6 +9,8 @@ const initialState = {
 
 // Action: FetchUser
 const UserReducer = (state = initialState, action) => {
+  //const payload = Object.assign({}, action.payload);
+
   switch (action.type) {
     case actionTypes.LOGIN_USER:
       return {

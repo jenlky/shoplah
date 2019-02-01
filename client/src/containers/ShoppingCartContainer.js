@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import RemoveFromCart from '../actions/RemoveFromCart';
 import InputQuantity from '../actions/InputQuantity';
 import HandleClick from '../actions/HandleClick';
-import CalculatePrice from '../actions/CalculatePrice';
 import ShoppingCart from '../components/ShoppingCart';
 
 class ShoppingCartContainer extends Component {
   render() {
+    if (!this.props.num || !this.props.cartItem || !this.props.qty || !this.props.totalPrice) {
+      return (
+        <div>loading</div>
+      );
+    }
+
     return (
       <ShoppingCart 
         num={this.props.num} cartItem={this.props.cartItem} 
@@ -19,7 +24,7 @@ class ShoppingCartContainer extends Component {
   }
 }
 
-// Actions: CalculatePrice, InputQuantity, HandleClick, RemoveFromCart
+// Actions: InputQuantity, HandleClick, RemoveFromCart
 const mapStateToProps = state => ({
   num: state.num,
   cartItem: state.cartItem,
@@ -31,7 +36,6 @@ const mapDispatchToProps = dispatch => ({
   RemoveFromCart: (num, cartItem) => dispatch(RemoveFromCart(num, cartItem)),
   InputQuantity: (event, num) => dispatch(InputQuantity(event, num)),
   HandleClick: (event, num) => dispatch(HandleClick(event, num)),
-  CalculatePrice: (num, qty, cartItem) => dispatch(CalculatePrice(num, qty, cartItem))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartContainer);

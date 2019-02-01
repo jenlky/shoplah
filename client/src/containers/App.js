@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <Switch> 
         <Route exact path='/cart' render={() => <CartPage />} />
-        <Route exact path='/' render={() => <MainPage store={this.props.store} />} />
+        <Route exact path='/' render={() => <MainPage />} />
       </Switch>
     );
   }
@@ -29,7 +29,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   products: ProductsReducer(state, FetchProducts),
   user: UserReducer(state, FetchUser)
-});
+}); 
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(FetchProducts()),
