@@ -12,7 +12,7 @@ class ProductInfo extends Component {
       <div className='product-info'>
         <div>
           <p>Product {this.props.num}</p>      
-          <p>{"$ " + this.props.product.price}</p>
+          <p>{"$ " + this.props.price}</p>
         </div>
         <button onClick={this.handleClick}>Add</button>
       </div>
@@ -32,10 +32,11 @@ const ProductInfo = ({ num, price, addToCart }) => (
 );
 */
 
-ProductInfo.PropTypes = {
+/*
+ProductInfo.propTypes = {
   num: PropTypes.number.isRequired,
   price: PropTypes.string.isRequired,
   addToCart: PropTypes.func.isRequired
-};
+}; */
 
 export default ProductInfo;

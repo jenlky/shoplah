@@ -26,14 +26,15 @@ class App extends Component {
   }
 }
 
+/*
 const mapStateToProps = state => ({
-  products: ProductsReducer(state, FetchProducts),
+  products: ProductsReducer(state, FetchProducts).ProductsReducer.products,
   user: UserReducer(state, FetchUser)
-}); 
+}); */
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(FetchProducts()),
   fetchUser: () => dispatch(FetchUser())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

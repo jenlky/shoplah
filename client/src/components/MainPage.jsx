@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from './Navbar';
+import NavbarContainer from '../containers/NavbarContainer';
 import ProductsContainer from '../containers/ProductsContainer';
 import ShoppingCartContainer from '../containers/ShoppingCartContainer';
 
 const MainPage = () => (
   <main>
-    <Navbar />
+    <NavbarContainer />
     <ProductsContainer />
     <ShoppingCartContainer />
   </main>

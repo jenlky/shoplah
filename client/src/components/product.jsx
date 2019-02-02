@@ -3,6 +3,8 @@ import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
 const Product = ({ product, num, addToCart }) => {
+  console.log(product.image);
+
   // how can I reduce and simplfy the chunk below hmm
   if (num === 1) {
     return (

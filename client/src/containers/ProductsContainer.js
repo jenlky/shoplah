@@ -7,7 +7,7 @@ import Products from '../components/Products';
 // Actions: AddToCart
 class ProductsContainer extends Component {
   render() {
-    console.log(this.props);
+    console.log(this.props.products);
 
     if (!this.props.products) {
       return <div>loading</div>;
@@ -20,7 +20,7 @@ class ProductsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products
+  products: state.ProductsReducer.products.data
 });
 
 // where does AddToCart(num, cartItem) parameters come from
