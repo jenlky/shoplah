@@ -13,7 +13,6 @@ class App extends Component {
     super(props);
     this.props.fetchProducts();
     this.props.fetchUser();
-    console.log(this.props);
   }
   
   render() {

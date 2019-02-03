@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import RemoveFromCart from '../actions/RemoveFromCart';
 import InputQuantity from '../actions/InputQuantity';
 import HandleClick from '../actions/HandleClick';
+import CalculatePrice from '../actions/CalculatePrice';
 import ShoppingCart from '../components/ShoppingCart';
+import PriceReducer from '../reducers/PriceReducer';
 
 class ShoppingCartContainer extends Component {
   render() {
-    if (!this.props.num || !this.props.cartItem || !this.props.qty || !this.props.totalPrice) {
-      return (
-        <div>loading</div>
-      );
+    if (!this.props.num || !this.props.qty) {
+      return null;
     }
 
     return (
@@ -26,10 +26,10 @@ class ShoppingCartContainer extends Component {
 
 // Actions: InputQuantity, HandleClick, RemoveFromCart
 const mapStateToProps = state => ({
-  num: state.num,
-  cartItem: state.cartItem,
-  qty: state.qty,
-  totalPrice: state.totalPrice
+  num: state.ProductsReducer.num,
+  cartItem: state.ProductsReducer.cartItem,
+  qty: state.ProductsReducer.qty,
+  totalPrice: PriceReducer(state.PriceReducer.totalPrice, CalculatePrice)
 });
 
 const mapDispatchToProps = dispatch => ({

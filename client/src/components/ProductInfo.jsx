@@ -11,8 +11,8 @@ class ProductInfo extends Component {
     return (
       <div className='product-info'>
         <div>
-          <p>Product {this.props.num}</p>      
-          <p>{"$ " + this.props.price}</p>
+          <p>{this.props.name}</p>      
+          <p>{"$ " + this.props.product.price}</p>
         </div>
         <button onClick={this.handleClick}>Add</button>
       </div>

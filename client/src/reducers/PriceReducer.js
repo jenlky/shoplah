@@ -8,10 +8,10 @@ const PriceReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CALCULATE_PRICE:
       let arr = [];
-      console.log('updatedNum', action.updatedNum);
+      console.log('updatedNum', action.num);
 
-      action.updatedNum.map(num => {
-        let index = action.updatedNum.indexOf(num);
+      action.num.map(num => {
+        let index = num - 1;
         arr.push(action.qty[index] * action.cartItem[index].price);
       });
 
@@ -20,10 +20,10 @@ const PriceReducer = (state = initialState, action) => {
         return { 
           totalPrice: total 
         }
-      } else {
-        return { 
-          totalPrice: 0 
-        }
+      } 
+
+      return { 
+        totalPrice: 0 
       }
 
     default: 

@@ -16,7 +16,8 @@ body {
   margin-top: 10rem; }
 
 .first-product {
-  grid-area: 1/ 2/ 3/ 3; }
+  grid-area: 1/ 2/ 3/ 3;
+  justify-self: center; }
 
 .left-products {
   justify-self: end; }

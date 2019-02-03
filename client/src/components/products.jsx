@@ -3,8 +3,8 @@ import Product from './Product';
 import PropTypes from 'prop-types';
 
 const Products = ({ products, addToCart }) => {
-  console.log('products', products);
-  console.log('addtoCart', addToCart);
+  console.log('Products - products:', products);
+  console.log('Products - addtoCart:', addToCart);
 
   return (
     <div className='img-container'>
@@ -20,7 +20,6 @@ const Products = ({ products, addToCart }) => {
 
 /*
 class Products extends Component {
-  
   constructor(props) {
     super(props);
     this.props.store.subscribe(() => 
@@ -46,8 +45,8 @@ class Products extends Component {
   }
 } */
 
-// I'm not sure why I store currency as String in server/products.js
 /*
+// I'm not sure why I store currency as String in server/products.js
 Products.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({

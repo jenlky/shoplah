@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import minus from '../assets/minus.svg';
 import plus from '../assets/plus.svg';
 import PropTypes from 'prop-types';
 
-/*
-export default class ShoppingCartItems extends Component {
-
+class ShoppingCartItems extends Component {
   removeFromCart = () => {
     this.props.removeFromCart(this.props.num);
   } 
@@ -19,7 +17,7 @@ export default class ShoppingCartItems extends Component {
   }
 
   render() {
-    let item = this.props.cartItem;
+    let product = this.props.cartItem;
     let num = this.props.num;
     let qty = this.props.qty;
 
@@ -30,11 +28,11 @@ export default class ShoppingCartItems extends Component {
           <div className='shoplah-product'>
             <i className='far fa-window-close shoplah-cancel' onClick={this.removeFromCart}></i>
             <div className='product-details'>
-              <img className='shoplah-img' src={item.image} alt={item.name} />
+              <img className='shoplah-img' src={product.image} alt={product.name} />
               <span>Product {num}</span>
             </div>
           </div>
-          <span>{'$ ' + item.price}</span>
+          <span>{'$ ' + product.price}</span>
           <div className='shoplah-qty'>
             <button id='minus' className='shoplah-btn-outline' onClick={(e) => this.handleClick(e)}>
               <img src={minus} alt="Minus sign" />
@@ -45,16 +43,19 @@ export default class ShoppingCartItems extends Component {
               <img src={plus} alt="Plus sign" />
             </button>
           </div>
-          <span>{'$ ' + (qty * item.price).toFixed(2)}</span>
+          <span>{'$ ' + (qty * product.price).toFixed(2)}</span>
         </div>
       );
     } else {
       return null;
     }
   }
-} */
+} 
 
-const ShoppingCartItems = ({ num, item, qty, removeFromCart, inputQuantity, handleClick }) => {
+export default ShoppingCartItems;
+
+/*
+const ShoppingCartItems = ({ num, product, qty, removeFromCart, inputQuantity, handleClick }) => {
   // if a product was clicked return a row of product, else return null
   if (num.length !== 0 && qty > 0) {
     return (
@@ -62,11 +63,11 @@ const ShoppingCartItems = ({ num, item, qty, removeFromCart, inputQuantity, hand
         <div className='shoplah-product'>
           <i className='far fa-window-close shoplah-cancel' onClick={removeFromCart}></i>
           <div className='product-details'>
-            <img className='shoplah-img' src={item.image} alt={item.name} />
+            <img className='shoplah-img' src={product.image} alt={product.name} />
             <span>Product {num}</span>
           </div>
         </div>
-        <span>{'$ ' + item.price}</span>
+        <span>{'$ ' + product.price}</span>
         <div className='shoplah-qty'>
           <button id='minus' className='shoplah-btn-outline' onClick={handleClick}>
             <img src={minus} alt="Minus sign" />
@@ -77,22 +78,21 @@ const ShoppingCartItems = ({ num, item, qty, removeFromCart, inputQuantity, hand
             <img src={plus} alt="Plus sign" />
           </button>
         </div>
-        <span>{'$ ' + (qty * item.price).toFixed(2)}</span>
+        <span>{'$ ' + (qty * product.price).toFixed(2)}</span>
       </div>
     );
   } else {
     return null;
   }
-};
+}; */
 
+/*
 ShoppingCartItems.PropTypes = {
   num: PropTypes.array.isRequired,
-  item: PropTypes.object.isRequired,
+  product: PropTypes.object.isRequired,
   qty: PropTypes.array.isRequired,
   totalPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
   inputQuantity: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired
-};
-
-export default ShoppingCartItems;
+}; */

@@ -7,7 +7,7 @@ import Products from '../components/Products';
 // Actions: AddToCart
 class ProductsContainer extends Component {
   render() {
-    console.log(this.props.products);
+    console.log('ProductsContainer - addToCart:', this.props.addToCart);
 
     if (!this.props.products) {
       return <div>loading</div>;
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
 
 // where does AddToCart(num, cartItem) parameters come from
 const mapDispatchToProps = dispatch => ({
-  AddToCart: () => dispatch(AddToCart())
+  addToCart: (num, product) => dispatch(AddToCart(num, product))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

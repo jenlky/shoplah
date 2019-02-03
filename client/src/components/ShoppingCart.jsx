@@ -42,7 +42,8 @@ const ShoppingCart = ({ num, cartItem, qty, totalPrice, removeFromCart, inputQua
         <span>Total</span>
       </div>
       {num.map(num => {
-        let index = num.indexOf(num);
+        // let index = num.indexOf(num);
+        let index = num - 1;
         return <ShoppingCartItems num={num[index]} item={cartItem[index]} qty={qty[index]} 
           key={cartItem[index].name} removeFromCart={removeFromCart}
           inputQuantity={inputQuantity} handleClick={handleClick} />;
