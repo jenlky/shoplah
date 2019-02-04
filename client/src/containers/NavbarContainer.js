@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserReducer from '../reducers/UserReducer';
+import userReducer from '../reducers/userReducer';
 import FetchUser from '../actions/FetchUser';
 import Navbar from '../components/Navbar';
 
@@ -9,7 +9,7 @@ const NavbarContainer = ({ isLoggedIn }) => (
 );
 
 const mapStateToProps = state => ({
-  isLoggedIn: UserReducer(state, FetchUser).UserReducer.isLoggedIn
+  isLoggedIn: userReducer(state, FetchUser).userReducer.isLoggedIn
 });
 
 export default connect(mapStateToProps, null)(NavbarContainer);

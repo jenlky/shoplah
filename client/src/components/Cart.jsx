@@ -3,7 +3,7 @@ import CartItems from './CartItems';
 import CartTotal from './CartTotal';
 import PropTypes from 'prop-types';
 
-const Cart = ({ num, cartItem, qty, removeFromCart, inputQuantity, handleClick }) => {
+const Cart = ({ num, cartItem, qty }) => {
   if (!num || !qty) {
     return null;
   } 
@@ -23,9 +23,13 @@ const Cart = ({ num, cartItem, qty, removeFromCart, inputQuantity, handleClick }
         {num.map(num => {
           // let index = num.indexOf(num);
           let index = num - 1;
-          return <CartItems num={num[index]} cartItem={cartItem[index]} qty={qty[index]} 
-            key={cartItem[index].name} removeFromCart={removeFromCart}
-            inputQuantity={inputQuantity} handleClick={handleClick} />
+          return (
+            <CartItems 
+              key={cartItem[index].name} 
+              num={num[index]} 
+              cartItem={cartItem[index]} 
+              qty={qty[index]} />
+          );
         })}
         <CartTotal />
       </div>

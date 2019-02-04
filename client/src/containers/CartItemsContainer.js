@@ -11,7 +11,7 @@ const CartItemsContainer = ({ removeFromCart, inputQuantity, handleClick }) => (
     inputQuantity={inputQuantity} 
     handleClick={handleClick} 
   />
-)
+);
 
 const mapDispatchToProps = dispatch => ({
   removeFromCart: (num, cartItem) => dispatch(RemoveFromCart(num, cartItem)),

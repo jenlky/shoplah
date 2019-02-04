@@ -9,7 +9,7 @@ const initialState = {
   status: ''
 };
 
-const ProductsReducer = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   let updatedNum = state.num;
   let updatedItem = state.cartItem;
   let updatedQty = state.qty;
@@ -128,4 +128,4 @@ const ProductsReducer = (state = initialState, action) => {
   }
 }
 
-export default ProductsReducer;
+export default productsReducer;

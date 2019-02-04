@@ -19,10 +19,9 @@ class ProductsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.ProductsReducer.products.data
+  products: state.productsReducer.products.data
 });
 
-// where does AddToCart(num, cartItem) parameters come from
 const mapDispatchToProps = dispatch => ({
   addToCart: (num, product) => dispatch(AddToCart(num, product))
 });

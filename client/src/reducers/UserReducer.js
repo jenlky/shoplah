@@ -8,7 +8,7 @@ const initialState = {
 };
 
 // Action: FetchUser
-const UserReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   //const payload = Object.assign({}, action.payload);
 
   switch (action.type) {
@@ -29,4 +29,4 @@ const UserReducer = (state = initialState, action) => {
   }
 }
 
-export default UserReducer;
+export default userReducer;

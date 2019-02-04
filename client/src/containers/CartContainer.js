@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Cart from '../components/Cart';
-import ProductsReducer from '../reducers/ProductsReducer';
+import productsReducer from '../reducers/productsReducer';
 
 const CartContainer = ({ num, cartItem, qty }) => (
   <Cart 
@@ -11,10 +11,12 @@ const CartContainer = ({ num, cartItem, qty }) => (
   />
 );
 
+// AddToCart, RemoveFromCart return updated num, cartItem, qty
+// Both HandleClick and InputQuantity action return updated qty
 const mapStateToProps = state => ({
-  num: state.ProductsReducer.num,
-  cartItem: state.ProductsReducer.cartItem,
-  qty: state.ProductsReducer.qty
+  num: state.productsReducer.num,
+  cartItem: state.productsReducer.cartItem,
+  qty: state.productsReducer.qty
 });
 
 export default connect(mapStateToProps, null)(CartContainer);
