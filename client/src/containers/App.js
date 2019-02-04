@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
-import CartPage from '../components/CartPage';
+import Checkout from '../components/Checkout';
 import MainPage from '../components/MainPage';
-import ProductsReducer from '../reducers/ProductsReducer';
-import UserReducer from '../reducers/UserReducer';
 
 class App extends Component {
   constructor(props) {
@@ -18,18 +16,12 @@ class App extends Component {
   render() {
     return (
       <Switch> 
-        <Route exact path='/cart' render={() => <CartPage />} />
+        <Route exact path='/cart' render={() => <Checkout />} />
         <Route exact path='/' render={() => <MainPage />} />
       </Switch>
     );
   }
 }
-
-/*
-const mapStateToProps = state => ({
-  products: ProductsReducer(state, FetchProducts).ProductsReducer.products,
-  user: UserReducer(state, FetchUser)
-}); */
 
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(FetchProducts()),

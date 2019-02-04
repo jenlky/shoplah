@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import AddToCart from '../actions/AddToCart';
-import ProductsReducer from '../reducers/ProductsReducer';
 import Products from '../components/Products';
 
 // Actions: AddToCart

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ShoppingCartTotal = ({ totalPrice }) => {
+const CartTotal = ({ totalPrice }) => {
 
   const redirect = () => {
     // put conditional statement to check if login, logout, or cart
@@ -22,8 +22,9 @@ const ShoppingCartTotal = ({ totalPrice }) => {
   }
 };
 
-ShoppingCartTotal.PropTypes = {
+/*
+CartTotal.propTypes = {
   totalPrice: PropTypes.number.isRequired
-};
+}; */
 
-export default ShoppingCartTotal;
+export default CartTotal;

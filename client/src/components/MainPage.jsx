@@ -1,13 +1,13 @@
 import React from 'react';
 import NavbarContainer from '../containers/NavbarContainer';
 import ProductsContainer from '../containers/ProductsContainer';
-import ShoppingCartContainer from '../containers/ShoppingCartContainer';
+import CartContainer from '../containers/CartContainer';
 
 const MainPage = () => (
   <main>
     <NavbarContainer />
     <ProductsContainer />
-    <ShoppingCartContainer />
+    <CartContainer />
   </main>
 );
 
