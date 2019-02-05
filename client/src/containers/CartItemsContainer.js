@@ -4,7 +4,7 @@ import RemoveFromCart from '../actions/RemoveFromCart';
 import InputQuantity from '../actions/InputQuantity';
 import HandleClick from '../actions/HandleClick';
 import CartItems from '../components/CartItems';
-
+/*
 const CartItemsContainer = ({ removeFromCart, inputQuantity, handleClick }) => (
   <CartItems 
     removeFromCart={removeFromCart} 
@@ -13,10 +13,14 @@ const CartItemsContainer = ({ removeFromCart, inputQuantity, handleClick }) => (
   />
 );
 
+const mapStateToProps = state => ({
+
+});
+
 const mapDispatchToProps = dispatch => ({
-  removeFromCart: (num, cartItem) => dispatch(RemoveFromCart(num, cartItem)),
+  removeFromCart: num => dispatch(RemoveFromCart(num)),
   inputQuantity: (event, num) => dispatch(InputQuantity(event, num)),
   handleClick: (event, num) => dispatch(HandleClick(event, num)),
 });
 
-export default connect(null, mapDispatchToProps)(CartItemsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CartItemsContainer);*/

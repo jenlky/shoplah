@@ -9,8 +9,6 @@ const initialState = {
 
 // Action: FetchUser
 const userReducer = (state = initialState, action) => {
-  //const payload = Object.assign({}, action.payload);
-
   switch (action.type) {
     case actionTypes.LOGIN_USER:
       return {

@@ -1,8 +1,8 @@
 import * as actionTypes from './actions';
 
-const InputQuantity = (event, num) => ({
+const InputQuantity = (eventType, num) => ({
   type: actionTypes.ADD_TO_CART,
-  event,
+  eventType,
   num
 });
 

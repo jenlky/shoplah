@@ -9,17 +9,24 @@ class CartItems extends Component {
   } 
 
   handleClick = (event) => {
-    this.props.handleClick(event, this.props.num);
+    console.log(event.currentTarget.id);
+    this.props.handleClick(event.currentTarget.id, this.props.num);
   }
 
   handleChange = (event) => {
-    this.props.inputQuantity(event, this.props.num);
+    console.log(event.currentTarget.id);
+    this.props.inputQuantity(event.currentTarget.id, this.props.num);
   }
 
   render() {
-    let product = this.props.cartItem;
+    let product = this.props.product;
     let num = this.props.num;
     let qty = this.props.qty;
+
+    /*
+    console.log('CartItems - product:', product);
+    console.log('CartItems - num', num);
+    console.log('CartItems - qty', qty); */
 
     // if a product was clicked return a row of product, else return null
     if (num.length !== 0 && qty > 0) {
@@ -29,7 +36,7 @@ class CartItems extends Component {
             <i className='far fa-window-close shoplah-cancel' onClick={this.removeFromCart}></i>
             <div className='product-details'>
               <img className='shoplah-img' src={product.image} alt={product.name} />
-              <span>Product {num}</span>
+              <span>{product.name}</span>
             </div>
           </div>
           <span>{'$ ' + product.price}</span>

@@ -19,11 +19,11 @@ class ProductsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.productsReducer.products.data
+  products: state.productsReducer.products
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToCart: (num, product) => dispatch(AddToCart(num, product))
+  addToCart: num => dispatch(AddToCart(num))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

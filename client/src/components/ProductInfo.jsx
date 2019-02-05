@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ProductInfo extends Component {
 
   handleClick = () => {
-    this.props.addToCart(this.props.num, this.props.product);
+    this.props.addToCart(this.props.num);
   }
 
   render() {

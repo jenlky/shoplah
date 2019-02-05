@@ -1,8 +1,8 @@
 import * as actionTypes from './actions';
 
-const HandleClick = (event, num) => ({
+const HandleClick = (eventType, num) => ({
   type: actionTypes.ADD_TO_CART,
-  event,
+  eventType,
   num
 });
 

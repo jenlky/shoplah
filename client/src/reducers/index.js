@@ -7,3 +7,10 @@ export default combineReducers({
   userReducer
 });
 
+const getNum = state => {
+
+}
+
+const getQty = state => {
+  
+}

@@ -3,7 +3,6 @@ import * as actionTypes from '../actions/actions';
 const initialState = {
   products: [],
   num: [],
-  cartItem: [],
   qty: [],
   totalPrice: 0,
   status: ''
@@ -11,7 +10,6 @@ const initialState = {
 
 const productsReducer = (state = initialState, action) => {
   let updatedNum = state.num;
-  let updatedItem = state.cartItem;
   let updatedQty = state.qty;
   let index;
   
@@ -37,13 +35,11 @@ const productsReducer = (state = initialState, action) => {
       // if num array doesn't have that element, insert that element
       if (!state.num.includes(action.num)) {
         updatedNum = state.num.concat(action.num); 
-        updatedItem = state.cartItem.concat(action.cartItem);
         updatedQty = state.qty.concat(1);
 
         return {
           ...state,
           num: updatedNum,
-          cartItem: updatedItem,
           qty: updatedQty
         }
       // if element is present in array already, increase qty of it by 1
@@ -58,29 +54,27 @@ const productsReducer = (state = initialState, action) => {
       }
 
       // After updating store, use CalculatePrice action to calculate updated price.
-      this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+      this.calculateTotalPrice(updatedNum, updatedQty);
 
     case actionTypes.REMOVE_FROM_CART:
       // remove clicked item with splice, and update state
       updatedNum.splice(index, 1);
       updatedQty.splice(index, 1);
-      updatedItem.splice(index, 1);
 
       return {
         ...state,
         num: updatedNum,
-        cartItem: updatedItem,
         qty: updatedQty
       }
-      this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+      this.calculateTotalPrice(updatedNum, updatedQty);
 
     case actionTypes.HANDLE_CLICK:
-      let id = action.event.currentTarget.id;
-      console.log(id);
+      let event = action.eventType;
+      console.log(event);
 
-      if (id === 'plus') {
+      if (event === 'plus') {
         updatedQty[index] += 1;
-      } else if (id === 'minus') {
+      } else if (event === 'minus') {
         updatedQty[index] -= 1;
       }
 
@@ -88,7 +82,7 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         qty: updatedQty 
       }
-      this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+      this.calculateTotalPrice(updatedNum, updatedQty);
 
     case actionTypes.INPUT_QUANTITY:
       const regex = /^[0-9\b]+$/;
@@ -100,7 +94,7 @@ const productsReducer = (state = initialState, action) => {
           ...state,
           qty: updatedQty 
         }
-        this.calculateTotalPrice(updatedNum, updatedQty, updatedItem);
+        this.calculateTotalPrice(updatedNum, updatedQty);
       }
 
     case actionTypes.CALCULATE_PRICE:
@@ -109,7 +103,7 @@ const productsReducer = (state = initialState, action) => {
 
       action.num.map(num => {
         let index = num - 1;
-        arr.push(action.qty[index] * action.cartItem[index].price);
+        arr.push(action.qty[index] * state.products[index].price);
       });
 
       if (arr.length > 0) {

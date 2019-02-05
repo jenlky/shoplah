@@ -1,10 +1,9 @@
 import * as actionTypes from './actions';
 
-const CalculatePrice = (num, qty, cartItem) => ({
+const CalculatePrice = (num, qty) => ({
   type: actionTypes.CALCULATE_PRICE,
   num, 
-  qty,
-  cartItem
+  qty
 });
 
 export default CalculatePrice;

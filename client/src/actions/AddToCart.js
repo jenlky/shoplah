@@ -1,9 +1,8 @@
 import * as actionTypes from './actions';
 
-const AddToCart = (num, product) => ({
+const AddToCart = (num) => ({
   type: actionTypes.ADD_TO_CART,
-  num,
-  product
+  num
 });
 
 export default AddToCart;
