@@ -22,11 +22,10 @@ class CartItems extends Component {
     let product = this.props.product;
     let num = this.props.num;
     let qty = this.props.qty;
-
-    /*
+    
     console.log('CartItems - product:', product);
     console.log('CartItems - num', num);
-    console.log('CartItems - qty', qty); */
+    console.log('CartItems - qty', qty); 
 
     // if a product was clicked return a row of product, else return null
     if (num.length !== 0 && qty > 0) {

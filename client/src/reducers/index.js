@@ -6,11 +6,3 @@ export default combineReducers({
   productsReducer,
   userReducer
 });
-
-const getNum = state => {
-
-}
-
-const getQty = state => {
-  
-}

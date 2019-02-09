@@ -69,7 +69,8 @@ body {
   .shoplah-menu {
     position: relative;
     width: 100%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    margin-bottom: 3rem; }
     @media (min-width: 640px) {
       .shoplah-menu {
         width: 85%; } }

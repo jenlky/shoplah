@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React from 'react';
 import CartItems from './CartItems';
 import CartTotal from './CartTotal';
 import PropTypes from 'prop-types';
@@ -7,11 +7,10 @@ const Cart = ({ num, qty, products, removeFromCart, inputQuantity, handleClick }
   if (!num || !qty) {
     return null;
   } 
-
-  /*
+  
   console.log('Cart - num', num);
   console.log('Cart - qty', qty);
-  console.log('Cart - products', products); */
+  console.log('Cart - products', products);
 
   return (
     <div className='shoplah'>
@@ -25,14 +24,14 @@ const Cart = ({ num, qty, products, removeFromCart, inputQuantity, handleClick }
           <span>Quantity</span>
           <span>Total</span>
         </div>
-        {num.map(num => {
-          let index = num - 1;
+        {num.map((num, index) => {
+          let productIndex = num - 1;
           return (
             <CartItems 
-              key={products[index].name} 
+              key={products[productIndex].name} 
               num={num} 
-              product={products[index]} 
-              qty={qty} 
+              product={products[productIndex]} 
+              qty={qty[index]} 
               removeFromCart={removeFromCart}
               inputQuantity={inputQuantity}
               handleClick={handleClick}

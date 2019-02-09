@@ -6,7 +6,7 @@ import Products from '../components/Products';
 // Actions: AddToCart
 class ProductsContainer extends Component {
   render() {
-    console.log('ProductsContainer - addToCart:', this.props.addToCart);
+    // console.log('ProductsContainer - addToCart:', this.props.addToCart);
 
     if (!this.props.products) {
       return <div>loading</div>;

@@ -23,6 +23,9 @@ const CartContainer = ({ num, qty, products, removeFromCart, inputQuantity, hand
 
 // The action in productsReducer below can only allow AddToCart to change store
 // thus when attempting to removeFromCart, handleClick and inputQuantity - it will result in an increase in qty
+
+
+
 const mapStateToProps = state => ({
   num: productsReducer(state.productsReducer.num, AddToCart),
   qty: productsReducer(state.productsReducer.qty, AddToCart),
