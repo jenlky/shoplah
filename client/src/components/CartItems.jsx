@@ -5,30 +5,30 @@ import PropTypes from 'prop-types';
 
 class CartItems extends Component {
   removeFromCart = () => {
-    this.props.removeFromCart(this.props.num);
+    this.props.removeFromCart(this.props.productId);
   } 
 
   handleClick = (event) => {
     console.log(event.currentTarget.id);
-    this.props.handleClick(event.currentTarget.id, this.props.num);
+    this.props.handleClick(event.currentTarget.id, this.props.productId);
   }
 
   handleChange = (event) => {
     console.log(event.currentTarget.id);
-    this.props.inputQuantity(event.currentTarget.id, this.props.num);
+    this.props.inputQuantity(event.currentTarget.id, this.props.productId);
   }
 
   render() {
     let product = this.props.product;
-    let num = this.props.num;
+    let productId = this.props.productId;
     let qty = this.props.qty;
     
     console.log('CartItems - product:', product);
-    console.log('CartItems - num', num);
-    console.log('CartItems - qty', qty); 
+    console.log('CartItems - productId:', productId);
+    console.log('CartItems - qty:', qty); 
 
     // if a product was clicked return a row of product, else return null
-    if (num.length !== 0 && qty > 0) {
+    if (productId.length !== 0 && qty > 0) {
       return (
         <div className='shoplah-items'> 
           <div className='shoplah-product'>

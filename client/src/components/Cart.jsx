@@ -3,14 +3,14 @@ import CartItems from './CartItems';
 import CartTotal from './CartTotal';
 import PropTypes from 'prop-types';
 
-const Cart = ({ num, qty, products, removeFromCart, inputQuantity, handleClick }) => {
-  if (!num || !qty) {
+const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handleClick }) => {
+  if (!productsId || !qty) {
     return null;
   } 
   
-  console.log('Cart - num', num);
-  console.log('Cart - qty', qty);
-  console.log('Cart - products', products);
+  console.log('Cart - productsId:', productsId);
+  console.log('Cart - qty:', qty);
+  console.log('Cart - products:', products);
 
   return (
     <div className='shoplah'>
@@ -24,12 +24,12 @@ const Cart = ({ num, qty, products, removeFromCart, inputQuantity, handleClick }
           <span>Quantity</span>
           <span>Total</span>
         </div>
-        {num.map((num, index) => {
-          let productIndex = num - 1;
+        {productsId.map((productId, index) => {
+          let productIndex = productId - 1;
           return (
             <CartItems 
               key={products[productIndex].name} 
-              num={num} 
+              productId={productId} 
               product={products[productIndex]} 
               qty={qty[index]} 
               removeFromCart={removeFromCart}

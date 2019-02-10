@@ -1,9 +1,9 @@
 import * as actionTypes from './actions';
 
-const HandleClick = (eventType, num) => ({
+const HandleClick = (eventType, productId) => ({
   type: actionTypes.ADD_TO_CART,
   eventType,
-  num
+  productId
 });
 
 export default HandleClick;

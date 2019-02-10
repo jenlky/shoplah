@@ -2,19 +2,19 @@ import * as actionTypes from '../actions/actions';
 
 const initialState = {
   products: [],
-  num: [],
+  productsId: [],
   qty: [],
   totalPrice: 0,
   status: ''
 };
 
 const productsReducer = (state = initialState, action) => {
-  let updatedNum = state.num;
-  let updatedQty = state.qty;
-  let index;
+  let updatedId, updatedQty, index;
   
-  if (action.num !== undefined) {
-    index = updatedNum.indexOf(action.num);
+  if (action.productId !== undefined) {
+    updatedId = [...state.productsId];
+    updatedQty = [...state.qty];
+    index = updatedId.indexOf(action.productId);
   }
 
   switch (action.type) {
@@ -32,14 +32,14 @@ const productsReducer = (state = initialState, action) => {
       }
 
     case actionTypes.ADD_TO_CART:
-      // if num array doesn't have that element, insert that element
-      if (!state.num.includes(action.num)) {
-        updatedNum = state.num.concat(action.num); 
+      // if productsId array doesn't have that element, insert that element
+      if (!state.productsId.includes(action.productId)) {
+        updatedId = state.productsId.concat(action.productId); 
         updatedQty = state.qty.concat(1);
 
         return {
           ...state,
-          num: updatedNum,
+          productsId: updatedId,
           qty: updatedQty
         }
       // if element is present in array already, increase qty of it by 1
@@ -54,19 +54,19 @@ const productsReducer = (state = initialState, action) => {
       }
 
       // After updating store, use CalculatePrice action to calculate updated price.
-      this.calculateTotalPrice(updatedNum, updatedQty);
+      this.calculateTotalPrice(updatedId, updatedQty);
 
     case actionTypes.REMOVE_FROM_CART:
       // remove clicked item with splice, and update state
-      updatedNum.splice(index, 1);
+      updatedId.splice(index, 1);
       updatedQty.splice(index, 1);
 
       return {
         ...state,
-        num: updatedNum,
+        productsId: updatedId,
         qty: updatedQty
       }
-      this.calculateTotalPrice(updatedNum, updatedQty);
+      this.calculateTotalPrice(updatedId, updatedQty);
 
     case actionTypes.HANDLE_CLICK:
       let event = action.eventType;
@@ -82,7 +82,7 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         qty: updatedQty 
       }
-      this.calculateTotalPrice(updatedNum, updatedQty);
+      this.calculateTotalPrice(updatedId, updatedQty);
 
     case actionTypes.INPUT_QUANTITY:
       const regex = /^[0-9\b]+$/;
@@ -94,15 +94,15 @@ const productsReducer = (state = initialState, action) => {
           ...state,
           qty: updatedQty 
         }
-        this.calculateTotalPrice(updatedNum, updatedQty);
+        this.calculateTotalPrice(updatedId, updatedQty);
       }
 
     case actionTypes.CALCULATE_PRICE:
       let arr = [];
-      console.log('updatedNum', action.num);
+      console.log('updatedId', action.productId);
 
-      action.num.map(num => {
-        let index = num - 1;
+      action.productsId.map(productId => {
+        let index = productId - 1;
         arr.push(action.qty[index] * state.products[index].price);
       });
 

@@ -1,8 +1,8 @@
 import * as actionTypes from './actions';
 
-const RemoveFromCart = (num) => ({
+const RemoveFromCart = (productId) => ({
   type: actionTypes.ADD_TO_CART,
-  num
+  productId
 });
 
 export default RemoveFromCart;
