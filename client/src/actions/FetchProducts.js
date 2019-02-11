@@ -1,7 +1,7 @@
 import FetchProductsRequest from './FetchProductsRequest';
 import FetchProductsSuccess from './FetchProductsSuccess';
 
-const FetchProducts = () =>  {
+const FetchProducts = () => {
   return (dispatch) => {
     dispatch(FetchProductsRequest());
     fetch('/products')

@@ -1,6 +1,6 @@
 import React from 'react';
 import CartItem from './CartItem';
-import CartTotal from './CartTotal';
+import CartTotalContainer from '../containers/CartTotalContainer';
 import PropTypes from 'prop-types';
 
 const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handleClick }) => {
@@ -39,7 +39,7 @@ const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handle
             />
           );
         })}
-        <CartTotal />
+        <CartTotalContainer />
       </div>
     </div>
   );

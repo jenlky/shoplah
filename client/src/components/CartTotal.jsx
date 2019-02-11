@@ -12,7 +12,7 @@ const CartTotal = ({ totalPrice }) => {
     return (
       <div className='shoplah-total'>
         <span className='total-price'>
-          {'$ ' + totalPrice.toFixed(2)}
+          { '$ ' + totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2 }) }
         </span>
         <button className='checkout' onClick={redirect}>Checkout</button>
       </div>
