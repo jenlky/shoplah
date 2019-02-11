@@ -1,5 +1,5 @@
 import React from 'react';
-import CartItems from './CartItems';
+import CartItem from './CartItem';
 import CartTotal from './CartTotal';
 import PropTypes from 'prop-types';
 
@@ -8,9 +8,10 @@ const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handle
     return null;
   } 
   
+  /*
   console.log('Cart - productsId:', productsId);
   console.log('Cart - qty:', qty);
-  console.log('Cart - products:', products);
+  console.log('Cart - products:', products); */
 
   return (
     <div className='shoplah'>
@@ -24,12 +25,12 @@ const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handle
           <span>Quantity</span>
           <span>Total</span>
         </div>
-        {productsId.map((productId, index) => {
-          let productIndex = productId - 1;
+        {productsId.map((id, index) => {
+          let productIndex = id - 1;
           return (
-            <CartItems 
+            <CartItem
               key={products[productIndex].name} 
-              productId={productId} 
+              id={id} 
               product={products[productIndex]} 
               qty={qty[index]} 
               removeFromCart={removeFromCart}
@@ -44,22 +45,20 @@ const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handle
   );
 };
 
-/*
 Cart.propTypes = {
-  num: PropTypes.array.isRequired,
-  cartItem: PropTypes.arrayOf(
+  productsId: PropTypes.array.isRequired,
+  qty: PropTypes.array.isRequired,
+  products: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
       currency: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     })
   ).isRequired,
-  qty: PropTypes.array.isRequired,
-  totalPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
   inputQuantity: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired
-}; */
+}; 
 
 export default Cart;

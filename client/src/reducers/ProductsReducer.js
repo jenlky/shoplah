@@ -9,13 +9,13 @@ const initialState = {
 };
 
 const productsReducer = (state = initialState, action) => {
-  let updatedId, updatedQty, index;
-  
-  if (action.productId !== undefined) {
-    updatedId = [...state.productsId];
-    updatedQty = [...state.qty];
-    index = updatedId.indexOf(action.productId);
-  }
+  let updatedId = [...state.productsId];
+  let updatedQty = [...state.qty];
+  let index = updatedId.indexOf(action.id);
+
+  /*
+  console.log('updatedId:', updatedId);
+  console.log('index:', index); */
 
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_REQUEST:
@@ -33,8 +33,8 @@ const productsReducer = (state = initialState, action) => {
 
     case actionTypes.ADD_TO_CART:
       // if productsId array doesn't have that element, insert that element
-      if (!state.productsId.includes(action.productId)) {
-        updatedId = state.productsId.concat(action.productId); 
+      if (!state.productsId.includes(action.id)) {
+        updatedId = state.productsId.concat(action.id); 
         updatedQty = state.qty.concat(1);
 
         return {
@@ -69,12 +69,9 @@ const productsReducer = (state = initialState, action) => {
       this.calculateTotalPrice(updatedId, updatedQty);
 
     case actionTypes.HANDLE_CLICK:
-      let event = action.eventType;
-      console.log(event);
-
-      if (event === 'plus') {
+      if (action.event === 'plus') {
         updatedQty[index] += 1;
-      } else if (event === 'minus') {
+      } else if (action.event === 'minus') {
         updatedQty[index] -= 1;
       }
 
@@ -87,8 +84,8 @@ const productsReducer = (state = initialState, action) => {
     case actionTypes.INPUT_QUANTITY:
       const regex = /^[0-9\b]+$/;
 
-      if (regex.test(action.event.target.value)) {
-        updatedQty[index] = Number(action.event.target.value);
+      if (regex.test(action.value)) {
+        updatedQty[index] = Number(action.value);
 
         return {
           ...state,
@@ -99,10 +96,10 @@ const productsReducer = (state = initialState, action) => {
 
     case actionTypes.CALCULATE_PRICE:
       let arr = [];
-      console.log('updatedId', action.productId);
+      console.log('updatedId', action.id);
 
-      action.productsId.map(productId => {
-        let index = productId - 1;
+      action.productsId.map(id => {
+        let index = id - 1;
         arr.push(action.qty[index] * state.products[index].price);
       });
 

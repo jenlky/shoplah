@@ -1,8 +1,8 @@
 import * as actionTypes from './actions';
 
-const CalculatePrice = (productId, qty) => ({
+const CalculatePrice = (id, qty) => ({
   type: actionTypes.CALCULATE_PRICE,
-  productId, 
+  id, 
   qty
 });
 

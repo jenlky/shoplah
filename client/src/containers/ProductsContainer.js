@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import AddToCart from '../actions/AddToCart';
 import Products from '../components/Products';
 
-// Actions: AddToCart
 class ProductsContainer extends Component {
   render() {
     // console.log('ProductsContainer - addToCart:', this.props.addToCart);
@@ -23,7 +22,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToCart: num => dispatch(AddToCart(num))
+  addToCart: id => dispatch(AddToCart(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

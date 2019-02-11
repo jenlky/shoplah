@@ -22,9 +22,8 @@ const CartTotal = ({ totalPrice }) => {
   }
 };
 
-/*
 CartTotal.propTypes = {
   totalPrice: PropTypes.number.isRequired
-}; */
+};
 
 export default CartTotal;

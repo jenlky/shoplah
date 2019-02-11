@@ -42,7 +42,7 @@ class Login extends Component {
 }
 
 const Navbar = ({ isLoggedIn }) => {
-  console.log('isLoggedIn', isLoggedIn);
+  //console.log('isLoggedIn', isLoggedIn);
 
   return (
     <MuiThemeProvider theme={theme}>

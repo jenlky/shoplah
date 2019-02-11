@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ProductInfo extends Component {
 
   handleClick = () => {
-    this.props.addToCart(this.props.num);
+    this.props.addToCart(this.props.id);
   }
 
   render() {
@@ -12,7 +12,7 @@ class ProductInfo extends Component {
       <div className='product-info'>
         <div>
           <p>{this.props.name}</p>      
-          <p>{"$ " + this.props.product.price}</p>
+          <p>{"$ " + this.props.price.toFixed(2)}</p>
         </div>
         <button onClick={this.handleClick}>Add</button>
       </div>
@@ -32,11 +32,12 @@ const ProductInfo = ({ num, price, addToCart }) => (
 );
 */
 
-/*
+
 ProductInfo.propTypes = {
-  num: PropTypes.number.isRequired,
-  price: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   addToCart: PropTypes.func.isRequired
-}; */
+};
 
 export default ProductInfo;

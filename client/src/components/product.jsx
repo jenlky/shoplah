@@ -2,62 +2,56 @@ import React from 'react';
 import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
-const Product = ({ product, num, addToCart }) => {
+const Product = ({ product, id, addToCart }) => {
   const name = product.name;
+  const price = product.price;
 
-  // how can I reduce and simplfy the chunk below hmm
-  if (num === 1) {
+  if (id === 1) {
     return (
       <div className='product first-product'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo product={product} name={name} num={num} addToCart={addToCart} />
+        <ProductInfo price={price} name={name} id={id} addToCart={addToCart} />
       </div>
     );
-  } else if (num === 2) {
+  } else if (id === 2) {
     return (
       <div className='product left-products'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo product={product} name={name} num={num} addToCart={addToCart} />
+        <ProductInfo price={price} name={name} id={id} addToCart={addToCart} />
       </div>
     );
-  } else if (num === 3) {
+  } else if (id === 3) {
     return (
       <div className='product left-products order'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo product={product} name={name} num={num} addToCart={addToCart} />
+        <ProductInfo price={price} name={name} id={id} addToCart={addToCart} />
       </div>
     );
-  } else if (num === 5) {
+  } else if (id === 5) {
     return (
       <div className='product order'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo product={product} name={name} num={num} addToCart={addToCart} />
+        <ProductInfo price={price} name={name} id={id} addToCart={addToCart} />
       </div>
     );
   } else {
     return (
       <div className='product'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo product={product} name={name} num={num} addToCart={addToCart} />
+        <ProductInfo price={price} name={name} id={id} addToCart={addToCart} />
       </div>
     );
   }
-
-  /* internal className conditional
-  return (
-    <div className={'product ' + (num === 1 && 'first-product')}>
-      <img src={image} alt={name} className='img-size'></img>
-      <ProductInfo product={props.product} number={num} addToCart={props.addToCart} />
-    </div>
-  );
-  */
 };
 
 Product.PropsType = {
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  num: PropTypes.number.isRequired,
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
+  id: PropTypes.number.isRequired,
   addToCart: PropTypes.func.isRequired
 };
 

@@ -1,9 +1,9 @@
 import * as actionTypes from './actions';
 
-const InputQuantity = (eventType, productId) => ({
-  type: actionTypes.ADD_TO_CART,
-  eventType,
-  productId
+const InputQuantity = (value, id) => ({
+  type: actionTypes.INPUT_QUANTITY,
+  value,
+  id
 });
 
 export default InputQuantity;

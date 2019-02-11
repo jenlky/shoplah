@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CalculatePrice from '../actions/CalculatePrice';
+// import CalculatePrice from '../actions/CalculatePrice';
 import CartTotal from '../components/CartTotal';
-import productsReducer from '../reducers/productsReducer';
+// import productsReducer from '../reducers/productsReducer';
 
 const CartTotalContainer = ({ totalPrice }) => (
   <CartTotal totalPrice={totalPrice} />
 );
 
 const mapStateToProps = state => ({
-  totalPrice: productsReducer(state.productsReducer.totalPrice, CalculatePrice)
+  totalPrice: state.productsReducer.totalPrice
 });
 
 export default connect(mapStateToProps, null)(CartTotalContainer);
