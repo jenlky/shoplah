@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
 import Checkout from '../components/Checkout';
@@ -14,9 +14,10 @@ class App extends Component {
   }
   
   render() {
+    // where does isAuthenticated come from
     return (
       <Switch> 
-        <Route exact path='/cart' render={() => <Checkout />} />
+        <Route exact path='/cart' render={() => !isAuthenticated ? <Checkout /> : <Redirect to='/' />} />
         <Route exact path='/' render={() => <MainPage />} />
       </Switch>
     );

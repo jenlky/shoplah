@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from './Navbar';
+import CartContainer from '../containers/CartContainer';
 
-const CartPage = (props) => {
+const CartPage = () => {
   return (
     <main>
       <Navbar />
-      <h1>Testing</h1>
-      <p>Testing Cart Page</p>
+      <CartContainer />
+      <p>Testing Checkout page</p>
     </main>   
   );
 }

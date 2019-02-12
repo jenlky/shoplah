@@ -102,7 +102,7 @@ const productsReducer = (state = initialState, action) => {
       updatedId.map((id, index) => {
         // index of the product in products array
         let productIndex = id - 1;
-        array.push(updatedQty[index] * state.products[productIndex].price);
+        return array.push(updatedQty[index] * state.products[productIndex].price);
       });
 
       if (array.length > 0) {

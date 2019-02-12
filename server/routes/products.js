@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// products object
-const productsObject = {
+const products = {
   "data": [
     {
       "image": "https://laz-img-sg.alicdn.com/p/2/apple-iphone-8-plus-256gb-space-grey-1511772000-55213477-8ce5fc6991abb11be5c4be0b9d1104ac-catalog.jpg_400x400q80.jpg_.webp",
@@ -38,7 +37,7 @@ const productsObject = {
 };
 
 router.get('/', (req, res, next) => {  
-  res.status(200).json(productsObject);
+  res.status(200).json(products);
 });
 
 router.post('/', (req, res, next) => {  

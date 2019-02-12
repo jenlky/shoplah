@@ -7,7 +7,6 @@ const MainPage = () => (
   <main>
     <NavbarContainer />
     <ProductsContainer />
-    <CartContainer />
   </main>
 );
 

@@ -1,5 +1,5 @@
 // This middleware will just add the property "async dispatch"
-// to actions with the "async" propperty set to true
+// to actions with the "async" property set to true
 const asyncDispatchMiddleware = store => next => action => {
   let syncActivityFinished = false;
   let actionQueue = [];
