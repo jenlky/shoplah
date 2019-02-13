@@ -7,6 +7,8 @@ const authCheck = (req, res) => {
   }
 } */
 
+//module.exports = authCheck;
+
 const checkAuth = (req, res, next) => {
   //if user is logged in, req.isAuthenticated() will return true
   if(req.isAuthenticated()) {
@@ -18,5 +20,3 @@ const checkAuth = (req, res, next) => {
 };
 
 module.exports = checkAuth;
-
-//module.exports = authCheck;

@@ -12,13 +12,17 @@ class ProductsContainer extends Component {
     } 
 
     return (
-      <Products products={this.props.products} addToCart={this.props.addToCart} />
+      <Products 
+        products={this.props.products} 
+        isLoggedIn={this.props.isLoggedIn}
+        addToCart={this.props.addToCart} />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  products: state.productsReducer.products
+  products: state.productsReducer.products,
+  isLoggedIn: state.userReducer.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({

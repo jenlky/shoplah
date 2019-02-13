@@ -5,6 +5,7 @@ import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
 import Checkout from '../components/Checkout';
 import MainPage from '../components/MainPage';
+import Profile from '../components/Profile';
 
 class App extends Component {
   constructor(props) {
@@ -14,19 +15,24 @@ class App extends Component {
   }
   
   render() {
-    // where does isAuthenticated come from
+    // where does isAuthenticated come from: !isAuthenticated ? <Checkout /> : <Redirect to='/'
     return (
       <Switch> 
-        <Route exact path='/cart' render={() => !isAuthenticated ? <Checkout /> : <Redirect to='/' />} />
+        <Route exact path='/cart' render={() => ( <Checkout /> )} />
+        <Route exact path='/user/account/profile' render={() => <Profile />} />
         <Route exact path='/' render={() => <MainPage />} />
       </Switch>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  isLoggedIn: state.userReducer.isLoggedIn
+});
+
 const mapDispatchToProps = dispatch => ({
   fetchProducts: () => dispatch(FetchProducts()),
   fetchUser: () => dispatch(FetchUser())
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

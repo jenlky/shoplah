@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
 
-const Products = ({ products, addToCart }) => {
+const Products = ({ products, isLoggedIn, addToCart }) => {
   /*
   console.log('Products - products:', products);
   console.log('Products - addtoCart:', addToCart);*/
@@ -12,7 +12,13 @@ const Products = ({ products, addToCart }) => {
       {products.map((product, index) => {
         let id = index + 1;
         return (
-          <Product key={product.name} product={product} id={id} addToCart={addToCart} />
+          <Product 
+            key={product.name}
+            id={id}  
+            product={product} 
+            isLoggedIn={isLoggedIn}
+            addToCart={addToCart} 
+          />
         );
       })}
     </div>

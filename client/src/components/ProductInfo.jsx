@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 class ProductInfo extends Component {
 
   handleClick = () => {
-    this.props.addToCart(this.props.id);
+    if (this.props.isLoggedIn === false) {
+      window.location.href = 'http://localhost:8080/auth/login';
+    } else {
+      this.props.addToCart(this.props.id);
+    }
   }
 
   render() {

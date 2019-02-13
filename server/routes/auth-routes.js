@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const checkAuth = require('../middleware/checkAuth');
 
 router.get('/login', 
   passport.authenticate('auth0', { scope: 'openid profile' })
@@ -29,10 +30,8 @@ router.get('/logout', (req, res) => {
   res.redirect('http://localhost:3000/'); 
 });
 
-/*
-router.get('/cart', 
-  passport.authenticate('auth0', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
+router.get('/cart', checkAuth, (req, res) => {
   res.redirect('http://localhost:3000/');
-}); */
+});
 
 module.exports = router;
