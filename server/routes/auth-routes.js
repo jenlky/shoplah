@@ -30,6 +30,7 @@ router.get('/logout', (req, res) => {
   res.redirect('http://localhost:3000/'); 
 });
 
+// how does this guard the route
 router.get('/cart', checkAuth, (req, res) => {
   res.redirect('http://localhost:3000/');
 });
