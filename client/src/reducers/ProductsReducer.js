@@ -4,6 +4,7 @@ const initialState = {
   products: [],
   productsId: [],
   qty: [],
+  numOfItems: 0,
   totalPrice: 0,
   status: ''
 };
@@ -94,7 +95,7 @@ const productsReducer = (state = initialState, action) => {
       }
 
     case actionTypes.CALCULATE_PRICE:
-      const array = [];
+      const eachItemPrice = [];
       console.log('updatedId:', updatedId);
       console.log('updatedQty:', updatedQty);
       console.log('updatedId index:', index);
@@ -102,20 +103,23 @@ const productsReducer = (state = initialState, action) => {
       updatedId.map((id, index) => {
         // index of the product in products array
         let productIndex = id - 1;
-        return array.push(updatedQty[index] * state.products[productIndex].price);
+        return eachItemPrice.push(updatedQty[index] * state.products[productIndex].price);
       });
 
-      if (array.length > 0) {
-        const total = array.reduce((acc, currentVal) => acc + currentVal);
+      if (eachItemPrice.length > 0) {
+        const total = eachItemPrice.reduce((acc, currentVal) => acc + currentVal);
+        const numOfItems = updatedQty.reduce((acc, currentVal) => acc + currentVal);
 
         return {
-          ...state, 
+          ...state,
+          numOfItems: numOfItems, 
           totalPrice: total 
         }
       } 
 
       return { 
-        ...state, 
+        ...state,
+        numOfItems: 0, 
         totalPrice: 0 
       }
 

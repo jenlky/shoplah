@@ -33,6 +33,58 @@ body {
     cursor: pointer;
     margin-right: 0.6rem; }
 
+.dropdown-cart {
+  box-shadow: 0 1px 3.125rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.125rem;
+  overflow: hidden;
+  background: white;
+  width: 25rem;
+  /*
+  &-items {
+    padding-top: 20px;
+
+    li {
+      margin-bottom: 18px;
+    }
+
+    img {
+      float: left;
+      margin-right: 12px;
+    }
+    
+    .item-name {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+    
+    .item-price {
+      color: $main-color;
+      margin-right: 8px;
+    }
+    
+    .item-quantity {
+      color: $light-text;
+    }
+  } */ }
+  .dropdown-cart-header {
+    padding-left: 0.625rem;
+    height: 2.5rem;
+    color: rgba(0, 0, 0, 0.26);
+    text-transform: capitalize; }
+  .dropdown-cart:after {
+    bottom: 100%;
+    left: 89%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: white;
+    border-width: 8px;
+    margin-left: -8px; }
+
 .product-info {
   display: flex;
   flex-flow: row wrap;
@@ -139,26 +191,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.09);
     border-radius: 2px;
     color: rgba(0, 0, 0, 0.8);
-    background-color: white;
-    /*
-    width: 2rem;
-    height: 2rem;
-    outline: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: 0;
-    //padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color .1s cubic-bezier(.4,0,.6,1);
-    border: 1px solid rgba(0,0,0,.09);
-    border-radius: 2px;
-    background: transparent;
-    color: rgba(0,0,0,.8);
-    */ }
+    background-color: white; }
     .shoplah-btn-outline img {
       display: inline-block;
       width: 1.4rem;

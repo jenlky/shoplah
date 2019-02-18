@@ -17,9 +17,9 @@ class CartItem extends Component {
   }
 
   render() {
-    let product = this.props.product;
-    let id = this.props.id;
-    let qty = this.props.qty;
+    const product = this.props.product;
+    const id = this.props.id;
+    const qty = this.props.qty;
     
     /*
     console.log('CartItems - product:', product);

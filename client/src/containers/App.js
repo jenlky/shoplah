@@ -23,10 +23,8 @@ class App extends Component {
   render() {
     return (
       <Switch> 
-        <Route exact path='/cart' render={() => 
-          this.props.isLoggedIn ? 
-          <Checkout /> : 
-          this.redirect()
+        <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
+          <Checkout /> : this.redirect() 
         } />
         <Route exact path='/user/account/profile' render={() => <Profile />} />
         <Route exact path='/' render={() => <MainPage />} />

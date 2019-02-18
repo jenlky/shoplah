@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import userReducer from '../reducers/userReducer';
 import FetchUser from '../actions/FetchUser';
 import Navbar from '../components/Navbar';
+import userReducer from '../reducers/userReducer';
 
 const NavbarContainer = ({ isLoggedIn }) => (
   <Navbar isLoggedIn={isLoggedIn} />
