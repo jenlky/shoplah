@@ -3,14 +3,21 @@ import DropdownCartItem from './DropdownCartItem';
 
 // Work on two things: 
 // First is the look, second is how can I pass down products added to cart from state to props
-const DropdownCart = ({ numOfItems }) => {
-  console.log('numOfItems', numOfItems);
+const DropdownCart = ({ products, qty }) => {
+  console.log(products);
 
   return (
-    <div className='dropdown-cart'>
-      {/* numOfItems > 0 && <p>> 0 items</p> */}
-      <div className='dropdown-cart-header'>recently added products</div>
-      <DropdownCartItem />
+    <div className='dropdown-cart__menu'>
+      <div className='dropdown-cart-header v-center'>recently added products</div>
+      {products.map(product => {
+        return <DropdownCartItem 
+          key={product.name} 
+          product={product} 
+        />
+      })}
+      <div className='dropdown-cart-btn'>
+        <button type='button' className='btn'>View My Shopping Cart</button>
+      </div>
     </div>
   );
 }

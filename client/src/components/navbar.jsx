@@ -41,7 +41,7 @@ const Navbar = ({ isLoggedIn }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <AppBar>
-        <Toolbar>
+        <Toolbar style={{ justifyContent: 'space-between' }}>
           <NavLink style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black', fontSize: '24px' }} 
             to='/' className=''>ShopLah</NavLink>
           <div className='navbar-right-side'>
