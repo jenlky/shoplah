@@ -16,7 +16,7 @@ class ProductInfo extends Component {
       <div className='product-info'>
         <div>
           <p>{this.props.name}</p>      
-          <p>{"$ " + this.props.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
+          <p>{"$" + this.props.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
         </div>
         <button onClick={this.handleClick}>Add</button>
       </div>

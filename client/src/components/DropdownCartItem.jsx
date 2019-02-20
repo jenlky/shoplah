@@ -9,7 +9,7 @@ const DropdownCartItem = ({ product }) => (
         <span>{'$' + product.price.toLocaleString('en-US', { minimumFractionDigits: 2 }) }</span>
       </div>
       <div className='cart-item-btm-row v-center'>
-        <button type='button' className='cart-item-delete'>Delete</button>
+        <button type='button' className='cart-item-delete btn'>Delete</button>
       </div>
     </div>
   </div>

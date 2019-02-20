@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import DropdownCart from '../components/DropdownCart';
 
 const DropdownContainer = ({ products }) => (
-  <DropdownCart products={products} />
+  <DropdownCart 
+    products={products} 
+    
+  />
 );
 
+// add qty
 const mapStateToProps = state => ({
-  products: state.productsReducer.productsId.map(id => state.productsReducer.products[id-1]),
-  // qty: 
+  products: state.productsReducer.productsId.map(id => state.productsReducer.products[id-1])
 });
 
 export default connect(mapStateToProps, null)(DropdownContainer);

@@ -47,7 +47,6 @@ body {
   svg {
     vertical-align: middle;
     cursor: pointer;
-    margin-right: 0.6rem;
   }
 }
 
@@ -64,6 +63,10 @@ body {
   border: 0;
   cursor: pointer;
   text-transform: capitalize;
+
+  &:focus {
+    outline: 0
+  }
 }
 
 .dropdown-cart {
@@ -72,6 +75,34 @@ body {
   position: relative;
   display: flex; 
   align-items: center;
+  margin-right: 1rem;
+
+  &-logo {
+    position: relative;
+    top: 9px;
+  }
+
+  &-badge {
+    position: relative;
+    border-radius: 50%; //4.4rem
+    //min-width: 1.1rem;
+    //line-height: 1.2em;
+    //padding: 0 5px;
+    text-align: center;
+    //height: 1rem;
+    background-color: #fff;
+    border: 0.2rem solid #ffe9b4;
+    top: -38px;
+    left: 15px;
+  }
+
+  &:hover .dropdown-cart-menu {
+    visibility: visible;
+  }
+
+  &:hover:after {
+    visibility: visible;
+  }
 
   &:after {
     border: 0.625rem solid transparent;
@@ -86,21 +117,21 @@ body {
     border-right-width: 0.875rem;
     visibility: hidden;
     transition: visibility 0s;
-    transition-delay: 0.2s;
+    transition-delay: 0.15s;
     z-index: 400;
   }
 
-  &__menu {
+  &-menu {
     background: white;
     position: absolute;
     top: 100%;
     right: 0;
-    /*
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    visibility: hidden;
     transition: visibility 0s;
+    transition-delay: 0.15s; 
     z-index: 400;
-    */
-
     box-shadow: 0 1px 5rem 0 rgba(0,0,0,.2);
     border-radius: 0.2rem;
     overflow: hidden; 
@@ -170,9 +201,6 @@ body {
   align-items: center;
 
   img {
-    //background-position: 50%;
-    //background-size: cover;
-    //background-repeat: no-repeat;
     width: 4rem;
     height: 4rem;
     border: 1px solid rgba(0,0,0,.09);
