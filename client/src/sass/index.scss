@@ -75,25 +75,22 @@ body {
   position: relative;
   display: flex; 
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
 
   &-logo {
-    position: relative;
-    top: 9px;
+    
   }
 
   &-badge {
-    position: relative;
+    position: absolute;
     border-radius: 50%; //4.4rem
-    //min-width: 1.1rem;
-    //line-height: 1.2em;
-    //padding: 0 5px;
+    min-width: 1.1rem;
+    padding: 0 5px;
     text-align: center;
-    //height: 1rem;
     background-color: #fff;
     border: 0.2rem solid #ffe9b4;
-    top: -38px;
-    left: 15px;
+    top: 0px;
+    right: -12px;
   }
 
   &:hover .dropdown-cart-menu {

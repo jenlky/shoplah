@@ -57,7 +57,7 @@ const productsReducer = (state = initialState, action) => {
       }
 
     case actionTypes.REMOVE_FROM_CART:
-      // remove clicked item with splice, and update state
+      // remove item from updatedID and updatedQty
       updatedId.splice(index, 1);
       updatedQty.splice(index, 1);
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });

@@ -20,7 +20,8 @@ class CartItem extends Component {
     const product = this.props.product;
     const id = this.props.id;
     const qty = this.props.qty;
-    
+    const price = product.price.toLocaleString('en-US', { minimumFractionDigits: 2 });
+
     /*
     console.log('CartItems - product:', product);
     console.log('CartItems - productId:', id);
@@ -37,7 +38,7 @@ class CartItem extends Component {
               <span>{product.name}</span>
             </div>
           </div>
-          <span>{ '$ ' + product.price.toLocaleString('en-US', { minimumFractionDigits: 2 }) }</span>
+          <span>{ '$ ' + price }</span>
           <div className='shoplah-qty'>
             <button id='minus' className='shoplah-btn-outline' onClick={(e) => this.handleClick(e)}>
               <img src={minus} alt="Minus sign" />

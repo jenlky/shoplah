@@ -52,7 +52,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 0.6rem;
   /*
   &-items {
     padding-top: 20px;
@@ -81,17 +81,16 @@ body {
       color: $light-text;
     }
   } */ }
-  .dropdown-cart-logo {
-    position: relative;
-    top: 9px; }
   .dropdown-cart-badge {
-    position: relative;
+    position: absolute;
     border-radius: 50%;
+    min-width: 1.1rem;
+    padding: 0 5px;
     text-align: center;
     background-color: #fff;
     border: 0.2rem solid #ffe9b4;
-    top: -38px;
-    left: 15px; }
+    top: 0px;
+    right: -12px; }
   .dropdown-cart:hover .dropdown-cart-menu {
     visibility: visible; }
   .dropdown-cart:hover:after {
