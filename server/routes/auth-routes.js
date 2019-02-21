@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const checkAuth = require('../middleware/checkAuth');
 
 router.get('/login', 
   passport.authenticate('auth0', { scope: 'openid profile' })
@@ -28,11 +27,6 @@ router.get('/logout', (req, res) => {
   console.log('log out successfully');
   req.logOut();
   res.redirect('http://localhost:3000/'); 
-});
-
-// how does this guard the route
-router.get('/cart', checkAuth, (req, res) => {
-  res.redirect('http://localhost:3000/');
 });
 
 module.exports = router;

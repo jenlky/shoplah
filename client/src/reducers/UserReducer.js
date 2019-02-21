@@ -8,7 +8,7 @@ const initialState = {
 };
 
 // Action: FetchUser
-const user = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_USER:
       return {
@@ -27,4 +27,4 @@ const user = (state = initialState, action) => {
   }
 }
 
-export default user;
+export default userReducer;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DropdownCartItem = ({ product, id, qty, removeFromCart }) => {
-  const price = '$' + product.price.toLocaleString('en-US', { minimumFractionDigits: 2 });
+  const price = `$${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
   // console.log('price:', product.price + ',  qty:', qty);
 
   const Delete = () => {
@@ -14,11 +14,18 @@ const DropdownCartItem = ({ product, id, qty, removeFromCart }) => {
       <div className='cart-item-details'>
         <div className='cart-item-top-row v-center'>
           <span>{product.name}</span>
-          {/* move x and qty to a span/div of their own to change the css */}
-          <span>{qty > 1 ? (price + ' x ' + qty) : price }</span>
+          {qty > 1 ? 
+            <div>
+              <span className='cart-item-price'>{price}</span>
+              <span className='cart-item-times'>x</span>
+              <span className='cart-item-qty'>{qty}</span>
+            </div>
+              : 
+            <span className='cart-item-price'>{price}</span>
+          }
         </div>
         <div className='cart-item-btm-row v-center'>
-          <button type='button' className='cart-item-delete btn' onClick={Delete}>Delete</button>
+          <button className='cart-item-delete btn' onClick={Delete}>Delete</button>
         </div>
       </div>
     </div>

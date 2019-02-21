@@ -15,7 +15,7 @@ const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handle
 
   return (
     <div className='shoplah'>
-      <div className='horizontal-ruler'></div>
+      {/* <div className='horizontal-ruler'></div> */}
       <div className='shoplah-menu'>
         <h3>SHOPPING CART - {qty.length !== 0 ? 
           qty.reduce((acc, currentVal) => acc + currentVal) : '0'} items</h3>
