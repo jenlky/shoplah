@@ -2,19 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CartTotal = ({ totalPrice }) => {
-
-  const redirect = () => {
-    // put conditional statement to check if login, logout, or cart
-    window.location.href = 'http://localhost:8080/auth/login';
-  } 
-
   if (totalPrice > 0) {
     return (
       <div className='shoplah-total'>
         <span className='total-price'>
           { '$ ' + totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2 }) }
         </span>
-        <button className='checkout' onClick={redirect}>Checkout</button>
+        <button className='checkout'>Checkout</button>
       </div>
     );
   } else {

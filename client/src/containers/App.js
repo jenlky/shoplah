@@ -12,14 +12,25 @@ class App extends Component {
     super(props);
     this.props.fetchProducts();
     this.props.fetchUser();
-    console.log('isLoggedIn', this.props.isLoggedIn);
+    console.log('constructor isLoggedIn', this.props.isLoggedIn);
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate isLoggedIn', this.props.isLoggedIn);
+  }
+
+  redirect = () => {
+    window.location.href = 'http://localhost:8080/auth/login';
+    // maybe can add spinner while loading
+    return null;
   }
 
   render() {
     return (
       <Switch> 
-        {/* isLoggedIn ? <Checkout /> : <Profile />, why does it load Profile for a while first then Checkout */}
-        <Route exact path='/cart' render={() => <Checkout isLoggedIn={this.props.isLoggedIn} />} />
+        <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
+          <Checkout /> : this.redirect()
+        } />
         <Route exact path='/user/profile' render={() => <Profile />} />
         <Route exact path='/' render={() => <MainPage />} />
       </Switch>
