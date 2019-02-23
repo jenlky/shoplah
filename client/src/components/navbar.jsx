@@ -18,9 +18,13 @@ const theme = createMuiTheme({
 });
 
 // Material UI components cannot be styled with ordinary className, u must follow their method to override it. Probably need use withStyles.
-const Logged = () => {
+const Logged = ({ purgeStore }) => {
+  // change the logout btn to a dropdown menu with my username
+
   return (
-    <Button href="http://localhost:8080/auth/logout" style={{ fontSize: '14px' }} children='Logout' />
+    <Button href="http://localhost:8080/auth/logout" style={{ fontSize: '14px' }} 
+      children='Logout' onClick={purgeStore} 
+    />
   );
 };
 
@@ -29,12 +33,14 @@ class Login extends Component {
 
   render() {
     return (
-      <Button href="http://localhost:8080/auth/login" style={{ fontSize: '14px' }} children='Login' />
+      <Button href="http://localhost:8080/auth/login" style={{ fontSize: '14px' }} 
+        children='Login' 
+      />
     );
   }
 }
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = ({ isLoggedIn, purgeStore }) => {
   // console.log('isLoggedIn', isLoggedIn);
   // console.log('numOfItems', numOfItems);
 
@@ -46,7 +52,7 @@ const Navbar = ({ isLoggedIn }) => {
             to='/' className=''>ShopLah</NavLink>
           <div className='navbar-right-side'>
             <CartLogoContainer />
-            {isLoggedIn ? <Logged /> : <Login />}
+            {isLoggedIn ? <Logged purgeStore={purgeStore} /> : <Login />}
           </div>
         </Toolbar>
       </AppBar>

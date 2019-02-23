@@ -74,10 +74,16 @@ const productsReducer = (state = initialState, action) => {
       } else if (action.event === 'minus') {
         updatedQty[index] -= 1;
       }
-      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
 
+      if (updatedQty[index] === 0) {
+        action.asyncDispatch({ type: actionTypes.REMOVE_FROM_CART });
+      } else {
+        action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+      }
+      
       return {
         ...state,
+        productsId: updatedId,
         qty: updatedQty 
       }
 
@@ -85,11 +91,16 @@ const productsReducer = (state = initialState, action) => {
       const regex = /^[0-9\b]+$/;
 
       if (regex.test(action.value)) {
-        updatedQty[index] = Number(action.value);
-        action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-
+        if (action.value === '0') {
+          action.asyncDispatch({ type: actionTypes.REMOVE_FROM_CART });
+        } else {
+          updatedQty[index] = Number(action.value);
+          action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+        }
+          
         return {
           ...state,
+          productsId: updatedId,
           qty: updatedQty 
         }
       }
