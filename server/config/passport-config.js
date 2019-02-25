@@ -15,7 +15,6 @@ const strategy = new Auth0Strategy({
   // accessToken is the token to call Auth0 API (not needed in the most cases)
   // extraParams.id_token has the JSON Web Token
   // profile has all the information from the user
-  console.log(extraParams);
   console.log(profile);
 
   // check if user already exist in our database
@@ -29,7 +28,7 @@ const strategy = new Auth0Strategy({
       new User({
         username: profile.displayName,
         userID: profile.id,
-        thumbnail: profile.picture
+        picture: profile.picture
       }).save().then((newUser) => {
         console.log('new user created: ', newUser);
         done(null, newUser);
