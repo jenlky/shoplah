@@ -2,7 +2,8 @@ import * as actionTypes from './actions';
 
 const FetchUser = () => {
   return (dispatch) => {
-    fetch('http://localhost:8080/auth/checkAuth', { credentials: 'include' })
+    // fetch from server port - http://localhost:8080/auth/checkAuth
+    fetch('/auth/checkAuth', { credentials: 'include' })
       .then(res => {
         try {
           if (!res.ok) {
@@ -17,7 +18,7 @@ const FetchUser = () => {
       .then(res => res.json())
       .then(res => dispatch({
         type: actionTypes.LOGIN_USER,
-        payload: {...res, isLoggedIn: true }
+        payload: { ...res, isLoggedIn: true }
       }))
       .catch(error => {
         console.log(error);
