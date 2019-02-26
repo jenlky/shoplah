@@ -2,7 +2,7 @@ import React from 'react';
 import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
-const Product = ({ id, product, isLoggedIn, addToCart }) => {
+const Product = ({ id, product, isLoggedIn, addToDatabase }) => {
   const name = product.name;
   const price = product.price;
 
@@ -10,35 +10,35 @@ const Product = ({ id, product, isLoggedIn, addToCart }) => {
     return (
       <div className='product first-product'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToCart={addToCart} />
+        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToDatabase={addToDatabase} />
       </div>
     );
   } else if (id === 2) {
     return (
       <div className='product left-products'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToCart={addToCart} />
+        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToDatabase={addToDatabase} />
       </div>
     );
   } else if (id === 3) {
     return (
       <div className='product left-products order'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToCart={addToCart} />
+        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToDatabase={addToDatabase} />
       </div>
     );
   } else if (id === 5) {
     return (
       <div className='product order'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToCart={addToCart} />
+        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToDatabase={addToDatabase} />
       </div>
     );
   } else {
     return (
       <div className='product'>
         <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToCart={addToCart} />
+        <ProductInfo id={id} name={name} price={price} isLoggedIn={isLoggedIn} addToDatabase={addToDatabase} />
       </div>
     );
   }
@@ -52,7 +52,7 @@ Product.PropsType = {
     name: PropTypes.string.isRequired
   }).isRequired,
   id: PropTypes.number.isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToDatabase: PropTypes.func.isRequired
 };
 
 export default Product;

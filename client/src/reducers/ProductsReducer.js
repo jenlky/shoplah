@@ -19,6 +19,18 @@ const productsReducer = (state = initialState, action) => {
   console.log('index:', index); */
 
   switch (action.type) {
+    case actionTypes.UPDATE_STORE:
+      return {
+        ...state,
+        ...action.payload
+      }
+
+    case actionTypes.UPDATE_DATABASE:
+      return {
+        ...state,
+        qty: action.qty
+      }
+
     case actionTypes.FETCH_PRODUCTS_REQUEST:
       return {
         ...state,

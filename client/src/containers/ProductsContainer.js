@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import AddToCart from '../actions/AddToCart';
+//import AddToCart from '../actions/AddToCart';
+import AddToDatabase from '../actions/AddToDatabase';
 import Products from '../components/Products';
 
 class ProductsContainer extends Component {
@@ -15,7 +16,7 @@ class ProductsContainer extends Component {
       <Products 
         products={this.props.products} 
         isLoggedIn={this.props.isLoggedIn}
-        addToCart={this.props.addToCart} />
+        addToDatabase={this.props.addToDatabase} />
     );
   }
 }
@@ -26,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToCart: id => dispatch(AddToCart(id))
+  addToDatabase: id => dispatch(AddToDatabase(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

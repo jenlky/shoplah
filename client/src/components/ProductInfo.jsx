@@ -7,7 +7,7 @@ class ProductInfo extends Component {
     if (this.props.isLoggedIn === false) {
       window.location.href = 'http://localhost:8080/auth/login';
     } else {
-      this.props.addToCart(this.props.id);
+      this.props.addToDatabase(this.props.id);
     }
   }
 
@@ -40,7 +40,7 @@ ProductInfo.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToDatabase: PropTypes.func.isRequired
 };
 
 export default ProductInfo;

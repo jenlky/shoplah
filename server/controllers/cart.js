@@ -2,18 +2,28 @@ const Users = require('../models/users');
 
 // if user is logged in, retrieve all cart products from database
 const getAllProducts = (req, res) => {
-  return Users.find(products)
-              .then(data => res.status(200).json(data))
-              .catch(err => res.status(400).json({ err }));
+  console.log('getAllProducts req', req.body);
+  // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
+  const userId = req.user._id;
+
+  const products = Users.findById(userId, 'products');
+  console.log('products', products);
+
+  if (products.hasOwnProperty('numOfItems') && products.numOfItems > 0) {
+    return res.status(200).json(products);
+  }
+  
+  return null;
+  //.catch(err => res.status(400).json({ err }));
 }
 
 // if user is logged in n adds a product, add the product in database
 const addOneProduct = (req, res) => {
+  console.log('addOneProduct req', req.params)
   const { product } = req.body;
-  if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
+  // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
   const userId = req.user._id;
-   // how to find productId?
-  const productId = req.body._id;
+  const productId = req.params;
 
   // Check if the product already exists in the user
   return Users.findById(userId)

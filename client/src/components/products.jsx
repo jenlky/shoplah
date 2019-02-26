@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
 
-const Products = ({ products, isLoggedIn, addToCart }) => {
+const Products = ({ products, isLoggedIn, addToDatabase }) => {
   /*
   console.log('Products - products:', products);
   console.log('Products - addtoCart:', addToCart);*/
@@ -17,7 +17,7 @@ const Products = ({ products, isLoggedIn, addToCart }) => {
             id={id}  
             product={product} 
             isLoggedIn={isLoggedIn}
-            addToCart={addToCart} 
+            addToDatabase={addToDatabase} 
           />
         );
       })}
@@ -34,7 +34,7 @@ Products.propTypes = {
       name: PropTypes.string.isRequired
     })
   ).isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToDatabase: PropTypes.func.isRequired
 }; 
 
 export default Products;
