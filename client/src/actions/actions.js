@@ -10,6 +10,13 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const HANDLE_CLICK = "HANDLE_CLICK";
 export const INPUT_QUANTITY = "INPUT_QUANTITY";
 export const UPDATE_STORE = "UPDATE_STORE";
-export const ADD_TO_DATABASE = "ADD_TO_DATABASE";
-export const REMOVE_FROM_DATABASE = "REMOVE_FROM_DATABASE";
-export const UPDATE_DATABASE = "UPDATE_DATABASE";
+
+/*
+Basic action objects:
+AddToCart, RemoveFromCart, HandleClick & InputQuantity -> CalculatePrice
+
+Action creators:
+FetchFromDatabase -> dispatch UpdateStore -> in productsReducer, dispatch CalculatePrice
+AddToDatabase -> AddToCart -> in productsReducer, dispatch CalculatePrice
+RemoveFromDatabase -> RemoveFromCart -> in productsReducer, dispatch CalculatePrice
+*/

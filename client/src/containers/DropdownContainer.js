@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DropdownCart from '../components/DropdownCart';
-import RemoveFromCart from '../actions/RemoveFromCart';
+import RemoveFromDatabase from '../actions/RemoveFromDatabase';
 
-const DropdownContainer = ({ products, productsId, productsQty, removeFromCart, isLoggedIn }) => (
+const DropdownContainer = ({ products, idArray, qtyArray, removeFromDatabase, isLoggedIn }) => (
   <DropdownCart 
     products={products} 
-    productsId={productsId}
-    productsQty={productsQty}
-    removeFromCart={removeFromCart}
+    idArray={idArray}
+    qtyArray={qtyArray}
+    removeFromDatabase={removeFromDatabase}
     isLoggedIn={isLoggedIn}
   />
 );
 
 const mapStateToProps = state => ({
-  products: state.productsReducer.productsId.map(id => state.productsReducer.products[id-1]),
-  productsId: state.productsReducer.productsId,
-  productsQty: state.productsReducer.qty,
+  products: state.productsReducer.id.map(id => state.productsReducer.products[id-1]),
+  idArray: state.productsReducer.id,
+  qtyArray: state.productsReducer.qty,
   isLoggedIn: state.userReducer.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromCart: id => dispatch(RemoveFromCart(id))
+  removeFromDatabase: id => dispatch(RemoveFromDatabase(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropdownContainer);

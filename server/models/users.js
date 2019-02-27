@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// check if mongoose schema can add a default value
 const userSchema = new Schema({
   username: String,
   userID: String,
@@ -14,6 +13,6 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
+const Users = mongoose.model('User', userSchema);
 
-module.exports = User;
+module.exports = Users;

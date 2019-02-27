@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actions';
 
 const initialState = {
   products: [],
-  productsId: [],
+  id: [],
   qty: [],
   numOfItems: 0,
   totalPrice: 0,
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const productsReducer = (state = initialState, action) => {
-  let updatedId = [...state.productsId];
+  let updatedId = [...state.id];
   let updatedQty = [...state.qty];
   let index = updatedId.indexOf(action.id);
 
@@ -20,15 +20,11 @@ const productsReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case actionTypes.UPDATE_STORE:
+      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+
       return {
         ...state,
         ...action.payload
-      }
-
-    case actionTypes.UPDATE_DATABASE:
-      return {
-        ...state,
-        qty: action.qty
       }
 
     case actionTypes.FETCH_PRODUCTS_REQUEST:
@@ -47,14 +43,14 @@ const productsReducer = (state = initialState, action) => {
     case actionTypes.ADD_TO_CART:
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
 
-      // if productsId array doesn't have that element, insert that element
-      if (!state.productsId.includes(action.id)) {
-        updatedId = state.productsId.concat(action.id); 
+      // if id array doesn't have that element, insert that element
+      if (!state.id.includes(action.id)) {
+        updatedId = state.id.concat(action.id); 
         updatedQty = state.qty.concat(1);
 
         return {
           ...state,
-          productsId: updatedId,
+          id: updatedId,
           qty: updatedQty
         }
       // if element is present in array already, increase qty of it by 1
@@ -76,7 +72,7 @@ const productsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        productsId: updatedId,
+        id: updatedId,
         qty: updatedQty
       }
 
@@ -95,7 +91,7 @@ const productsReducer = (state = initialState, action) => {
       
       return {
         ...state,
-        productsId: updatedId,
+        id: updatedId,
         qty: updatedQty 
       }
 
@@ -112,7 +108,7 @@ const productsReducer = (state = initialState, action) => {
           
         return {
           ...state,
-          productsId: updatedId,
+          id: updatedId,
           qty: updatedQty 
         }
       }

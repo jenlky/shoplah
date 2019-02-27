@@ -15,8 +15,8 @@ const FetchFromDatabase = () => {
         } 
         
         return res;
-      } catch(err) {
-        console.log(err);
+      } catch(error) {
+        console.log(error);
       }
     })
     .then(res => res.json())

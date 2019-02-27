@@ -1,71 +1,90 @@
 const Users = require('../models/users');
 
+const extractProduct = (user) => {
+  const product = {};
+  product.id = user.products.id;
+  product.qty = user.products.qty;
+
+  return product;
+}
+
 // if user is logged in, retrieve all cart products from database
 const getAllProducts = (req, res) => {
-  console.log('getAllProducts req', req.body);
   // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
   const userId = req.user._id;
 
-  const products = Users.findById(userId, 'products');
-  console.log('products', products);
+  return Users.findById(userId)
+              .then(user => {
+                if (user.products.id !== undefined) {
+                  const product = extractProduct(user);
+                  console.log('GET all product', product);
 
-  if (products.hasOwnProperty('numOfItems') && products.numOfItems > 0) {
-    return res.status(200).json(products);
-  }
-  
-  return null;
-  //.catch(err => res.status(400).json({ err }));
+                  return product;
+                }
+                console.log('user.products.id', user.products.id);
+              })
+              .then(product => res.status(200).json(product))
+              .catch(err => res.status(400).json({ err }));
 }
 
 // if user is logged in n adds a product, add the product in database
 const addOneProduct = (req, res) => {
-  console.log('addOneProduct req', req.params)
-  const { product } = req.body;
   // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
   const userId = req.user._id;
-  const productId = req.params;
+  const productId = req.params.id;
 
   // Check if the product already exists in the user
   return Users.findById(userId)
-              .then(() => {
-                if (!products) {
-                  // or Users.create(product)
-                  return Users.products.create(productObj);
-                }
+              .then(user => {
+                if (user.products.id[productId]) {
+                  throw new Error('Product already exists');
+                } 
+                user.products.id.push(productId);
+                user.products.qty.push(1);
+                return user.save();
               })
-              .then(productObj => {
-                if (!productObj.id.include(product.id)) {
-                  productObj.id.push(product.id);
-                  productObj.qty.push(product.qty);
-                  User.save(error => {
-                    if (error) return handleError(error);
-                    console.log('addOneProduct successful!');
-                  });
-                  return productObj;
-                } else {
-                  throw new Error('Product already exist');
-                }            
+              .then(user => {
+                const product = extractProduct(user);
+                console.log('ADD one product', product);
+                return res.status(200).json(product);
               })
-              .then(addedProduct => res.status(200).json(addedProduct))
-              .catch(error => res.status(400).json(error));
-};
+              .catch(error => res.status(400).json({ error }));
+}
 
 // if user is logged in n changes the qty of a product, update the qty in database
 const updateOneProduct = (req, res) => {
   const { product } = req.body;
   if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
   const userId = req.user._id;
-  const productId = req.body._id;
+  const productId = req.param.id;
 
   return Users.findById(userId)
-              .findById(productId)
               .then()
 }
 
 // if user is logged in n deletes a product, remove the product in database
 const deleteOneProduct = (req, res) => {
-  return Users.find(products)
-              .then()
+  // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
+  const userId = req.user._id;
+  const productId = req.params.id;
+
+  return Users.findById(userId)
+              .then(user => {
+                const index = user.products.id.indexOf(productId);
+                if (index === -1) {
+                  throw new Error(`Product doesn't exist!`);
+                }
+
+                user.products.id.splice(index, 1);
+                user.products.qty.splice(index, 1);
+                return user.save();
+              })
+              .then(user => {
+                const product = extractProduct(user);
+                console.log('DELETE one product', product);
+                return res.status(200).json(product);
+              })
+              .catch(error => res.status(400).json({ error }));
 }
 
 module.exports = {

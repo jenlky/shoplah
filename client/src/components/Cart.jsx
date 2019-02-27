@@ -3,7 +3,7 @@ import CartItem from './CartItem';
 import CartTotalContainer from '../containers/CartTotalContainer';
 import PropTypes from 'prop-types';
 
-const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handleClick }) => {
+const Cart = ({ productsId, qty, products, removeFromDatabase, inputQuantity, handleClick }) => {
   if (!productsId || !qty) {
     return null;
   } 
@@ -33,7 +33,7 @@ const Cart = ({ productsId, qty, products, removeFromCart, inputQuantity, handle
               id={id} 
               product={products[productIndex]} 
               qty={qty[index]} 
-              removeFromCart={removeFromCart}
+              removeFromDatabase={removeFromDatabase}
               inputQuantity={inputQuantity}
               handleClick={handleClick}
             />
@@ -56,7 +56,7 @@ Cart.propTypes = {
       name: PropTypes.string.isRequired
     })
   ).isRequired,
-  removeFromCart: PropTypes.func.isRequired,
+  removeFromDatabase: PropTypes.func.isRequired,
   inputQuantity: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired
 }; 

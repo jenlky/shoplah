@@ -4,8 +4,8 @@ import plus from '../assets/plus.svg';
 import PropTypes from 'prop-types';
 
 class CartItem extends Component {
-  removeFromCart = () => {
-    this.props.removeFromCart(this.props.id);
+  removeFromDatabase = () => {
+    this.props.removeFromDatabase(this.props.id);
   } 
 
   handleClick = (event) => {
@@ -32,7 +32,7 @@ class CartItem extends Component {
       return (
         <div className='shoplah-items'> 
           <div className='shoplah-product'>
-            <i className='far fa-window-close shoplah-cancel' onClick={this.removeFromCart}></i>
+            <i className='far fa-window-close shoplah-cancel' onClick={this.removeFromDatabase}></i>
             <div className='product-details'>
               <img className='shoplah-img' src={product.image} alt={product.name} />
               <span>{product.name}</span>
@@ -62,7 +62,7 @@ CartItem.propTypes = {
   id: PropTypes.number.isRequired,
   product: PropTypes.object.isRequired,
   qty: PropTypes.number.isRequired,
-  removeFromCart: PropTypes.func.isRequired,
+  removeFromDatabase: PropTypes.func.isRequired,
   inputQuantity: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired
 }; 

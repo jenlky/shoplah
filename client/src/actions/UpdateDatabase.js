@@ -23,7 +23,7 @@ const UpdateDatabase = () => {
     .then(res => {
       dispatch({
         type: actionTypes.UPDATE_STORE,
-        qty: { ...res }
+        payload: { ...res }
       });
     })
     .catch(error => console.log(error));

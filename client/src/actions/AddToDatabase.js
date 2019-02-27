@@ -9,17 +9,19 @@ const AddToDatabase = (id) => {
         'Content-Type': 'application/json' 
       }
     })
-    .catch(error => console.log(error))
+    //.catch(error => console.log(error))
     .then(res => {
       try {
         if (!res.ok) {
           throw new Error(res.statusText);
         }
+
+        return res;
       } catch(error) {
         console.log(error);
       }
     })
-    .then(res => res.json())
+    //.then(res => res.json())
     .then(() => dispatch(AddToCart(id)))
     .catch(error => console.log(error));
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import DropdownCartItem from './DropdownCartItem';
 
-const DropdownCart = ({ products, productsId, productsQty, removeFromCart, isLoggedIn }) => {
+const DropdownCart = ({ products, idArray, qtyArray, removeFromDatabase, isLoggedIn }) => {
   //console.log('productsQty:', productsQty);
   const redirect = () => {
     if (isLoggedIn) {
@@ -11,7 +11,7 @@ const DropdownCart = ({ products, productsId, productsQty, removeFromCart, isLog
     }
   }
 
-  if (productsQty.length > 0) {
+  if (qtyArray.length > 0) {
     return (
       <div className='dropdown-cart-menu'>
         <div className='dropdown-cart-header v-center'>recently added products</div>
@@ -20,9 +20,9 @@ const DropdownCart = ({ products, productsId, productsQty, removeFromCart, isLog
             <DropdownCartItem 
               key={product.name} 
               product={product}
-              id={productsId[index]}
-              qty={productsQty[index]}
-              removeFromCart={removeFromCart} 
+              id={idArray[index]}
+              qty={qtyArray[index]}
+              removeFromDatabase={removeFromDatabase} 
             />
           );
         })}
