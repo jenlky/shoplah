@@ -2,7 +2,7 @@ import * as actionTypes from './actions';
 
 const UpdateDatabase = () => {
   return (dispatch) => {
-    fetch('/api/cart', {
+    fetch(`/api/cart/id/${id}/qty/${qty}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json' 

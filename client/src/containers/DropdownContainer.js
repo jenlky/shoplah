@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromDatabase: id => dispatch(RemoveFromDatabase(id))
+  removeFromDatabase: (id) => dispatch(RemoveFromDatabase(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropdownContainer);

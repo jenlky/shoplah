@@ -41,28 +41,26 @@ const productsReducer = (state = initialState, action) => {
       }
 
     case actionTypes.ADD_TO_CART:
+      // if id array doesn't have that element, insert that element
+      updatedId = state.id.concat(action.id); 
+      updatedQty = state.qty.concat(1);
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
 
-      // if id array doesn't have that element, insert that element
-      if (!state.id.includes(action.id)) {
-        updatedId = state.id.concat(action.id); 
-        updatedQty = state.qty.concat(1);
-
-        return {
-          ...state,
-          id: updatedId,
-          qty: updatedQty
-        }
-      // if element is present in array already, increase qty of it by 1
-      } else {
-        updatedQty = state.qty.slice(0);
-        updatedQty[index] += 1;
-
-        return {
-          ...state,
-          qty: updatedQty
-        }
+      return {
+        ...state,
+        id: updatedId,
+        qty: updatedQty
       }
+      
+    case actionTypes.UPDATE_CART:
+      // if element is present in array already, increase qty of it by 1
+      updatedQty[index] += 1;
+      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+
+      return {
+        ...state,
+        qty: updatedQty
+      } 
 
     case actionTypes.REMOVE_FROM_CART:
       // remove item from updatedID and updatedQty

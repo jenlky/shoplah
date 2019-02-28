@@ -2,10 +2,8 @@ import React from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
 
-const Products = ({ products, isLoggedIn, addToDatabase }) => {
-  /*
-  console.log('Products - products:', products);
-  console.log('Products - addtoCart:', addToCart);*/
+const Products = ({ products, idArray, isLoggedIn, addToDatabase, updateCart }) => {
+  console.log('Products - idArray:', idArray);
 
   return (
     <div className='img-container'>
@@ -14,10 +12,12 @@ const Products = ({ products, isLoggedIn, addToDatabase }) => {
         return (
           <Product 
             key={product.name}
-            id={id}  
+            id={id}
+            idArray={idArray}  
             product={product} 
             isLoggedIn={isLoggedIn}
             addToDatabase={addToDatabase} 
+            updateCart={updateCart}
           />
         );
       })}
@@ -34,7 +34,10 @@ Products.propTypes = {
       name: PropTypes.string.isRequired
     })
   ).isRequired,
+  idArray: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   addToDatabase: PropTypes.func.isRequired
+  // updateCart
 }; 
 
 export default Products;

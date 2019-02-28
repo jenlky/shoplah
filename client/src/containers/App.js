@@ -11,14 +11,20 @@ import Profile from '../components/Profile';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.props.fetchFromDatabase();
+    console.log('constructor isLoggedIn', this.props.isLoggedIn);
+  }
+
+  componentDidMount() {
     this.props.fetchProducts();
     this.props.fetchUser();
-    console.log('constructor isLoggedIn', this.props.isLoggedIn);
   }
 
   componentDidUpdate() {
     console.log('componentDidUpdate isLoggedIn', this.props.isLoggedIn);
+
+    if (this.props.isLoggedIn) {
+      this.props.fetchFromDatabase();
+    }
   }
 
   redirect = () => {

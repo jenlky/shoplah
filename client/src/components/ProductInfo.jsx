@@ -4,12 +4,17 @@ import PropTypes from 'prop-types';
 class ProductInfo extends Component {
 
   handleClick = () => {
-    this.props.addToDatabase(this.props.id);
+    console.log('idArray', this.props.idArray);
+
     if (this.props.isLoggedIn === false) {
       window.location.href = 'http://localhost:8080/auth/login';
     } else {
-      this.props.addToDatabase(this.props.id);
-    }
+      if (!this.props.idArray.includes(this.props.id)) {
+        return this.props.addToDatabase(this.props.id);
+      } else {
+        return this.props.updateCart(this.props.id);
+      }
+    }   
   }
 
   render() {
@@ -41,6 +46,8 @@ ProductInfo.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  qty: PropTypes.number,
+  isLoggedIn: PropTypes.bool.isRequired,
   addToDatabase: PropTypes.func.isRequired
 };
 

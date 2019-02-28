@@ -5,10 +5,10 @@ import RemoveFromDatabase from '../actions/RemoveFromDatabase';
 import InputQuantity from '../actions/InputQuantity';
 import HandleClick from '../actions/HandleClick';
 
-const CartContainer = ({ productsId, qty, products, removeFromDatabase, inputQuantity, handleClick }) => (
+const CartContainer = ({ idArray, qtyArray, products, removeFromDatabase, inputQuantity, handleClick }) => (
   <Cart 
-    productsId={productsId} 
-    qty={qty} 
+    idArray={idArray} 
+    qtyArray={qtyArray} 
     products={products}
     removeFromDatabase={removeFromDatabase}
     inputQuantity={inputQuantity}
@@ -17,13 +17,13 @@ const CartContainer = ({ productsId, qty, products, removeFromDatabase, inputQua
 );
 
 const mapStateToProps = state => ({
-  productsId: state.productsReducer.productsId,
-  qty: state.productsReducer.qty,
+  idArray: state.productsReducer.id,
+  qtyArray: state.productsReducer.qty,
   products: state.productsReducer.products
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromDatabase: id => dispatch(RemoveFromDatabase(id)),
+  removeFromDatabase: (id) => dispatch(RemoveFromDatabase(id)),
   inputQuantity: (value, id) => dispatch(InputQuantity(value, id)),
   handleClick: (event, id) => dispatch(HandleClick(event, id))
 });

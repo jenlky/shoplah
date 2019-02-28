@@ -3,7 +3,7 @@ import RemoveFromCart from './RemoveFromCart';
 
 const RemoveFromDatabase = (id) => {
   return (dispatch) => {
-    fetch(`/api/cart/${id}`, {
+    fetch(`/api/cart/id/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json' 
@@ -20,7 +20,6 @@ const RemoveFromDatabase = (id) => {
         console.log(error);
       }
     })
-    //.then(res => res.json())
     .then(() => dispatch(RemoveFromCart(id)))
     .catch(error => console.log(error));
   }

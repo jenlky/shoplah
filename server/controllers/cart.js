@@ -53,13 +53,27 @@ const addOneProduct = (req, res) => {
 
 // if user is logged in n changes the qty of a product, update the qty in database
 const updateOneProduct = (req, res) => {
-  const { product } = req.body;
-  if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
+  // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
   const userId = req.user._id;
-  const productId = req.param.id;
+  const productId = req.params.id;
+  const productQty = req.params.qty;
 
   return Users.findById(userId)
-              .then()
+              .then(user => {
+                const index = user.products.id.indexOf(productId);
+                if (index === -1) {
+                  throw new Error(`Product doesn't exist!`);
+                }
+
+                user.products.qty[index] = productQty;
+                return user.save();
+              })
+              .then(user => {
+                const product = extractProduct(user);
+                console.log('UPDATE one product', product);
+                return res.status(200).json(product);
+              })
+              .catch(error => res.status(400).json({ error }));
 }
 
 // if user is logged in n deletes a product, remove the product in database

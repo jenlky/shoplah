@@ -48,8 +48,8 @@ const corsOption = {
 
 // set up routes
 app.use(cors(corsOption));
-app.use('/api', productRoutes);
-app.use('/api', cartRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 app.use('/orders', orderRoutes); 
 app.use('/auth', authRoutes);
 

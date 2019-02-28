@@ -4,16 +4,15 @@ const checkAuth = require('../helpers/checkAuth');
 const handler = require('../controllers/cart');
 
 // FetchFromDatabase
-router.get('/cart', checkAuth, handler.getAllProducts);
+router.get('/', checkAuth, handler.getAllProducts);
 
 // AddToDatabase
-router.post('/cart/:id', checkAuth, handler.addOneProduct);
+router.post('/id/:id', checkAuth, handler.addOneProduct);
 
 // UpdateDatabase 
-// use multiple url parameter or query parameter
-router.put('/cart/:id', checkAuth, handler.updateOneProduct);
+router.put('/id/:id/qty/:qty', checkAuth, handler.updateOneProduct);
 
 // RemoveFromDatabase
-router.delete('/cart/:id', checkAuth, handler.deleteOneProduct);
+router.delete('/id/:id', checkAuth, handler.deleteOneProduct);
 
 module.exports = router;

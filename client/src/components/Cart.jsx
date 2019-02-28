@@ -3,8 +3,8 @@ import CartItem from './CartItem';
 import CartTotalContainer from '../containers/CartTotalContainer';
 import PropTypes from 'prop-types';
 
-const Cart = ({ productsId, qty, products, removeFromDatabase, inputQuantity, handleClick }) => {
-  if (!productsId || !qty) {
+const Cart = ({ idArray, qtyArray, products, removeFromDatabase, inputQuantity, handleClick }) => {
+  if (!idArray || !qtyArray) {
     return null;
   } 
   
@@ -17,22 +17,22 @@ const Cart = ({ productsId, qty, products, removeFromDatabase, inputQuantity, ha
     <div className='shoplah'>
       {/* <div className='horizontal-ruler'></div> */}
       <div className='shoplah-menu'>
-        <h3>SHOPPING CART - {qty.length !== 0 ? 
-          qty.reduce((acc, currentVal) => acc + currentVal) : '0'} items</h3>
+        <h3>SHOPPING CART - {qtyArray.length !== 0 ? 
+          qtyArray.reduce((acc, currentVal) => acc + currentVal) : '0'} items</h3>
         <div className='shoplah-header'>
           <span>Product</span>
           <span>Price</span>
           <span>Quantity</span>
           <span>Total</span>
         </div>
-        {productsId.map((id, index) => {
+        {idArray.map((id, index) => {
           let productIndex = id - 1;
           return (
             <CartItem
               key={products[productIndex].name} 
               id={id} 
               product={products[productIndex]} 
-              qty={qty[index]} 
+              qty={qtyArray[index]} 
               removeFromDatabase={removeFromDatabase}
               inputQuantity={inputQuantity}
               handleClick={handleClick}
@@ -46,8 +46,8 @@ const Cart = ({ productsId, qty, products, removeFromDatabase, inputQuantity, ha
 };
 
 Cart.propTypes = {
-  productsId: PropTypes.array.isRequired,
-  qty: PropTypes.array.isRequired,
+  idArray: PropTypes.array.isRequired,
+  qtyArray: PropTypes.array.isRequired,
   products: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string.isRequired,
