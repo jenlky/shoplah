@@ -19,14 +19,6 @@ const productsReducer = (state = initialState, action) => {
   console.log('index:', index); */
 
   switch (action.type) {
-    case actionTypes.UPDATE_STORE:
-      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-
-      return {
-        ...state,
-        ...action.payload
-      }
-
     case actionTypes.FETCH_PRODUCTS_REQUEST:
       return {
         ...state,
@@ -40,82 +32,19 @@ const productsReducer = (state = initialState, action) => {
         products: action.products
       }
 
-    case actionTypes.ADD_TO_CART:
-      // if id array doesn't have that element, insert that element
-      updatedId = state.id.concat(action.id); 
-      updatedQty = state.qty.concat(1);
+    case actionTypes.UPDATE_STORE:
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
 
       return {
         ...state,
-        id: updatedId,
-        qty: updatedQty
-      }
-      
-    case actionTypes.UPDATE_CART:
-      // if element is present in array already, increase qty of it by 1
-      updatedQty[index] += 1;
-      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-
-      return {
-        ...state,
-        qty: updatedQty
-      } 
-
-    case actionTypes.REMOVE_FROM_CART:
-      // remove item from updatedID and updatedQty
-      updatedId.splice(index, 1);
-      updatedQty.splice(index, 1);
-      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-
-      return {
-        ...state,
-        id: updatedId,
-        qty: updatedQty
-      }
-
-    case actionTypes.HANDLE_CLICK:
-      if (action.event === 'plus') {
-        updatedQty[index] += 1;
-      } else if (action.event === 'minus') {
-        updatedQty[index] -= 1;
-      }
-
-      if (updatedQty[index] === 0) {
-        action.asyncDispatch({ type: actionTypes.REMOVE_FROM_CART });
-      } else {
-        action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-      }
-      
-      return {
-        ...state,
-        id: updatedId,
-        qty: updatedQty 
-      }
-
-    case actionTypes.INPUT_QUANTITY:
-      const regex = /^[0-9\b]+$/;
-
-      if (regex.test(action.value)) {
-        if (action.value === '0') {
-          action.asyncDispatch({ type: actionTypes.REMOVE_FROM_CART });
-        } else {
-          updatedQty[index] = Number(action.value);
-          action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-        }
-          
-        return {
-          ...state,
-          id: updatedId,
-          qty: updatedQty 
-        }
+        ...action.payload
       }
 
     case actionTypes.CALCULATE_PRICE:
       const eachItemPrice = [];
-      console.log('updatedId:', updatedId);
-      console.log('updatedQty:', updatedQty);
-      console.log('updatedId index:', index);
+      //console.log('updatedId:', updatedId);
+      //console.log('updatedQty:', updatedQty);
+      //console.log('updatedId index:', index);
 
       updatedId.map((id, index) => {
         // index of the product in products array

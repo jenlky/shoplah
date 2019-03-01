@@ -10,7 +10,7 @@ router.get('/', checkAuth, handler.getAllProducts);
 router.post('/id/:id', checkAuth, handler.addOneProduct);
 
 // UpdateDatabase 
-router.put('/id/:id/qty/:qty', checkAuth, handler.updateOneProduct);
+router.put('/', checkAuth, handler.updateOneProduct);
 
 // RemoveFromDatabase
 router.delete('/id/:id', checkAuth, handler.deleteOneProduct);

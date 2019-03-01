@@ -1,4 +1,4 @@
-import * as actionTypes from './actions';
+import UpdateStore from './UpdateStore';
 
 const FetchFromDatabase = () => {
   return (dispatch) => {
@@ -20,12 +20,7 @@ const FetchFromDatabase = () => {
       }
     })
     .then(res => res.json())
-    .then(res => {
-      dispatch({
-        type: actionTypes.UPDATE_STORE,
-        payload: { ...res }
-      });
-    })
+    .then(res => dispatch(UpdateStore(res)))
     .catch(error => console.log(error));
   }
 }

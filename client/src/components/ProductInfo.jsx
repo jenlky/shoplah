@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ProductInfo extends Component {
-
-  handleClick = () => {
-    console.log('idArray', this.props.idArray);
-
-    if (this.props.isLoggedIn === false) {
-      window.location.href = 'http://localhost:8080/auth/login';
-    } else {
-      if (!this.props.idArray.includes(this.props.id)) {
-        return this.props.addToDatabase(this.props.id);
-      } else {
-        return this.props.updateCart(this.props.id);
+  handleClick = (event) => {
+    console.log('event', event.currentTarget);
+    console.log('data-event', event.currentTarget.dataset.event);
+    // if user isLoggedIn
+    if (this.props.isLoggedIn === true) {
+      if (!this.props.containsId) {
+        return this.props.addToCart(this.props.id);
       }
-    }   
+      
+      return this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
+    } else {
+      window.location.href = 'http://localhost:8080/auth/login';
+    } 
   }
 
   render() {
@@ -24,7 +24,7 @@ class ProductInfo extends Component {
           <p>{this.props.name}</p>      
           <p>{"$" + this.props.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
         </div>
-        <button onClick={this.handleClick}>Add</button>
+        <button data-event='plus' onClick={(e) => this.handleClick(e)}>Add</button>
       </div>
     );
   }
@@ -46,9 +46,9 @@ ProductInfo.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  qty: PropTypes.number,
   isLoggedIn: PropTypes.bool.isRequired,
-  addToDatabase: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
 };
 
 export default ProductInfo;

@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
 
-const Products = ({ products, idArray, isLoggedIn, addToDatabase, updateCart }) => {
+const Products = ({ products, idArray, isLoggedIn, addToCart, updateCart }) => {
   console.log('Products - idArray:', idArray);
 
   return (
@@ -13,10 +13,10 @@ const Products = ({ products, idArray, isLoggedIn, addToDatabase, updateCart }) 
           <Product 
             key={product.name}
             id={id}
-            idArray={idArray}  
+            containsId={idArray.includes(id)}  
             product={product} 
             isLoggedIn={isLoggedIn}
-            addToDatabase={addToDatabase} 
+            addToCart={addToCart} 
             updateCart={updateCart}
           />
         );
@@ -36,8 +36,8 @@ Products.propTypes = {
   ).isRequired,
   idArray: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  addToDatabase: PropTypes.func.isRequired
-  // updateCart
+  addToCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
 }; 
 
 export default Products;

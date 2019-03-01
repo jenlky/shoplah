@@ -3,15 +3,10 @@ import CartItem from './CartItem';
 import CartTotalContainer from '../containers/CartTotalContainer';
 import PropTypes from 'prop-types';
 
-const Cart = ({ idArray, qtyArray, products, removeFromDatabase, inputQuantity, handleClick }) => {
+const Cart = ({ idArray, qtyArray, products, removeFromCart, updateCart }) => {
   if (!idArray || !qtyArray) {
     return null;
   } 
-  
-  /*
-  console.log('Cart - productsId:', productsId);
-  console.log('Cart - qty:', qty);
-  console.log('Cart - products:', products); */
 
   return (
     <div className='shoplah'>
@@ -33,9 +28,8 @@ const Cart = ({ idArray, qtyArray, products, removeFromDatabase, inputQuantity, 
               id={id} 
               product={products[productIndex]} 
               qty={qtyArray[index]} 
-              removeFromDatabase={removeFromDatabase}
-              inputQuantity={inputQuantity}
-              handleClick={handleClick}
+              removeFromCart={removeFromCart}
+              updateCart={updateCart}
             />
           );
         })}
@@ -56,9 +50,8 @@ Cart.propTypes = {
       name: PropTypes.string.isRequired
     })
   ).isRequired,
-  removeFromDatabase: PropTypes.func.isRequired,
-  inputQuantity: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired
+  removeFromCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
 }; 
 
 export default Cart;

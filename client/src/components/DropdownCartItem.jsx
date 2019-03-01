@@ -1,11 +1,11 @@
 import React from 'react';
 
-const DropdownCartItem = ({ product, id, qty, removeFromDatabase }) => {
+const DropdownCartItem = ({ product, id, qty, removeFromCart }) => {
   const price = `$${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
-  console.log('price:', product.price + ',  qty:', qty);
+  //console.log('price:', product.price + ',  qty:', qty);
 
   const Delete = () => {
-    removeFromDatabase(id);
+    removeFromCart(id);
   }
 
   return (

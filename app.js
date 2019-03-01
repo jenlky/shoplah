@@ -10,6 +10,7 @@ const Auth0Strategy = require('passport-auth0');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 
 const productRoutes = require('./server/routes/products');
@@ -36,6 +37,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 // initialise passport
 app.use(passport.initialize());

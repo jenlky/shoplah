@@ -6,22 +6,20 @@ export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 
 export const ADD_TO_CART = "ADD_TO_CART";
-export const UPDATE_CART = "UPDATE_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-export const HANDLE_CLICK = "HANDLE_CLICK";
-export const INPUT_QUANTITY = "INPUT_QUANTITY";
-export const CALCULATE_PRICE = "CALCULATE_PRICE";
 export const UPDATE_STORE = "UPDATE_STORE";
+export const CALCULATE_PRICE = "CALCULATE_PRICE";
 
 /*
-Basic action objects:
-AddToCart, UpdateCart, RemoveFromCart, HandleClick & InputQuantity -> CalculatePrice
+Action objects:
+UpdateStore -> CalculatePrice
 
 Action creators:
-FetchFromDatabase -> UpdateStore -> CalculatePrice
-AddToDatabase (product doesn't exist) -> AddToCart -> CalculatePrice
-UpdateCart (product already exists) -> CalculatePrice
-RemoveFromDatabase -> RemoveFromCart -> CalculatePrice
+AddToCart (product doesn't exist or qty === 0) -> cart controller -> UpdateStore -> CalculatePrice
+RemoveFromCart (product doesn't exist or qty === 0) -> cart controller -> UpdateStore -> CalculatePrice
+UpdateCart (product already exists or qty >= 1) -> cart controller -> UpdateStore -> CalculatePrice
 
-UpdateDatabase (HandleClick & InputQuantity) -> UpdateStore -> CalculatePrice
+UpdateCart will send the request to controller cart that has the logic to +1, -1 and change the quantity of the product.
+
+FetchFromDatabase -> cart controller -> UpdateStore -> CalculatePrice
 */

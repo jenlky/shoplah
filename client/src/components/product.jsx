@@ -2,7 +2,7 @@ import React from 'react';
 import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
-const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }) => {
+const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart }) => {
   const name = product.name;
   const price = product.price;
 
@@ -11,8 +11,8 @@ const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }
       <div className='product first-product'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          idArray={idArray} isLoggedIn={isLoggedIn} 
-          addToDatabase={addToDatabase} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addToCart={addToCart} updateCart={updateCart}
         />
       </div>
     );
@@ -21,8 +21,8 @@ const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }
       <div className='product left-products'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          idArray={idArray} isLoggedIn={isLoggedIn} 
-          addToDatabase={addToDatabase} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addToCart={addToCart} updateCart={updateCart}
         />
       </div>
     );
@@ -31,8 +31,8 @@ const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }
       <div className='product left-products order'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          idArray={idArray} isLoggedIn={isLoggedIn} 
-          addToDatabase={addToDatabase} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addToCart={addToCart} updateCart={updateCart}
         />
       </div>
     );
@@ -41,8 +41,8 @@ const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }
       <div className='product order'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          idArray={idArray} isLoggedIn={isLoggedIn} 
-          addToDatabase={addToDatabase} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addToCart={addToCart} updateCart={updateCart}
         />
       </div>
     );
@@ -51,8 +51,8 @@ const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }
       <div className='product'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          idArray={idArray} isLoggedIn={isLoggedIn} 
-          addToDatabase={addToDatabase} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addToCart={addToCart} updateCart={updateCart}
         />
       </div>
     );
@@ -61,7 +61,7 @@ const Product = ({ id, idArray, product, isLoggedIn, addToDatabase, updateCart }
 
 Product.PropsType = {
   id: PropTypes.number.isRequired,
-  // idArray 
+  containsId: PropTypes.bool.isRequired,
   product: PropTypes.shape({
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -69,8 +69,8 @@ Product.PropsType = {
     name: PropTypes.string.isRequired
   }).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  addToDatabase: PropTypes.func.isRequired
-  // updateCart 
+  addToCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
 };
 
 export default Product;

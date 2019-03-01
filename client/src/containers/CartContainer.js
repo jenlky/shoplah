@@ -1,18 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Cart from '../components/Cart';
-import RemoveFromDatabase from '../actions/RemoveFromDatabase';
-import InputQuantity from '../actions/InputQuantity';
-import HandleClick from '../actions/HandleClick';
+import RemoveFromCart from '../actions/RemoveFromCart';
+import UpdateCart from '../actions/UpdateCart';
 
-const CartContainer = ({ idArray, qtyArray, products, removeFromDatabase, inputQuantity, handleClick }) => (
+const CartContainer = ({ idArray, qtyArray, products, removeFromCart, updateCart }) => (
   <Cart 
     idArray={idArray} 
     qtyArray={qtyArray} 
     products={products}
-    removeFromDatabase={removeFromDatabase}
-    inputQuantity={inputQuantity}
-    handleClick={handleClick}
+    removeFromCart={removeFromCart}
+    updateCart={updateCart}
   />
 );
 
@@ -23,9 +21,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromDatabase: (id) => dispatch(RemoveFromDatabase(id)),
-  inputQuantity: (value, id) => dispatch(InputQuantity(value, id)),
-  handleClick: (event, id) => dispatch(HandleClick(event, id))
+  removeFromCart: (id) => dispatch(RemoveFromCart(id)),
+  updateCart: (event, id) => dispatch(UpdateCart(event, id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);
