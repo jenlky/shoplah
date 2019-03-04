@@ -2,6 +2,7 @@ import UpdateStore from './UpdateStore';
 
 const RemoveFromCart = (id) => {
   return (dispatch) => {
+    dispatch(UpdateStore(id));
     fetch(`/api/cart/id/${id}`, {
       method: 'DELETE',
       headers: {
@@ -19,8 +20,6 @@ const RemoveFromCart = (id) => {
         console.log(error);
       }
     })
-    .then(res => res.json())
-    .then(res => dispatch(UpdateStore(res)))
     .catch(error => console.log(error));
   }
 };

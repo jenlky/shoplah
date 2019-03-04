@@ -2,6 +2,7 @@ import UpdateStore from './UpdateStore';
 
 const AddToCart = (id) => {
   return (dispatch) => {
+    dispatch(UpdateStore(id));
     fetch(`/api/cart/id/${id}`, {
       method: 'POST',
       headers: {
@@ -19,8 +20,6 @@ const AddToCart = (id) => {
         console.log(error);
       }
     })
-    .then(res => res.json())
-    .then(res => dispatch(UpdateStore(res)))
     .catch(error => console.log(error));
   }
 };

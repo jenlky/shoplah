@@ -32,6 +32,34 @@ const productsReducer = (state = initialState, action) => {
         products: action.products
       }
 
+    case actionTypes.ADD_TO_CART:
+      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+
+      // if id array doesn't have that element, insert that element
+      if (!state.id.includes(action.id)) {
+        updatedId = state.id.concat(action.id); 
+        updatedQty = state.qty.concat(1);
+
+        return {
+          ...state,
+          productsId: updatedId,
+          id: updatedId,
+          qty: updatedQty
+        }
+      }
+      
+    case actionTypes.REMOVE_FROM_CART:
+      // remove item from updatedID and updatedQty
+      updatedId.splice(index, 1);
+      updatedQty.splice(index, 1);
+      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+
+      return {
+        ...state,
+        id: updatedId,
+        qty: updatedQty
+      }
+
     case actionTypes.UPDATE_STORE:
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
 

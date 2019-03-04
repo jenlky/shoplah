@@ -45,11 +45,12 @@ const addOneProduct = (req, res) => {
                 user.products.qty.push(1);
                 return user.save();
               })
+              /*
               .then(user => {
                 const product = extractProduct(user);
                 console.log('ADD one product', product);
                 return res.status(200).json(product);
-              })
+              })*/
               .catch(error => res.status(400).json({ error }));
 }
 
@@ -63,7 +64,7 @@ const updateOneProduct = (req, res) => {
 
   return Users.findById(userId)
               .then(user => {
-                let index = user.products.id.indexOf(productId);
+                const index = user.products.id.indexOf(productId);
                 if (index === -1) {
                   throw new Error(`Product doesn't exist!`);
                 }
@@ -79,12 +80,12 @@ const updateOneProduct = (req, res) => {
                 }
 
                 return user.save();
-              })
+              })/*
               .then(user => {
                 const product = extractProduct(user);
                 console.log('UPDATE one product', product);
                 return res.status(200).json(product);
-              })
+              })*/
               .catch(error => res.status(400).json({ error }));
 }
 
@@ -104,12 +105,12 @@ const deleteOneProduct = (req, res) => {
                 user.products.id.splice(index, 1);
                 user.products.qty.splice(index, 1);
                 return user.save();
-              })
+              })/*
               .then(user => {
                 const product = extractProduct(user);
                 console.log('DELETE one product', product);
                 return res.status(200).json(product);
-              })
+              })*/
               .catch(error => res.status(400).json({ error }));
 }
 
