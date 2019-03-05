@@ -2,7 +2,7 @@ import React from 'react';
 import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
-const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart }) => {
+const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
   const name = product.name;
   const price = product.price;
 
@@ -11,8 +11,7 @@ const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart })
       <div className='product first-product'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addToCart={addToCart} updateCart={updateCart}
+          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -21,8 +20,7 @@ const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart })
       <div className='product left-products'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addToCart={addToCart} updateCart={updateCart}
+          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -31,8 +29,7 @@ const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart })
       <div className='product left-products order'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addToCart={addToCart} updateCart={updateCart}
+          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -41,8 +38,7 @@ const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart })
       <div className='product order'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addToCart={addToCart} updateCart={updateCart}
+          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -51,8 +47,7 @@ const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart })
       <div className='product'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addToCart={addToCart} updateCart={updateCart}
+          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -61,7 +56,6 @@ const Product = ({ id, containsId, product, isLoggedIn, addToCart, updateCart })
 
 Product.PropsType = {
   id: PropTypes.number.isRequired,
-  containsId: PropTypes.bool.isRequired,
   product: PropTypes.shape({
     image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -69,7 +63,7 @@ Product.PropsType = {
     name: PropTypes.string.isRequired
   }).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  addToCart: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
   updateCart: PropTypes.func.isRequired,
 };
 

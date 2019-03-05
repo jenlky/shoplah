@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DropdownCart from '../components/DropdownCart';
-import RemoveFromCart from '../actions/RemoveFromCart';
+import RemoveProduct from '../actions/RemoveProduct';
 
-const DropdownContainer = ({ products, idArray, qtyArray, removeFromCart, isLoggedIn }) => (
+const DropdownContainer = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }) => (
   <DropdownCart 
     products={products} 
     idArray={idArray}
     qtyArray={qtyArray}
-    removeFromCart={removeFromCart}
+    removeProduct={removeProduct}
     isLoggedIn={isLoggedIn}
   />
 );
@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromCart: (id) => dispatch(RemoveFromCart(id))
-})
+  removeProduct: (id) => dispatch(RemoveProduct(id))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropdownContainer);

@@ -32,6 +32,16 @@ const productsReducer = (state = initialState, action) => {
         products: action.products
       }
 
+    // Action creator FetchFromDatabase dispatch(UpdateStore())
+    case actionTypes.UPDATE_STORE:
+      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+
+      return {
+        ...state,
+        ...action.payload
+      }
+
+    // Action creator AddProduct dispatch(AddToCart(id))
     case actionTypes.ADD_TO_CART:
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
 
@@ -42,12 +52,20 @@ const productsReducer = (state = initialState, action) => {
 
         return {
           ...state,
-          productsId: updatedId,
           id: updatedId,
           qty: updatedQty
         }
+      // if element is present in array already, increase qty of it by 1
+      } else {
+        updatedQty[index] += 1;
+
+        return {
+          ...state,
+          qty: updatedQty
+        }
       }
-      
+
+    // Action creator RemoveProduct dispatch(RemoveFromCart(id))
     case actionTypes.REMOVE_FROM_CART:
       // remove item from updatedID and updatedQty
       updatedId.splice(index, 1);
@@ -60,12 +78,28 @@ const productsReducer = (state = initialState, action) => {
         qty: updatedQty
       }
 
-    case actionTypes.UPDATE_STORE:
+    // Action creator UpdateCart dispatch(UpdateQuantity(event, id))
+    case actionTypes.UPDATE_QUANTITY:
       action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+      const event = action.event;
+      const regex = /^[0-9\b]+$/;
+
+      if (event === 'plus') {
+        updatedQty[index] += 1;
+      } else if (event === 'minus') {
+        updatedQty[index] -= 1;
+      } else if (regex.test(event) && event !== '0') {
+        updatedQty[index] = Number(event);
+      }
+
+      if (updatedQty[index] === 0) {
+        updatedId.splice(index, 1);
+        updatedQty.splice(index, 1);
+      }
 
       return {
         ...state,
-        ...action.payload
+        qty: updatedQty
       }
 
     case actionTypes.CALCULATE_PRICE:

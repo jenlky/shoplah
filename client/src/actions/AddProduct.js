@@ -1,10 +1,13 @@
-import UpdateStore from './UpdateStore';
+import * as actionTypes from './actions';
 
-const RemoveFromCart = (id) => {
+const AddProduct = (id) => {
   return (dispatch) => {
-    dispatch(UpdateStore(id));
+    dispatch({
+      type: actionTypes.ADD_TO_CART,
+      id
+    });
     fetch(`/api/cart/id/${id}`, {
-      method: 'DELETE',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json' 
       }
@@ -24,4 +27,4 @@ const RemoveFromCart = (id) => {
   }
 };
 
-export default RemoveFromCart;
+export default AddProduct;

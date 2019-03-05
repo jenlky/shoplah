@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Cart from '../components/Cart';
-import RemoveFromCart from '../actions/RemoveFromCart';
+import RemoveProduct from '../actions/RemoveProduct';
 import UpdateCart from '../actions/UpdateCart';
 
-const CartContainer = ({ idArray, qtyArray, products, removeFromCart, updateCart }) => (
+const CartContainer = ({ idArray, qtyArray, products, removeProduct, updateCart }) => (
   <Cart 
     idArray={idArray} 
     qtyArray={qtyArray} 
     products={products}
-    removeFromCart={removeFromCart}
+    removeProduct={removeProduct}
     updateCart={updateCart}
   />
 );
@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromCart: (id) => dispatch(RemoveFromCart(id)),
+  removeProduct: (id) => dispatch(RemoveProduct(id)),
   updateCart: (event, id) => dispatch(UpdateCart(event, id)),
 });
 

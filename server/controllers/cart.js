@@ -8,8 +8,6 @@ const extractProduct = (user) => {
   return product;
 }
 
-// CAN I MUTATE and SAVE my QUERY RETURNED DOCUMENT?
-
 // if user is logged in, retrieve all cart products from database
 const getAllProducts = (req, res) => {
   // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
@@ -45,12 +43,10 @@ const addOneProduct = (req, res) => {
                 user.products.qty.push(1);
                 return user.save();
               })
-              /*
               .then(user => {
                 const product = extractProduct(user);
                 console.log('ADD one product', product);
-                return res.status(200).json(product);
-              })*/
+              })
               .catch(error => res.status(400).json({ error }));
 }
 
@@ -79,13 +75,19 @@ const updateOneProduct = (req, res) => {
                   user.products.qty[index] = Number(event);
                 }
 
-                return user.save();
-              })/*
-              .then(user => {
+                if (updatedQty[index] === 0) {
+                  user.products.id.splice(index, 1);
+                  user.products.qty.splice(index, 1);
+                }
+          
                 const product = extractProduct(user);
                 console.log('UPDATE one product', product);
-                return res.status(200).json(product);
-              })*/
+
+                return user.save((err, product) => {
+                  console.log('err', err);
+                  console.log('product', product);
+                });
+              })
               .catch(error => res.status(400).json({ error }));
 }
 
@@ -105,12 +107,11 @@ const deleteOneProduct = (req, res) => {
                 user.products.id.splice(index, 1);
                 user.products.qty.splice(index, 1);
                 return user.save();
-              })/*
+              })
               .then(user => {
                 const product = extractProduct(user);
                 console.log('DELETE one product', product);
-                return res.status(200).json(product);
-              })*/
+              })
               .catch(error => res.status(400).json({ error }));
 }
 

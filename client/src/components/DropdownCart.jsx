@@ -1,7 +1,7 @@
 import React from 'react';
 import DropdownCartItem from './DropdownCartItem';
 
-const DropdownCart = ({ products, idArray, qtyArray, removeFromCart, isLoggedIn }) => {
+const DropdownCart = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }) => {
   //console.log('productsQty:', productsQty);
   const redirect = () => {
     if (isLoggedIn) {
@@ -22,7 +22,7 @@ const DropdownCart = ({ products, idArray, qtyArray, removeFromCart, isLoggedIn 
               product={product}
               id={idArray[index]}
               qty={qtyArray[index]}
-              removeFromCart={removeFromCart} 
+              removeProduct={removeProduct} 
             />
           );
         })}

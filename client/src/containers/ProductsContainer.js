@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import AddToCart from '../actions/AddToCart';
+import AddProduct from '../actions/AddProduct';
 import UpdateCart from '../actions/UpdateCart';
 import Products from '../components/Products';
 
@@ -15,9 +15,8 @@ class ProductsContainer extends Component {
     return (
       <Products 
         products={this.props.products}
-        idArray={this.props.idArray} 
         isLoggedIn={this.props.isLoggedIn}
-        addToCart={this.props.addToCart} 
+        addProduct={this.props.addProduct} 
         updateCart={this.props.updateCart}
       />
     );
@@ -26,12 +25,11 @@ class ProductsContainer extends Component {
 
 const mapStateToProps = state => ({
   products: state.productsReducer.products,
-  idArray: state.productsReducer.id,
   isLoggedIn: state.userReducer.isLoggedIn
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToCart: id => dispatch(AddToCart(id)),
+  addProduct: id => dispatch(AddProduct(id)),
   updateCart: (event, id) => dispatch(UpdateCart(event, id))
 });
 

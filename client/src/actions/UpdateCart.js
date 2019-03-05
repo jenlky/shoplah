@@ -1,7 +1,12 @@
-import UpdateStore from './UpdateStore';
+import * as actionTypes from './actions';
 
 const UpdateCart = (event, id) => {
   return (dispatch) => {
+    dispatch({
+      type: actionTypes.UPDATE_QUANTITY,
+      event, 
+      id
+    });
     fetch('/api/cart', {
       method: 'PUT',
       headers: {
@@ -17,14 +22,10 @@ const UpdateCart = (event, id) => {
         if (!res.ok) {
           throw new Error(res.statusText);
         } 
-        
-        return res;
       } catch(error) {
         console.log(error);
       }
     })
-    .then(res => res.json())
-    .then(res => dispatch(UpdateStore(res)))
     .catch(error => console.log(error));
   }
 }

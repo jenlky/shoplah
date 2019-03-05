@@ -7,19 +7,24 @@ export const LOGOUT_USER = "LOGOUT_USER";
 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-export const UPDATE_STORE = "UPDATE_STORE";
+export const UPDATE_QUANTITY = "UPDATE_QUANTITY"; // when product already exists or qty >= 1, +1/-1 or change qty of product
+export const UPDATE_STORE = "UPDATE_STORE"; // fetch from database then dispatch(UpdateStore())
 export const CALCULATE_PRICE = "CALCULATE_PRICE";
+
+// 1. Ensure UpdateCart update database
+// 2. Add Shopee's "Item has been added to your shopping cart"
+// 3. (Add Undo action for when dispatching to Redux fail)
 
 /*
 Action objects:
 UpdateStore -> CalculatePrice
 
 Action creators:
-AddToCart (product doesn't exist or qty === 0) -> cart controller -> UpdateStore -> CalculatePrice
-RemoveFromCart (product doesn't exist or qty === 0) -> cart controller -> UpdateStore -> CalculatePrice
-UpdateCart (product already exists or qty >= 1) -> cart controller -> UpdateStore -> CalculatePrice
+AddProduct (product doesn't exist or qty === 0) -> AddToCart -> CalculatePrice -> cart controller
+RemoveProduct (product doesn't exist or qty === 0) -> RemoveFromCart -> CalculatePrice -> cart controller
+UpdateCart (product already exists or qty >= 1) -> UpdateQuantity -> CalculatePrice -> cart controller
 
-UpdateCart will send the request to controller cart that has the logic to +1, -1 and change the quantity of the product.
+UpdateCart: +1, -1 and change the quantity of the product.
 
 FetchFromDatabase -> cart controller -> UpdateStore -> CalculatePrice
 */
