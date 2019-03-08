@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import PropTypes from 'prop-types';
 
-const Products = ({ products, isLoggedIn, addProduct, updateCart }) => {
+const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => {
   return (
     <div className='img-container'>
       {products.map((product, index) => {
@@ -11,10 +11,11 @@ const Products = ({ products, isLoggedIn, addProduct, updateCart }) => {
           <Product 
             key={product.name}
             id={id}
+            containsId={idArray.includes(id)} 
             product={product} 
             isLoggedIn={isLoggedIn}
-            addProduct={addProduct} 
-            updateCart={updateCart}
+            addProduct={addProduct}
+            updateCart={updateCart} 
           />
         );
       })}
@@ -31,9 +32,10 @@ Products.propTypes = {
       name: PropTypes.string.isRequired
     })
   ).isRequired,
+  idArray: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   addProduct: PropTypes.func.isRequired,
-  updateCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired
 }; 
 
 export default Products;

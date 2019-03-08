@@ -2,7 +2,7 @@ import React from 'react';
 import ProductInfo from './ProductInfo';
 import PropTypes from 'prop-types';
 
-const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
+const Product = ({ id, product, containsId, isLoggedIn, addProduct, updateCart }) => {
   const name = product.name;
   const price = product.price;
 
@@ -11,7 +11,8 @@ const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
       <div className='product first-product'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -20,7 +21,8 @@ const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
       <div className='product left-products'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -29,7 +31,8 @@ const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
       <div className='product left-products order'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -38,7 +41,8 @@ const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
       <div className='product order'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -47,7 +51,8 @@ const Product = ({ id, product, isLoggedIn, addProduct, updateCart }) => {
       <div className='product'>
         <img src={product.image} alt={name} className='img-size'></img>
         <ProductInfo id={id} name={name} price={price} 
-          isLoggedIn={isLoggedIn} addProduct={addProduct} updateCart={updateCart}
+          containsId={containsId} isLoggedIn={isLoggedIn} 
+          addProduct={addProduct} updateCart={updateCart}
         />
       </div>
     );
@@ -62,9 +67,10 @@ Product.PropsType = {
     currency: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired,
+  containsId: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   addProduct: PropTypes.func.isRequired,
-  updateCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired
 };
 
 export default Product;

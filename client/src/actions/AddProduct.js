@@ -13,7 +13,9 @@ const AddProduct = (id) => {
       }
     })
     .then(res => {
-      try {
+      console.log(res);
+
+      try {  
         if (!res.ok) {
           throw new Error(res.statusText);
         }

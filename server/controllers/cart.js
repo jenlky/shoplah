@@ -46,6 +46,7 @@ const addOneProduct = (req, res) => {
               .then(user => {
                 const product = extractProduct(user);
                 console.log('ADD one product', product);
+                return res.status(200);
               })
               .catch(error => res.status(400).json({ error }));
 }
@@ -56,37 +57,35 @@ const updateOneProduct = (req, res) => {
   const userId = req.user._id;
   const event = req.body.event;
   const productId = req.body.id;
-  console.log('updateOneProduct', req.body);
 
   return Users.findById(userId)
               .then(user => {
+                const qty = user.products.qty;
                 const index = user.products.id.indexOf(productId);
                 if (index === -1) {
                   throw new Error(`Product doesn't exist!`);
                 }
 
                 const regex = /^[0-9\b]+$/;
-
                 if (event === 'plus') {
-                  user.products.qty[index] += 1;
+                  qty[index] += 1;
                 } else if (event === 'minus') {
-                  user.products.qty[index] -= 1;
+                  qty[index] -= 1;
                 } else if (regex.test(event) && event !== '0') {
-                  user.products.qty[index] = Number(event);
+                  qty[index] = Number(event);
                 }
 
-                if (updatedQty[index] === 0) {
+                if (qty[index] === 0) {
                   user.products.id.splice(index, 1);
-                  user.products.qty.splice(index, 1);
+                  qty.splice(index, 1);
                 }
-          
+        
+                return user.save();
+              })
+              .then(user => {
                 const product = extractProduct(user);
                 console.log('UPDATE one product', product);
-
-                return user.save((err, product) => {
-                  console.log('err', err);
-                  console.log('product', product);
-                });
+                return res.status(200);
               })
               .catch(error => res.status(400).json({ error }));
 }
@@ -111,6 +110,7 @@ const deleteOneProduct = (req, res) => {
               .then(user => {
                 const product = extractProduct(user);
                 console.log('DELETE one product', product);
+                return res.status(200);
               })
               .catch(error => res.status(400).json({ error }));
 }

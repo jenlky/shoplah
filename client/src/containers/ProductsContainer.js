@@ -15,8 +15,9 @@ class ProductsContainer extends Component {
     return (
       <Products 
         products={this.props.products}
+        idArray={this.props.idArray} 
         isLoggedIn={this.props.isLoggedIn}
-        addProduct={this.props.addProduct} 
+        addProduct={this.props.addProduct}
         updateCart={this.props.updateCart}
       />
     );
@@ -25,6 +26,7 @@ class ProductsContainer extends Component {
 
 const mapStateToProps = state => ({
   products: state.productsReducer.products,
+  idArray: state.productsReducer.id,
   isLoggedIn: state.userReducer.isLoggedIn
 });
 

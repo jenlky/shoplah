@@ -18,10 +18,14 @@ const UpdateCart = (event, id) => {
       })
     })
     .then(res => {
+      console.log(res);
+
       try {
         if (!res.ok) {
           throw new Error(res.statusText);
         } 
+
+        return res;
       } catch(error) {
         console.log(error);
       }

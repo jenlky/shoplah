@@ -13,6 +13,8 @@ const RemoveProduct = (id) => {
       }
     })
     .then(res => {
+      console.log(res);
+
       try {
         if (!res.ok) {
           throw new Error(res.statusText);

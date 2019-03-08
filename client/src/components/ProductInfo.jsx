@@ -7,6 +7,10 @@ class ProductInfo extends Component {
     // console.log('data-event', event.currentTarget.dataset.event);
     // if user isLoggedIn
     if (this.props.isLoggedIn === true) {
+      if (!this.props.containsId) {
+        return this.props.addProduct(this.props.id);
+      }
+      
       return this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
     } else {
       window.location.href = 'http://localhost:8080/auth/login';
@@ -43,8 +47,7 @@ ProductInfo.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  addProduct: PropTypes.func.isRequired,
-  updateCart: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired
 };
 
 export default ProductInfo;
