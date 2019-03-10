@@ -8,7 +8,7 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const UPDATE_QUANTITY = "UPDATE_QUANTITY"; // when product already exists or qty >= 1, +1/-1 or change qty of product
-export const UPDATE_STORE = "UPDATE_STORE"; // fetch from database then dispatch(UpdateStore())
+export const UPDATE_STORE = "UPDATE_STORE"; // FetchFromDatabase dispatch(UpdateStore())
 export const CALCULATE_PRICE = "CALCULATE_PRICE";
 
 // 1. Ensure UpdateCart update database

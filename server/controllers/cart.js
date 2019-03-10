@@ -16,14 +16,14 @@ const getAllProducts = (req, res) => {
   return Users.findById(userId)
               .then(user => {
                 if (user.products.id !== undefined) {
-                  const product = extractProduct(user);
-                  console.log('GET all product', product);
+                  //const product = extractProduct(user);
+                  //console.log('GET all product', product);
 
-                  return product;
+                  return user;
                 }
                 console.log('user.products.id', user.products.id);
               })
-              .then(product => res.status(200).json(product))
+              .then(user => res.status(200).json(user.products))
               .catch(err => res.status(400).json({ err }));
 }
 
@@ -44,9 +44,11 @@ const addOneProduct = (req, res) => {
                 return user.save();
               })
               .then(user => {
+                console.log('ADD - after save promise', user.products);
+                /*
                 const product = extractProduct(user);
-                console.log('ADD one product', product);
-                return res.status(200);
+                console.log('ADD one product', product);*/
+                return res.status(200).json(user.products); 
               })
               .catch(error => res.status(400).json({ error }));
 }
@@ -60,7 +62,7 @@ const updateOneProduct = (req, res) => {
 
   return Users.findById(userId)
               .then(user => {
-                const qty = user.products.qty;
+                const qty = [...user.products.qty];
                 const index = user.products.id.indexOf(productId);
                 if (index === -1) {
                   throw new Error(`Product doesn't exist!`);
@@ -79,13 +81,17 @@ const updateOneProduct = (req, res) => {
                   user.products.id.splice(index, 1);
                   qty.splice(index, 1);
                 }
+
+                user.products.qty = qty;
         
                 return user.save();
               })
               .then(user => {
+                console.log('UPDATE - After save promise', user.products);
+                /*
                 const product = extractProduct(user);
-                console.log('UPDATE one product', product);
-                return res.status(200);
+                console.log('UPDATE one product', product);*/
+                return res.status(200).json(user.products);
               })
               .catch(error => res.status(400).json({ error }));
 }
@@ -108,9 +114,11 @@ const deleteOneProduct = (req, res) => {
                 return user.save();
               })
               .then(user => {
+                console.log('REMOVE - After save promise', user.products);
+                /*
                 const product = extractProduct(user);
-                console.log('DELETE one product', product);
-                return res.status(200);
+                console.log('DELETE one product', product); */
+                return res.status(200).json(user.products);
               })
               .catch(error => res.status(400).json({ error }));
 }

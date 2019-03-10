@@ -55,16 +55,6 @@ const productsReducer = (state = initialState, action) => {
           id: updatedId,
           qty: updatedQty
         }
-
-      /*
-      // if element is present in array already, increase qty of it by 1
-      } else {
-        updatedQty[index] += 1;
-
-        return {
-          ...state,
-          qty: updatedQty
-        }*/
       } 
 
     // Action creator RemoveProduct dispatch(RemoveFromCart(id))
@@ -101,6 +91,7 @@ const productsReducer = (state = initialState, action) => {
 
       return {
         ...state,
+        id: updatedId,
         qty: updatedQty
       }
 

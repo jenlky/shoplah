@@ -8,8 +8,6 @@ const userSchema = new Schema({
   products: {
     id: [Number],
     qty: [Number],
-    numOfItems: { type: Number, default: 0 },
-    totalPrice: { type: Number, default: 0 },
   }
 });
 

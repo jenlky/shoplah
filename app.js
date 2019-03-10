@@ -45,13 +45,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// tweaking corsOption
 const corsOption = {
   origin: 'http://localhost:3000',
   credentials: true
 }
 
 // set up routes
-app.use(cors(corsOption));
+//app.use(cors(corsOption));
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/orders', orderRoutes); 
