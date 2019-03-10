@@ -17,7 +17,7 @@ const DropdownCart = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }
         <div className='dropdown-cart-header v-center'>recently added products</div>
         {products.map((product, index) => {
           return (
-            <DropdownCartItem 
+            <DropdownCartItem
               key={product.name} 
               product={product}
               id={idArray[index]}

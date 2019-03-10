@@ -13,7 +13,7 @@ class ProductsContainer extends Component {
     } 
 
     return (
-      <Products 
+      <Products
         products={this.props.products}
         idArray={this.props.idArray} 
         isLoggedIn={this.props.isLoggedIn}

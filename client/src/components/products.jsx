@@ -1,6 +1,6 @@
 import React from 'react';
-import Product from './Product';
 import PropTypes from 'prop-types';
+import Product from './Product';
 
 const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => {
   return (
@@ -8,7 +8,7 @@ const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => 
       {products.map((product, index) => {
         let id = index + 1;
         return (
-          <Product 
+          <Product
             key={product.name}
             id={id}
             containsId={idArray.includes(id)} 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Navbar from '../components/Navbar';
 import { PURGE } from 'redux-persist';
+import Navbar from '../components/Navbar';
 
 const NavbarContainer = ({ isLoggedIn, purgeStore }) => (
-  <Navbar 
+  <Navbar
     isLoggedIn={isLoggedIn} 
     purgeStore={purgeStore}
   />
