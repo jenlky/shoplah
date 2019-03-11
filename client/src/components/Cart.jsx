@@ -1,5 +1,5 @@
 import React from 'react';
-import CartItem from './CartItem';
+import CartItem from 'CartItem';
 import CartTotalContainer from '../containers/CartTotalContainer';
 import PropTypes from 'prop-types';
 
