@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CartTotal from '../components/CartTotal';
+import CartTotal from '../../components/CartTotal';
 
 const CartTotalContainer = ({ totalPrice }) => (
   <CartTotal totalPrice={totalPrice} />

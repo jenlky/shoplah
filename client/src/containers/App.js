@@ -4,9 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import FetchFromDatabase from '../actions/FetchFromDatabase';
 import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
-import Checkout from '../components/Checkout';
-import MainPage from '../components/MainPage';
-import Profile from '../components/Profile';
+import Checkout from '../../components/Checkout';
+import MainPage from '../../components/MainPage';
+import Profile from '../../components/Profile';
 
 class App extends Component {
   constructor(props) {
