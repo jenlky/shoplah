@@ -52,7 +52,7 @@ const corsOption = {
 }
 
 // set up routes
-//app.use(cors(corsOption));
+app.use(cors(corsOption));
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/orders', orderRoutes); 
