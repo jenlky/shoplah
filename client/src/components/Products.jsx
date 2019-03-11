@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Product from 'Product';
+import Product from './Product';
 
 const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => {
   return (

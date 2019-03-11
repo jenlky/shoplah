@@ -1,5 +1,5 @@
 import React from 'react';
-import DropdownCartItem from 'DropdownCartItem';
+import DropdownCartItem from './DropdownCartItem';
 
 const DropdownCart = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }) => {
   //console.log('productsQty:', productsQty);

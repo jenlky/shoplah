@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductInfo from 'ProductInfo';
+import ProductInfo from './ProductInfo';
 
 const Product = ({ id, product, containsId, isLoggedIn, addProduct, updateCart }) => {
   const name = product.name;
