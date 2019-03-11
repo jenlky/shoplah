@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RemoveProduct from '../actions/RemoveProduct';
-import DropdownCart from '../../components/DropdownCart';
+import DropdownCart from '../components/DropdownCart';
 
 const DropdownContainer = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }) => (
   <DropdownCart

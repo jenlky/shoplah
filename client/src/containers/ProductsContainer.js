@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import AddProduct from '../actions/AddProduct';
 import UpdateCart from '../actions/UpdateCart';
-import Products from '../../components/Products';
+import Products from '../components/Products';
 
 class ProductsContainer extends Component {
   render() {

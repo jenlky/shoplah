@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RemoveProduct from '../actions/RemoveProduct';
 import UpdateCart from '../actions/UpdateCart';
-import Cart from '../../components/Cart';
+import Cart from '../components/Cart';
 
 const CartContainer = ({ idArray, qtyArray, products, removeProduct, updateCart }) => (
   <Cart 

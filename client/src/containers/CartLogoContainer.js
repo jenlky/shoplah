@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CartLogo from '../../components/CartLogo';
+import CartLogo from '../components/CartLogo';
 
 const CartLogoContainer = ({ numOfItems }) => (
   <CartLogo numOfItems={numOfItems} />
