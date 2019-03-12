@@ -27,7 +27,7 @@ mongoose.connect(process.env.dbURL,
 app.set('view engine', 'ejs');
 
 // serve static files
-//app.use(express.static(path.join(__dirname, '/client/build'))); 
+app.use(express.static(path.join(__dirname, '/client/build'))); 
 
 //app.use(morgan('dev'));
 
@@ -47,7 +47,8 @@ app.use(passport.session());
 
 // tweaking corsOption
 const corsOption = {
-  origin: 'http://localhost:3000',
+  // http://localhost:3000
+  origin: 'https://jenlky-shopping-cart.herokuapp.com/',
   credentials: true
 }
 
