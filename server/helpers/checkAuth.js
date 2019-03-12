@@ -15,7 +15,6 @@ const checkAuth = (req, res, next) => {
     next();
   } else {
     res.status(401).json({ error: 'Unauthorized'})
-    // res.redirect("http://localhost:3000/");
   }
 };
 
