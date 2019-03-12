@@ -5,9 +5,11 @@ const DropdownCart = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }
   //console.log('productsQty:', productsQty);
   const redirect = () => {
     if (isLoggedIn) {
-      window.location.href = 'http://localhost:3000/cart';
+      // in development - http://localhost:3000/cart
+      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/cart';
     } else {
-      window.location.href = 'http://localhost:8080/auth/login';
+      // in development - http://localhost:8080/auth/login
+      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
     }
   }
 

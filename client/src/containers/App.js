@@ -28,7 +28,8 @@ class App extends Component {
   }
 
   redirect = () => {
-    window.location.href = 'http://localhost:8080/auth/login';
+    // in development - http://localhost:8080/auth/login'
+    window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
     // maybe can add spinner while loading
     return null;
   }

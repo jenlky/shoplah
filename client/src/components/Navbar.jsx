@@ -21,8 +21,9 @@ const theme = createMuiTheme({
 const Logged = ({ purgeStore }) => {
   // change the logout btn to a dropdown menu with my username
 
+  // in development - http://localhost:8080/auth/logout
   return (
-    <Button href="http://localhost:8080/auth/logout" style={{ fontSize: '14px' }} 
+    <Button href="/auth/logout" style={{ fontSize: '14px' }} 
       children='Logout' onClick={purgeStore} 
     />
   );
@@ -31,9 +32,10 @@ const Logged = ({ purgeStore }) => {
 class Login extends Component {
   static muiName = 'Button';
 
+  // in development - http://localhost:8080/auth/login
   render() {
     return (
-      <Button href="http://localhost:8080/auth/login" style={{ fontSize: '14px' }} 
+      <Button href="/auth/login" style={{ fontSize: '14px' }} 
         children='Login' 
       />
     );

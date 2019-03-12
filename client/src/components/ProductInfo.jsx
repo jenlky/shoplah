@@ -13,7 +13,8 @@ class ProductInfo extends Component {
       
       return this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
     } else {
-      window.location.href = 'http://localhost:8080/auth/login';
+      // in development - http://localhost:8080/auth/login
+      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
     } 
   }
 
