@@ -7,12 +7,14 @@ router.get('/login',
 );
 
 router.get('/login/callback', 
-  passport.authenticate('auth0', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
+  // http://localhost:3000/
+  passport.authenticate('auth0', { failureRedirect: '/' }), (req, res) => {
   if (!req.user) {
     throw new Error('user null');
   }
   
-  res.redirect('http://localhost:3000/');
+  // http://localhost:3000/
+  res.redirect('/');
 }); 
 
 router.get('/checkAuth', (req, res) => {
@@ -26,7 +28,8 @@ router.get('/checkAuth', (req, res) => {
 router.get('/logout', (req, res) => {
   console.log('log out successfully');
   req.logOut();
-  res.redirect('http://localhost:3000/'); 
+  // http://localhost:3000/
+  res.redirect('/'); 
 });
 
 module.exports = router;
