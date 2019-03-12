@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import FetchFromDatabase from '../actions/FetchFromDatabase';
 import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
@@ -36,13 +36,15 @@ class App extends Component {
 
   render() {
     return (
-      <Switch> 
-        <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
-          <Checkout /> : this.redirect()
-        } />
-        <Route exact path='/user/profile' render={() => <Profile />} />
-        <Route exact path='/' component={<MainPage />} />
-      </Switch>
+      <Router history={hashHistory}>
+        <Switch> 
+          <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
+            <Checkout /> : this.redirect()
+          } />
+          <Route exact path='/user/profile' render={() => <Profile />} />
+          <Route exact path='/' component={<MainPage />} />
+        </Switch>
+      </Router>
     );
   }
 }
