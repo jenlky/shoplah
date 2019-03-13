@@ -41,7 +41,7 @@ class App extends Component {
           <Checkout /> : this.redirect()
         } />
         <Route exact path='/user/profile' render={() => <Profile />} />
-        <Route exact path='/' component={<MainPage />} />
+        <Route exact path='/' component={MainPage} />
       </Switch>
     );
   }
