@@ -7,15 +7,20 @@ router.get('/login',
 );
 
 router.get('/login/callback', 
-  // http://localhost:3000/
+  // in development - http://localhost:3000/
+  // can ignore it in development since failure is tolerated
   passport.authenticate('auth0', { failureRedirect: '/' }), (req, res) => {
   if (!req.user) {
     throw new Error('user null');
   }
   
-  // http://localhost:3000/
-  res.redirect('/');
+  if (process.env.NODE_ENV === 'development') {
+    res.redirect('http://localhost:3000/'); 
+  } else {
+    res.redirect('/');
+  }
 }); 
+
 
 router.get('/checkAuth', (req, res) => {
   if (!req.user) {
@@ -28,8 +33,12 @@ router.get('/checkAuth', (req, res) => {
 router.get('/logout', (req, res) => {
   console.log('log out successfully');
   req.logOut();
-  // http://localhost:3000/
-  res.redirect('/'); 
+
+  if (process.env.NODE_ENV === 'development') {
+    res.redirect('http://localhost:3000/'); 
+  } else {
+    res.redirect('/'); 
+  }
 });
 
 module.exports = router;

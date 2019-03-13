@@ -5,17 +5,26 @@ class ProductInfo extends Component {
   handleClick = (event) => {
     // console.log('event', event.currentTarget);
     // console.log('data-event', event.currentTarget.dataset.event);
-    // if user isLoggedIn
-    if (this.props.isLoggedIn === true) {
-      if (!this.props.containsId) {
-        return this.props.addProduct(this.props.id);
-      }
-      
-      return this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
-    } else {
-      // in development - http://localhost:8080/auth/login
-      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
-    } 
+
+    switch (this.props.isLoggedIn) {
+      case true:
+        if (!this.props.containsId) {
+          return this.props.addProduct(this.props.id);
+        } 
+          
+        return this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
+
+      case false:
+        if (process.env.NODE_ENV === 'development') {
+          window.location.href = 'http://localhost:8080/auth/login';
+        } else {
+          window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
+        }
+        break;
+        
+      default:
+        console.log('this.props.isLoggedIn is not true or false');
+    }
   }
 
   render() {

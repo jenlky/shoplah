@@ -4,12 +4,25 @@ import DropdownCartItem from './DropdownCartItem';
 const DropdownCart = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }) => {
   //console.log('productsQty:', productsQty);
   const redirect = () => {
-    if (isLoggedIn) {
-      // in development - http://localhost:3000/cart
-      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/cart';
-    } else {
-      // in development - http://localhost:8080/auth/login
-      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
+    switch(isLoggedIn) {
+      case true:
+        if (process.env.NODE_ENV === 'development') {
+          window.location.href = 'http://localhost:3000/cart';
+        } else {
+          window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/cart';
+        }
+        break;
+
+      case false:
+        if (process.env.NODE_ENV === 'development') {
+          window.location.href = 'http://localhost:8080/auth/login';
+        } else {
+          window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
+        }
+        break;
+
+      default:
+        console.log('this.props.isLoggedIn is not true or false');  
     }
   }
 

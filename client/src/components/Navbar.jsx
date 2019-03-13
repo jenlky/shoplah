@@ -18,12 +18,19 @@ const theme = createMuiTheme({
 });
 
 // Material UI components cannot be styled with ordinary className, u must follow their method to override it. Probably need use withStyles.
-const Logged = ({ purgeStore }) => {
-  // change the logout btn to a dropdown menu with my username
+const Logout = ({ purgeStore }) => {
+  if (process.env.NODE_ENV === 'development') {
+    return (
+      <Button 
+        href="http://localhost:8080/auth/logout" style={{ fontSize: '14px' }} 
+        children='Logout' onClick={purgeStore} 
+      />
+    );
+  }
 
-  // in development - http://localhost:8080/auth/logout
   return (
-    <Button href="/auth/logout" style={{ fontSize: '14px' }} 
+    <Button 
+      href="/auth/logout" style={{ fontSize: '14px' }} 
       children='Logout' onClick={purgeStore} 
     />
   );
@@ -32,10 +39,19 @@ const Logged = ({ purgeStore }) => {
 class Login extends Component {
   static muiName = 'Button';
 
-  // in development - http://localhost:8080/auth/login
   render() {
+    if (process.env.NODE_ENV === 'development') {
+      return (
+        <Button 
+          href="http://localhost:8080/auth/login" style={{ fontSize: '14px' }} 
+          children='Login'
+        />
+      );
+    }
+
     return (
-      <Button href="/auth/login" style={{ fontSize: '14px' }} 
+      <Button 
+        href="/auth/login" style={{ fontSize: '14px' }} 
         children='Login' 
       />
     );
@@ -54,7 +70,7 @@ const Navbar = ({ isLoggedIn, purgeStore }) => {
             to='/' className=''>ShopLah</NavLink>
           <div className='navbar-right-side'>
             <CartLogoContainer />
-            {isLoggedIn ? <Logged purgeStore={purgeStore} /> : <Login />}
+            {isLoggedIn ? <Logout purgeStore={purgeStore} /> : <Login />}
           </div>
         </Toolbar>
       </AppBar>

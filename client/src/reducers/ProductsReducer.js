@@ -56,6 +56,7 @@ const productsReducer = (state = initialState, action) => {
           qty: updatedQty
         }
       } 
+      break;
 
     // Action creator RemoveProduct dispatch(RemoveFromCart(id))
     case actionTypes.REMOVE_FROM_CART:
