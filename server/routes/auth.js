@@ -21,7 +21,6 @@ router.get('/login/callback',
   }
 }); 
 
-
 router.get('/checkAuth', (req, res) => {
   if (!req.user) {
     res.status(401).json({ error: 'User is unauthorised' });

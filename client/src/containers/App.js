@@ -14,7 +14,14 @@ class App extends Component {
     console.log('constructor isLoggedIn', this.props.isLoggedIn);
   }
 
+  loader = document.querySelector('.loader');
+
+  // if you want to show the loader when React loads data again
+  showLoader = () => this.loader.classList.remove('loader--hide');
+  hideLoader = () => this.loader.classList.add('loader--hide');
+
   componentDidMount() {
+    this.hideLoader();
     this.props.fetchProducts();
     this.props.fetchUser();
   }
@@ -28,9 +35,12 @@ class App extends Component {
   }
 
   redirect = () => {
-    // in development - http://localhost:8080/auth/login'
-    window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
-    // maybe can add spinner while loading
+    if (process.env.NODE_ENV === 'development') {
+      window.location.href = 'http://localhost:8080/auth/login';
+    } else {
+      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
+    }
+
     return null;
   }
 

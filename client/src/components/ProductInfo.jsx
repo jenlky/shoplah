@@ -34,23 +34,11 @@ class ProductInfo extends Component {
           <p>{this.props.name}</p>      
           <p>{"$" + this.props.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
         </div>
-        <button data-event='plus' onClick={(e) => this.handleClick(e)}>Add</button>
+        <button type='button' data-event='plus' onClick={(e) => this.handleClick(e)}>Add</button>
       </div>
     );
   }
 }
-
-/*
-const ProductInfo = ({ num, price, addProduct }) => (
-  <div className='product-info'>
-    <div>
-      <p>Product {num}</p>      
-      <p>{"$ " + price}</p>
-    </div>
-    <button onClick={addProduct}>Add</button>
-  </div>
-);
-*/
 
 ProductInfo.propTypes = {
   id: PropTypes.number.isRequired,
