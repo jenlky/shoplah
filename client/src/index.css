@@ -89,7 +89,7 @@ body {
     border: 0.2rem solid #ffe9b4;
     top: 0px;
     right: -12px; }
-  @media (max-width: 769px) {
+  @media (max-width: 767px) {
     .dropdown-cart .dropdown-cart-menu {
       display: none; }
     .dropdown-cart .dropdown-cart:after {
