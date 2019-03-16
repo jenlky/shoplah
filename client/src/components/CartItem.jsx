@@ -40,7 +40,7 @@ class CartItem extends Component {
               <span>{product.name}</span>
             </div>
           </div>
-          <span>{ '$ ' + price }</span>
+          <span>{ '$' + price }</span>
           <div className='shoplah-qty'>
             <button data-event='minus' className='shoplah-btn-outline' onClick={(e) => this.handleEvent(e)}>
               <img src={minus} alt="Minus sign" />
@@ -51,7 +51,7 @@ class CartItem extends Component {
               <img src={plus} alt="Plus sign" />
             </button>
           </div>
-          <span>{ '$ ' + (qty * product.price).toLocaleString('en-US', { minimumFractionDigits: 2 }) }</span>
+          <span>{ '$' + (qty * product.price).toLocaleString('en-US', { minimumFractionDigits: 2 }) }</span>
         </div>
       );
     } else {

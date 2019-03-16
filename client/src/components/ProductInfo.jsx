@@ -30,7 +30,7 @@ class ProductInfo extends Component {
   render() {
     return (
       <div className='product-info'>
-        <div>
+        <div className='product-text'>
           <p>{this.props.name}</p>      
           <p>{"$" + this.props.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
         </div>

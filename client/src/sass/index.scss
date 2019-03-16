@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: rgb(244, 243, 237);
+  background-color: rgb(244, 243, 237); // shopee uses #f5f5f5
   font: 14px 'Roboto', sans-serif;
 }
 
@@ -66,8 +66,6 @@ body {
 }
 
 .first-product {
-  //grid-row: 1/3;
-  //grid-column: 2/3;
   grid-area: 1/ 2/ 3/ 3;
   justify-self: center;
 }
@@ -319,9 +317,14 @@ body {
     }
   }
 
-  div { // div of product labels
+  &-text {
+    width: 60%;
+
     > p {
       margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; 
       
       &:last-of-type {
         margin-top: 2px;
@@ -332,10 +335,15 @@ body {
   &-details {
     display: grid;
     margin: 1rem;
-
+    text-align: center;
+    text-align: -webkit-center;
 
     > span {
       margin-top: 5px;
+      /*
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; */
     }
   }
 }
@@ -352,7 +360,7 @@ body {
 //.shoplah-header and .shoplah-items have the same grid-template-columns
 .shoplah {
   text-align: center;
-  margin-top: 10rem;
+  margin-top: 8.5rem; //10rem
 
   &-menu {
     position: relative;
@@ -385,7 +393,8 @@ body {
     //text-align: left;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    border: 2px solid rgb(219, 219, 219);
+    //border: 2px solid rgb(219, 219, 219);
+    background-color: white;
 
     > span {
       display: inline-block;
@@ -402,8 +411,10 @@ body {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    border: 2px rgb(219, 219, 219);
-    border-style: none solid solid solid;
+    //border: 2px rgb(219, 219, 219);
+    //border-style: none solid solid solid;
+    margin-top: 1.2rem;
+    background-color: white;
   }
 
   &-cancel {
@@ -417,7 +428,7 @@ body {
   }
 
   &-img {
-    border: 2px solid rgb(219, 219, 219);
+    //border: 2px solid rgb(219, 219, 219);
     width: 70px;
     //height: 83px;
 
@@ -437,13 +448,19 @@ body {
   }
 
   &-total {
-    border: 2px solid rgb(219, 219, 219);
-    border-style: none solid solid solid;
-    padding: 5px 0;
-    margin-bottom: 4rem;
+    //border: 2px solid rgb(219, 219, 219);
+    //border-style: none solid solid solid;
+    padding: 10px 0;
+    margin-bottom: 2rem; //4rem
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 2fr;
     grid-auto-flow: row; 
+    margin-top: 1.2rem;
+    background-color: white;
+
+    > span {
+      line-height: 2.8rem;
+    }
   }
 
   &-qty {
@@ -464,8 +481,6 @@ body {
       height: 1.4rem;
       font-size: 1rem;
       vertical-align: middle;
-      //fill: currentColor;
-      //position: relative;
     }
   }
 
@@ -491,17 +506,22 @@ body {
       width: 3.5rem;
     }
   }
+
+  &-right {
+    grid-column: 3/5;
+    margin-right: 1.6rem;
+    text-align: end;
+  }
 }
 
 .total-price {
-  grid-column: 4/5;
-  padding: 5px 0;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .checkout {
-  grid-column: 4/5;
-  width: 75%;
-  justify-self: center;
-  margin: 5px 0;
-  padding: 3px;
+  justify-self: end;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding: 5px;
 }

@@ -5,10 +5,11 @@ const CartTotal = ({ totalPrice }) => {
   if (totalPrice > 0) {
     return (
       <div className='shoplah-total'>
-        <span className='total-price'>
+        <span>Total</span>
+        <span className='total-price shoplah-right'>
           { '$ ' + totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2 }) }
         </span>
-        <button className='checkout'>Checkout</button>
+        <button className='checkout shoplah-right'>Checkout</button>
       </div>
     );
   } else {
