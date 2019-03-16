@@ -7,6 +7,7 @@ import FetchUser from '../actions/FetchUser';
 import Checkout from '../components/Checkout';
 import MainPage from '../components/MainPage';
 import Profile from '../components/Profile';
+import Spinner from '../components/Spinner';
 
 class App extends Component {
   constructor(props) {
@@ -14,14 +15,8 @@ class App extends Component {
     console.log('constructor isLoggedIn', this.props.isLoggedIn);
   }
 
-  loader = document.querySelector('.loader');
-
-  // if you want to show the loader when React loads data again
-  showLoader = () => this.loader.classList.remove('loader--hide');
-  hideLoader = () => this.loader.classList.add('loader--hide');
-
   componentDidMount() {
-    this.hideLoader();
+    //this.props.hideSpinner();
     this.props.fetchProducts();
     this.props.fetchUser();
   }
@@ -46,16 +41,27 @@ class App extends Component {
 
   render() {
     return (
-      <Switch> 
-        <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
-          <Checkout /> : this.redirect()
-        } />
-        <Route exact path='/user/profile' render={() => <Profile />} />
-        <Route exact path='/' component={MainPage} />
-      </Switch>
+      <React.Fragment>
+        <Switch> 
+          <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
+            <Checkout /> : this.redirect()
+          } />
+          <Route exact path='/user/profile' render={() => <Profile />} />
+          <Route exact path='/' component={MainPage} />
+        </Switch>
+        <Spinner />
+      </React.Fragment>   
     );
   }
 }
+
+/*
+const spinner = document.getElementsByClassName('.spinner');
+console.log(spinner);
+
+// if you want to show the loader when React loads data again
+const showSpinner = () => spinner.classList.remove('spinner-hide');
+const hideSpinner = () => spinner.classList.add('spinner-hide'); */
 
 const mapStateToProps = state => ({
   isLoggedIn: state.userReducer.isLoggedIn
@@ -64,7 +70,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchFromDatabase: () => dispatch(FetchFromDatabase()),
   fetchProducts: () => dispatch(FetchProducts()),
-  fetchUser: () => dispatch(FetchUser())
+  fetchUser: () => dispatch(FetchUser()),
+  //hideSpinner: () => hideSpinner()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
