@@ -334,16 +334,19 @@ body {
 
   &-details {
     display: grid;
-    margin: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
     text-align: center;
     text-align: -webkit-center;
+    height: 100%;
+    width: 120px;
+
+    @media(max-width: 426px) {
+      width: 105px;
+    }
 
     > span {
       margin-top: 5px;
-      /*
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; */
     }
   }
 }

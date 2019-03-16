@@ -243,15 +243,17 @@ body {
       margin-top: 2px; }
 .product-details {
   display: grid;
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
   text-align: center;
-  text-align: -webkit-center; }
+  text-align: -webkit-center;
+  height: 100%;
+  width: 120px; }
+  @media (max-width: 426px) {
+    .product-details {
+      width: 105px; } }
   .product-details > span {
-    margin-top: 5px;
-    /*
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */ }
+    margin-top: 5px; }
 
 .horizontal-ruler {
   background-color: #dbdbdb;
