@@ -9,7 +9,7 @@ const CartTotal = ({ totalPrice }) => {
         <span className='total-price shoplah-right'>
           { '$ ' + totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2 }) }
         </span>
-        <button className='checkout shoplah-right'>Checkout</button>
+        <button className='checkout shoplah-right'>Check Out</button>
       </div>
     );
   } else {

@@ -137,11 +137,13 @@ body {
     visibility: visible;
   }
 
-  &:hover:after {
-    visibility: visible;
+  @media(min-width: 769px) {
+    &:hover:after {
+      visibility: visible;
+    }
   }
 
-  @media(max-width: 767px) {
+  @media(max-width: 768px) {
     .dropdown-cart {
       &-menu {
         display: none;
@@ -447,18 +449,24 @@ body {
   }
 
   &-total {
-    //border: 2px solid rgb(219, 219, 219);
-    //border-style: none solid solid solid;
     padding: 10px 0;
     margin-bottom: 2rem; //4rem
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     grid-auto-flow: row; 
     margin-top: 1.2rem;
     background-color: white;
 
     > span {
       line-height: 2.8rem;
+    }
+
+    @media(max-width: 450px) {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    @media(max-width: 350px) {
+      grid-template-columns: 2fr 1fr;
     }
   }
 
@@ -513,9 +521,15 @@ body {
   }
 
   &-right {
-    grid-column: 3/5;
-    margin-right: 1.6rem;
-    text-align: end;
+    grid-column: 4/5;
+
+    @media(max-width: 450px) {
+      grid-column: 3/4;
+    }
+
+    @media(max-width: 350px) {
+      grid-column: 2/3;
+    }
   }
 }
 
@@ -525,8 +539,7 @@ body {
 }
 
 .checkout {
-  justify-self: end;
-  margin-top: 0.4rem;
-  margin-bottom: 0.4rem;
+  justify-self: center;
+  margin: 0.5rem 0;
   padding: 5px;
 }
