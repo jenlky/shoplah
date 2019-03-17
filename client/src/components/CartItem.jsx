@@ -10,11 +10,14 @@ class CartItem extends Component {
 
   handleEvent = (event) => {
     //console.log(event.currentTarget.dataset.event);
+    //console.log(event.target.value);
 
     if (this.props.qty === 0) {
       this.removeProduct();
-    } else {
+    } else if (!event.target.value) {
       this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
+    } else {
+      this.props.updateCart(event.target.value, this.props.id);
     }
   }
 

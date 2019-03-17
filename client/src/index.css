@@ -110,6 +110,10 @@ body {
     border: 0.2rem solid #ffe9b4;
     top: 0px;
     right: -12px; }
+  .dropdown-cart:hover .dropdown-cart-menu {
+    visibility: visible; }
+  .dropdown-cart:hover:after {
+    visibility: visible; }
   @media (max-width: 767px) {
     .dropdown-cart .dropdown-cart-menu {
       display: none; }
@@ -117,10 +121,6 @@ body {
       display: none; }
     .dropdown-cart .dropdown-cart-empty {
       display: none; } }
-  .dropdown-cart:hover .dropdown-cart-menu {
-    visibility: visible; }
-  .dropdown-cart:hover:after {
-    visibility: visible; }
   .dropdown-cart-menu {
     background: white;
     position: absolute;
@@ -223,7 +223,7 @@ body {
     background-color: #efb784;
     color: white;
     border: 0;
-    padding: 6px 12px;
+    padding: 5px 10px;
     font: 14px 'Lato', sans-serif;
     cursor: pointer;
     width: 5rem; }
@@ -325,6 +325,9 @@ body {
       line-height: 2.8rem; }
   .shoplah-qty {
     display: flex; }
+    @media (max-width: 400px) {
+      .shoplah-qty > button {
+        display: none; } }
   .shoplah-btn-outline {
     cursor: pointer;
     padding: 0px 4px;

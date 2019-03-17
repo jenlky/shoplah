@@ -133,6 +133,14 @@ body {
     right: -12px;
   }
 
+  &:hover .dropdown-cart-menu {
+    visibility: visible;
+  }
+
+  &:hover:after {
+    visibility: visible;
+  }
+
   @media(max-width: 767px) {
     .dropdown-cart {
       &-menu {
@@ -147,14 +155,6 @@ body {
         display: none;
       }
     }
-  }
-
-  &:hover .dropdown-cart-menu {
-    visibility: visible;
-  }
-
-  &:hover:after {
-    visibility: visible;
   }
 
   // &-menu and &:after must have the same transition-delay
@@ -296,14 +296,13 @@ body {
     display: flex;
     flex-flow: column wrap;
     padding-top: 1rem;
-    //justify-content: space-between;
     margin-bottom: 3rem;
     
     button {
       background-color: rgb(239, 183, 132);
       color: white;
       border: 0;
-      padding: 6px 12px;
+      padding: 5px 10px;
       font: 14px 'Lato', sans-serif;
       cursor: pointer;
       width: 5rem;
@@ -319,13 +318,9 @@ body {
   }
 
   &-text {
-    //width: 60%;
 
     > p {
       margin: 0;
-      //white-space: nowrap;
-      //overflow: hidden;
-      //text-overflow: ellipsis; 
       
       &:last-of-type {
         margin-top: 2px;
@@ -469,6 +464,12 @@ body {
 
   &-qty {
     display: flex;
+
+    > button {
+      @media(max-width: 400px) {
+        display: none;
+      }
+    }
   }
 
   &-btn-outline {
