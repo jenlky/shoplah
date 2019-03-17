@@ -216,9 +216,8 @@ body {
 
 .product-info {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   padding-top: 1rem;
-  justify-content: space-between;
   margin-bottom: 3rem; }
   .product-info button {
     background-color: #efb784;
@@ -226,21 +225,17 @@ body {
     border: 0;
     padding: 6px 12px;
     font: 14px 'Lato', sans-serif;
-    cursor: pointer; }
+    cursor: pointer;
+    width: 5rem; }
     .product-info button:focus {
       outline: none; }
     @media (min-width: 600px) {
       .product-info button {
         font-size: 16px; } }
-.product-text {
-  width: 60%; }
-  .product-text > p {
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-    .product-text > p:last-of-type {
-      margin-top: 2px; }
+.product-text > p {
+  margin: 0; }
+  .product-text > p:last-of-type {
+    margin-top: 2px; }
 .product-details {
   display: grid;
   margin-top: 1rem;
