@@ -27,7 +27,7 @@ const FetchUser = () => {
           payload: {
             user: '',
             userID: '',
-            thumbnail: '',
+            picture: '',
             isLoggedIn: false
           }
         })

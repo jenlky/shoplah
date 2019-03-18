@@ -388,5 +388,8 @@ body {
 
 .profile {
   margin-top: 10rem; }
+  .profile-picture {
+    width: 120px;
+    height: 120px; }
 
 /*# sourceMappingURL=index.css.map */

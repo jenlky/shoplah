@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actions';
 const initialState = {
   user: '',
   userID: '',
-  thumbnail: '',
+  picture: '',
   isLoggedIn: false
 };
 

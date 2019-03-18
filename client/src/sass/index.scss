@@ -549,4 +549,9 @@ body {
 
 .profile {
   margin-top: 10rem;
+
+  &-picture {
+    width: 120px;
+    height: 120px;
+  }
 }

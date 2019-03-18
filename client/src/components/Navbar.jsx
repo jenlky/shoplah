@@ -8,9 +8,10 @@ import Login from './Login';
 import LogoutMenu from './LogoutMenu';
 
 const theme = createMuiTheme({
+  /*
   typography: {
     useNextVariants: true
-  },
+  },*/
   palette: {
     primary:{
       main: '#ffe9b4'
@@ -44,7 +45,7 @@ const styles = {
 // changing of Toolbar classes only work in class component
 class Navbar extends Component {
   render() {
-    //console.log(this.props.user);
+    //console.log(this.props.username);
     const { classes } = this.props;
 
     return (
@@ -57,7 +58,7 @@ class Navbar extends Component {
               <CartLogoContainer />
               {this.props.isLoggedIn ? 
                 <LogoutMenu 
-                  user={this.props.user}
+                  username={this.props.username}
                   purgeStore={this.props.purgeStore} 
                 /> 
                   : 

@@ -6,7 +6,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 
-const Profile = ({ user }) => {
+const ProfileLink = ({ user }) => {
   if (process.env.NODE_ENV === 'development') {
     return (
       <Button href="http://localhost:3000/user/profile" user={user} children='Profile' />
@@ -66,7 +66,7 @@ class LogoutMenu extends Component {
           aria-haspopup="true"
           onClick={this.handleToggle}
         >
-          {this.props.user.username}
+          {this.props.username}
         </Button>
         <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
           {({ TransitionProps, placement }) => (
@@ -78,7 +78,7 @@ class LogoutMenu extends Component {
               <Paper>
                 <ClickAwayListener onClickAway={this.handleClose}>
                   <MenuList>
-                    <Profile user={this.props.user} />
+                    <ProfileLink />
                     <Logout purgeStore={this.props.purgeStore} />
                   </MenuList>
                 </ClickAwayListener>
