@@ -3,15 +3,21 @@ import { connect } from 'react-redux';
 import { PURGE } from 'redux-persist';
 import Navbar from '../components/Navbar';
 
-const NavbarContainer = ({ isLoggedIn, purgeStore }) => (
+const NavbarContainer = ({ user, isLoggedIn, purgeStore }) => (
   <Navbar
+    user={user}
     isLoggedIn={isLoggedIn} 
     purgeStore={purgeStore}
   />
 );
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.userReducer.isLoggedIn
+  isLoggedIn: state.userReducer.isLoggedIn,
+  user: { 
+    username: state.userReducer.user,
+    userID: state.userReducer.userID,
+    thumbnail: state.userReducer.thumbnail
+  }
 });
 
 const mapDispatchToProps = dispatch => ({

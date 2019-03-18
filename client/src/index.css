@@ -73,7 +73,8 @@ body {
   font-size: '24px'; }
 
 .navbar-right-side {
-  display: flex; }
+  display: flex;
+  align-items: center; }
   .navbar-right-side svg {
     vertical-align: middle;
     cursor: pointer; }
@@ -99,7 +100,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  margin-right: 1rem; }
+  margin-right: 1.2rem; }
   .dropdown-cart-badge {
     position: absolute;
     border-radius: 50%;
@@ -227,7 +228,8 @@ body {
     padding: 5px 10px;
     font: 14px 'Lato', sans-serif;
     cursor: pointer;
-    width: 5rem; }
+    width: 5rem;
+    margin-top: 0.5rem; }
     .product-info button:focus {
       outline: none; }
     @media (min-width: 600px) {
@@ -383,5 +385,8 @@ body {
   justify-self: center;
   margin: 0.5rem 0;
   padding: 5px; }
+
+.profile {
+  margin-top: 10rem; }
 
 /*# sourceMappingURL=index.css.map */

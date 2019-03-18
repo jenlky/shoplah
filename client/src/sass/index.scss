@@ -87,6 +87,7 @@ body {
 
 .navbar-right-side {
   display: flex;
+  align-items: center;
 
   svg {
     vertical-align: middle;
@@ -119,7 +120,7 @@ body {
   position: relative;
   display: flex; 
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 1.2rem;
 
   &-badge {
     position: absolute;
@@ -308,6 +309,7 @@ body {
       font: 14px 'Lato', sans-serif;
       cursor: pointer;
       width: 5rem;
+      margin-top: 0.5rem;
 
       &:focus {
         outline: none;
@@ -520,6 +522,7 @@ body {
     }
   }
 
+  // total price and check out btn are in the last column
   &-right {
     grid-column: 4/5;
 
@@ -542,4 +545,8 @@ body {
   justify-self: center;
   margin: 0.5rem 0;
   padding: 5px;
+}
+
+.profile {
+  margin-top: 10rem;
 }
