@@ -555,6 +555,8 @@ body {
   position: absolute;
   left: 30%;
   text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.13);
 
   // when Manage and protect your account wraps
   @media(max-width: 530px) {

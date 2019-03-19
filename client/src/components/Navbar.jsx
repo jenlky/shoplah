@@ -52,7 +52,7 @@ class Navbar extends Component {
         <AppBar>
           <Toolbar classes={{ root: classes.toolbar }}>
             <NavLink style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black', fontSize: '24px' }} 
-              to='/'>ShopLah</NavLink>
+              exact to='/'>ShopLah</NavLink>
             <div className='navbar-right-side'>
               <CartLogoContainer />
               {this.props.isLoggedIn ? 
