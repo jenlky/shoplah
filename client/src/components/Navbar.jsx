@@ -8,10 +8,9 @@ import Login from './Login';
 import LogoutMenu from './LogoutMenu';
 
 const theme = createMuiTheme({
-  /*
   typography: {
     useNextVariants: true
-  },*/
+  },
   palette: {
     primary:{
       main: '#ffe9b4'

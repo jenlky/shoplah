@@ -2,26 +2,31 @@ import React from 'react';
 import NavbarContainer from '../containers/NavbarContainer';
 
 const Profile = ({ user }) => {
-  console.log(user);
+  //console.log(user);
 
   return (
-    <main>
+    <React.Fragment>
       <NavbarContainer />
-      <h2 className='profile'>My Profile</h2>
-      <h3>Manage and protect your account</h3>
-      <div>
-        <span>Username:</span>
-        <span>{user.username}</span>
-      </div>
-      <div>
-        <span>User ID:</span>
-        <span>{user.userID}</span>
-      </div>
-      <div>
-        <span>Picture:</span>
-        <img className='profile-picture' src={user.picture} alt='User thumbnail' />
-      </div>    
-    </main>
+      <main className='profile'>
+        <h2>My Profile</h2>
+        <p>Manage and protect your account</p>
+        <hr/>
+        <div className='profile-info'>
+          <div>
+            <span>Username: </span>
+            <span>{user.username}</span>
+          </div>
+          <div>
+            <span>User ID: </span>
+            <span>{user.userID}</span>
+          </div>
+          <div className='profile-picture-container'>
+            <span>Picture: </span>
+            <img className='profile-picture' src={user.picture} alt='User thumbnail' />
+          </div>  
+        </div>
+      </main>
+    </React.Fragment>
   );
 }
 
