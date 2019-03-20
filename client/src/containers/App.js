@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import { PAUSE } from 'redux-persist';
+import { withRouter } from 'react-router';
+
 import FetchFromDatabase from '../actions/FetchFromDatabase';
 import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
 import Checkout from '../components/Checkout';
 import MainPage from '../components/MainPage';
-import Profile from '../components/Profile';
-import Spinner from '../components/Spinner';
+import ProfileContainer from '../containers/ProfileContainer';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log('constructor isLoggedIn', this.props.isLoggedIn);
+    this.state = { loading: true };
+    //console.log('App constructor isLoggedIn', this.props.isLoggedIn);
+    console.log('App constructor loading', this.state.loading);
   }
 
   componentDidMount() {
-    //this.props.hideSpinner();
     this.props.fetchProducts();
     this.props.fetchUser();
+    setTimeout(() => {
+      this.setState({ loading: false })
+    }, 100);
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate isLoggedIn', this.props.isLoggedIn);
-
+    //console.log('App componentDidUpdate isLoggedIn', this.props.isLoggedIn);
     if (this.props.isLoggedIn) {
       this.props.fetchFromDatabase();
-    }
+    } /* else {
+      this.props.pauseStore();
+    }*/
   }
 
   redirect = () => {
@@ -40,28 +47,25 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return null;
+    }
+
     return (
       <React.Fragment>
         <Switch> 
           <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
             <Checkout /> : this.redirect()
           } />
-          <Route exact path='/user/profile' render={() => <Profile />} />
-          <Route exact path='/' component={MainPage} />
+          <Route exact path='/user/profile' render={() => this.props.isLoggedIn ? 
+            <ProfileContainer /> : this.redirect()
+          } />
+          <Route exact path='/' render={() => <MainPage />} />
         </Switch>
-        <Spinner />
       </React.Fragment>   
     );
   }
 }
-
-/*
-const spinner = document.getElementsByClassName('.spinner');
-console.log(spinner);
-
-// if you want to show the loader when React loads data again
-const showSpinner = () => spinner.classList.remove('spinner-hide');
-const hideSpinner = () => spinner.classList.add('spinner-hide'); */
 
 const mapStateToProps = state => ({
   isLoggedIn: state.userReducer.isLoggedIn
@@ -71,7 +75,8 @@ const mapDispatchToProps = dispatch => ({
   fetchFromDatabase: () => dispatch(FetchFromDatabase()),
   fetchProducts: () => dispatch(FetchProducts()),
   fetchUser: () => dispatch(FetchUser()),
-  //hideSpinner: () => hideSpinner()
+  //dispatch({ type: PAUSE, key: 'root', result: () => null })
+  //pauseStore: () => dispatch({ type: PAUSE })
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
