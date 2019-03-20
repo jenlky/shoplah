@@ -19,7 +19,7 @@ class App extends Component {
     super(props);
     this.state = { loading: true };
     //console.log('App constructor isLoggedIn', this.props.isLoggedIn);
-    console.log('App constructor loading', this.state.loading);
+    //console.log('App constructor loading', this.state.loading);
   }
 
   componentDidMount() {
@@ -35,8 +35,9 @@ class App extends Component {
     if (this.props.isLoggedIn) {
       this.props.fetchFromDatabase();
     } /* else {
+      console.log('pauseStore() runs');
       this.props.pauseStore();
-    }*/
+    } */
   }
 
   redirect = () => {
@@ -78,8 +79,8 @@ const mapDispatchToProps = dispatch => ({
   fetchFromDatabase: () => dispatch(FetchFromDatabase()),
   fetchProducts: () => dispatch(FetchProducts()),
   fetchUser: () => dispatch(FetchUser()),
-  //dispatch({ type: PAUSE, key: 'root', result: () => null })
-  //pauseStore: () => dispatch({ type: PAUSE })
+  // example: dispatch({ type: PAUSE, key: 'root', result: () => null })
+  // pauseStore: () => dispatch({ type: PAUSE })
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

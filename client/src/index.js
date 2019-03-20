@@ -9,7 +9,7 @@ import App from './containers/App';
 // import registerServiceWorker from './registerServiceWorker';
 
 // Can't use store.getState().userReducer.isLoggedIn because store is empty in the beginning
-console.log('store', store.getState());
+console.log('index isLoggedIn', store.getState().userReducer.isLoggedIn);
 
 /*
 ReactDOM.render(

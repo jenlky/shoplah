@@ -17,7 +17,9 @@ const persistConfig = {
   storage,
 }
 
-const pReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = compose(applyMiddleware(...middlewares))(createStore)(pReducer);
+export const store = compose(applyMiddleware(...middlewares))(createStore)(persistedReducer);
+console.log('configureStore isLoggedIn', store.getState().userReducer.isLoggedIn);
+
 export const persistor = persistStore(store);
