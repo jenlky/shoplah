@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 import { PAUSE } from 'redux-persist';
 import { withRouter } from 'react-router';
+import createBrowserHistory from "history/createBrowserHistory";
 
 import FetchFromDatabase from '../actions/FetchFromDatabase';
 import FetchProducts from '../actions/FetchProducts';
@@ -10,6 +11,8 @@ import FetchUser from '../actions/FetchUser';
 import Checkout from '../components/Checkout';
 import MainPage from '../components/MainPage';
 import ProfileContainer from '../containers/ProfileContainer';
+
+const history = createBrowserHistory();
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +55,7 @@ class App extends Component {
     }
 
     return (
-      <React.Fragment>
+      <Router history={history}>
         <Switch> 
           <Route exact path='/cart' render={() => this.props.isLoggedIn ? 
             <Checkout /> : this.redirect()
@@ -62,7 +65,7 @@ class App extends Component {
           } />
           <Route exact path='/' render={() => <MainPage />} />
         </Switch>
-      </React.Fragment>   
+      </Router>
     );
   }
 }

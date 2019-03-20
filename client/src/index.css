@@ -7,8 +7,8 @@ body {
 
 .spinner:empty {
   position: absolute;
-  top: calc(50% - 8.3rem);
-  left: calc(50% - 1rem);
+  top: calc(50% - 4rem);
+  left: calc(50% - 4rem);
   display: inline-block;
   width: 5.5rem;
   height: 5.5rem;

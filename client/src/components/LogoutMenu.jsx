@@ -88,29 +88,6 @@ class LogoutMenu extends Component {
         </Popper>
       </div>
     );
-    
-    /* 
-    // remove dropdown-menu if nv use
-    return (
-      <div className='dropdown-menu'>
-        <Button
-          aria-owns={anchorEl ? 'simple-menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          {this.props.user.username}
-        </Button>
-        <MenuList  
-          id="simple-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <Profile user={this.props.user} />
-          <Logout purgeStore={this.props.purgeStore} />
-        </MenuList>
-      </div>
-    ); */
   }
 }
 
