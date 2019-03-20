@@ -1,11 +1,14 @@
-# Shopping-cart
+# Shopping-cart aka ShopLah
 
 Link: https://jenlky-shopping-cart.herokuapp.com/
 
-This was created for a Full Stack coding test (the reasons as to why that didn't pan out why make for a story another time).
+Client: React (React-Router), Redux (redux-thunk, redux-logger, redux-persist), Material-UI
 
-I used React, SASS, Node.js, Express, Mocha and Chai. 
+Server: Node.js, Express, ejs for templating, dotenv, CORS
 
-The appearance is based on the mockup I was given, although I made a few changes here and there like making it responsive.
+Authentication: Passport.js, passport-auth0 and express-session
 
-I plan to build on and improve this in the near future....
+Testing: Mocha and Chai
+
+ShopLah was created because I wanted to build a simple ecommerce website and familiarise myself more with authentication process and full-stack app flow. I chose Redux because I have never used it before and I wanted to play around with it. I like the idea of getting back the same output for the same input very much - it's like Mathematics. However, the setup is a little verbose since you have to change/write code in a few places to get things done (like creating containers to mapStateToProps and mapDispatchToProps as compared to React). The upside is whenever there's a bug, it is a lot easier to track it down. 
+
