@@ -9,7 +9,7 @@ import LogoutMenu from './LogoutMenu';
 
 const theme = createMuiTheme({
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
   },
   palette: {
     primary:{
@@ -20,7 +20,13 @@ const theme = createMuiTheme({
     MuiButton: {
       root: {
         fontSize: '14px',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        maxWidth: '11rem',
+      }, 
+      label: {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
       }
     },
     MuiButtonBase: {

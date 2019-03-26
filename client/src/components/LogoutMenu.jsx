@@ -6,7 +6,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 
-const ProfileLink = ({ user }) => {
+const Profile = ({ user }) => {
   if (process.env.NODE_ENV === 'development') {
     return (
       <Button href="http://localhost:3000/user/profile" user={user} children='Profile' />
@@ -78,7 +78,7 @@ class LogoutMenu extends Component {
               <Paper>
                 <ClickAwayListener onClickAway={this.handleClose}>
                   <MenuList>
-                    <ProfileLink />
+                    <Profile />
                     <Logout purgeStore={this.props.purgeStore} />
                   </MenuList>
                 </ClickAwayListener>
