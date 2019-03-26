@@ -17,6 +17,16 @@ const userReducer = (state = initialState, action) => {
       }
 
     case actionTypes.LOGOUT_USER:
+      action.asyncDispatch({
+        type: actionTypes.UPDATE_STORE,
+        payload: {
+          id: [],
+          qty: [],
+          numOfItems: 0,
+          totalPrice: 0,
+        }
+      });
+
       return {
         ...state,
         ...action.payload

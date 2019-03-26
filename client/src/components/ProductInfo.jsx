@@ -2,12 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ProductInfo extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      added: false
+    }
+  }
+
   handleClick = (event) => {
     // console.log('event', event.currentTarget);
     // console.log('data-event', event.currentTarget.dataset.event);
 
     switch (this.props.isLoggedIn) {
       case true:
+        this.setState({
+          added: !this.state.added
+        });
+
         if (!this.props.containsId) {
           return this.props.addProduct(this.props.id);
         } 

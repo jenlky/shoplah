@@ -19,6 +19,9 @@ const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => 
           />
         );
       })}
+      <div className='added-popup'>
+        Item has been added to your shopping cart
+      </div>
     </div>
   );
 }; 
