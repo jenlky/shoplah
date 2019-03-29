@@ -8,10 +8,6 @@ import './index.css';
 import App from './containers/App';
 // import registerServiceWorker from './registerServiceWorker';
 
-// Can't use store.getState().userReducer.isLoggedIn because store is empty in the beginning
-console.log('index isLoggedIn', store.getState().userReducer.isLoggedIn);
-
-/*
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -20,20 +16,5 @@ ReactDOM.render(
       </PersistGate>
     </BrowserRouter>
   </Provider>, 
-  document.getElementById('root')); */
-
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      {store.getState().userReducer.isLoggedIn ? 
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate> : 
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      }
-    </BrowserRouter>
-  </Provider>, 
   document.getElementById('root'));
-//registerServiceWorker();
+  //registerServiceWorker();

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Router } from 'react-router-dom';
-import { PAUSE } from 'redux-persist';
 import { withRouter } from 'react-router';
 import createBrowserHistory from "history/createBrowserHistory";
 
@@ -34,10 +33,7 @@ class App extends Component {
     //console.log('App componentDidUpdate isLoggedIn', this.props.isLoggedIn);
     if (this.props.isLoggedIn) {
       this.props.fetchFromDatabase();
-    } /* else {
-      console.log('pauseStore() runs');
-      this.props.pauseStore();
-    } */
+    }
   }
 
   redirect = () => {
@@ -79,8 +75,6 @@ const mapDispatchToProps = dispatch => ({
   fetchFromDatabase: () => dispatch(FetchFromDatabase()),
   fetchProducts: () => dispatch(FetchProducts()),
   fetchUser: () => dispatch(FetchUser()),
-  // example: dispatch({ type: PAUSE, key: 'root', result: () => null })
-  // pauseStore: () => dispatch({ type: PAUSE })
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
