@@ -9,6 +9,7 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const UPDATE_QUANTITY = "UPDATE_QUANTITY"; // when product already exists or qty >= 1, +1/-1 or change qty of product
 export const UPDATE_STORE = "UPDATE_STORE"; // FetchFromDatabase dispatch(UpdateStore())
+export const TOGGLE_POPUP = "TOGGLE_POPUP";
 export const CALCULATE_PRICE = "CALCULATE_PRICE";
 
 // 1. Ensure UpdateCart update database
@@ -18,6 +19,7 @@ export const CALCULATE_PRICE = "CALCULATE_PRICE";
 /*
 Action objects:
 UpdateStore -> CalculatePrice
+userReducer (if logged out) -> UpdateStore -> CalculatePrice
 
 Action creators:
 AddProduct (product doesn't exist or qty === 0) -> AddToCart -> CalculatePrice -> cart controller
