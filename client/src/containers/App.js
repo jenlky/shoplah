@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Router } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import createBrowserHistory from "history/createBrowserHistory";
+import createBrowserHistory from 'history/createBrowserHistory';
 
 import FetchFromDatabase from '../actions/FetchFromDatabase';
 import FetchProducts from '../actions/FetchProducts';

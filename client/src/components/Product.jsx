@@ -2,58 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductInfo from './ProductInfo';
 
-const Product = ({ id, product, containsId, isLoggedIn, addProduct, updateCart }) => {
-  const name = product.name;
-  const price = product.price;
+// id, product, containsId, isLoggedIn, addProduct, updateCart, togglePopup
+const Product = ({ ...props }) => {
+  const id = props.id;
+  const { image, name, price } = props.product;
 
   if (id === 1) {
     return (
       <div className='product first-product'>
-        <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addProduct={addProduct} updateCart={updateCart}
-        />
+        <img src={image} alt={name} className='img-size'></img>
+        <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else if (id === 2) {
     return (
       <div className='product left-products'>
-        <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addProduct={addProduct} updateCart={updateCart}
-        />
+        <img src={image} alt={name} className='img-size'></img>
+        <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else if (id === 3) {
     return (
       <div className='product left-products order'>
-        <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addProduct={addProduct} updateCart={updateCart}
-        />
+        <img src={image} alt={name} className='img-size'></img>
+        <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else if (id === 5) {
     return (
       <div className='product order'>
-        <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addProduct={addProduct} updateCart={updateCart}
-        />
+        <img src={image} alt={name} className='img-size'></img>
+        <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else {
     return (
       <div className='product'>
-        <img src={product.image} alt={name} className='img-size'></img>
-        <ProductInfo id={id} name={name} price={price} 
-          containsId={containsId} isLoggedIn={isLoggedIn} 
-          addProduct={addProduct} updateCart={updateCart}
-        />
+        <img src={image} alt={name} className='img-size'></img>
+        <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   }

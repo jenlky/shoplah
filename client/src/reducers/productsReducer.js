@@ -11,13 +11,10 @@ const initialState = {
 };
 
 const productsReducer = (state = initialState, action) => {
+  //console.log(state);
   let updatedId = [...state.id];
   let updatedQty = [...state.qty];
   let index = updatedId.indexOf(action.id);
-
-  /*
-  console.log('updatedId:', updatedId);
-  console.log('index:', index); */
 
   switch (action.type) {
     case actionTypes.FETCH_PRODUCTS_REQUEST:
@@ -42,11 +39,12 @@ const productsReducer = (state = initialState, action) => {
 
     // Action creator: FetchFromDatabase - dispatch(UpdateStore())
     case actionTypes.UPDATE_STORE:
-      action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+      // action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
+      // console.log(action)
 
-      /* if (!action.payload.numOfItems && !action.payload.totalPrice) {
+      if (action.payload.numOfItems !== 0 && action.payload.totalPrice !== 0) {
         action.asyncDispatch({ type: actionTypes.CALCULATE_PRICE });
-      } */
+      } 
 
       return {
         ...state,

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
 
-const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => {
+const Products = ({ products, idArray, showPopup, ...props }) => {
   return (
     <div className='img-container'>
       {products.map((product, index) => {
@@ -10,18 +10,19 @@ const Products = ({ products, idArray, isLoggedIn, addProduct, updateCart }) => 
         return (
           <Product
             key={product.name}
+            product={product} 
             id={id}
             containsId={idArray.includes(id)} 
-            product={product} 
-            isLoggedIn={isLoggedIn}
-            addProduct={addProduct}
-            updateCart={updateCart} 
+            {...props}
           />
         );
       })}
-      <div className='added-popup'>
-        Item has been added to your shopping cart
-      </div>
+      {showPopup ? 
+        (<div className='added-popup'>
+          Item has been added to your shopping cart
+        </div>)
+        : null
+      }
     </div>
   );
 }; 
