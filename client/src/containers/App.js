@@ -8,7 +8,7 @@ import FetchFromDatabase from '../actions/FetchFromDatabase';
 import FetchProducts from '../actions/FetchProducts';
 import FetchUser from '../actions/FetchUser';
 import Checkout from '../components/Checkout';
-import MainPage from '../components/MainPage';
+import MainPageContainer from '../containers/MainPageContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 
 const history = createBrowserHistory();
@@ -60,7 +60,7 @@ class App extends Component {
           <Route exact path='/user/profile' render={() => this.props.isLoggedIn ? 
             <ProfileContainer /> : this.redirect()
           } />
-          <Route exact path='/' render={() => <MainPage />} />
+          <Route exact path='/' render={() => <MainPageContainer />} />
         </Switch>
       </Router>
     );

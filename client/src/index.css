@@ -32,7 +32,12 @@ body {
   align-items: center;
   margin-top: 10rem; }
 
-.added-popup {
+.popup-page {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0; }
+.popup-container {
   position: fixed;
   top: 42%;
   left: 0;

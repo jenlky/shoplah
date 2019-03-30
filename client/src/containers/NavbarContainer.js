@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PURGE } from 'redux-persist';
 import Navbar from '../components/Navbar';
-//import { withRouter } from 'react-router';
 
 const NavbarContainer = ({ username, isLoggedIn, purgeStore }) => (
   <Navbar

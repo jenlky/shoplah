@@ -44,21 +44,30 @@ body {
   }
 }
 
-.added-popup {
-  position: fixed;
-  top: 42%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  width: fit-content;
-  height: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 2rem;
-  margin: 0 auto;
+.popup {
+  &-page {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+  }
+
+  &-container {
+    position: fixed;
+    top: 42%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: fit-content;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
 }
 
 .first-product {

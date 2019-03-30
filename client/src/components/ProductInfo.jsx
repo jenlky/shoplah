@@ -10,6 +10,8 @@ class ProductInfo extends Component {
     switch (isLoggedIn) {
       case true:
         togglePopup();
+        // I can add some transition css to mimic the Shopee look
+        //setTimeout(() => togglePopup(), 3000);
 
         if (!containsId) {
           return addProduct(id);

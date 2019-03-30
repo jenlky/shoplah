@@ -7,9 +7,7 @@ import Products from '../components/Products';
 
 class ProductsContainer extends Component {
   render() {
-    //console.log('ProductsContainer - qtyArray:', this.props.qtyArray);
     const { ...props } = this.props;
-
     if (!this.props.products) {
       return <div>loading</div>;
     } 
@@ -24,7 +22,6 @@ const mapStateToProps = state => ({
   products: state.productsReducer.products,
   idArray: state.productsReducer.id,
   isLoggedIn: state.userReducer.isLoggedIn,
-  showPopup: state.productsReducer.showPopup,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
 
-const Products = ({ products, idArray, showPopup, ...props }) => {
+const Products = ({ products, idArray, ...props }) => {
   return (
     <div className='img-container'>
       {products.map((product, index) => {
@@ -17,12 +17,6 @@ const Products = ({ products, idArray, showPopup, ...props }) => {
           />
         );
       })}
-      {showPopup ? 
-        (<div className='added-popup'>
-          Item has been added to your shopping cart
-        </div>)
-        : null
-      }
     </div>
   );
 }; 
