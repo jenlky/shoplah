@@ -36,7 +36,8 @@ body {
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 0; }
+  top: 0;
+  z-index: 2; }
 .popup-container {
   position: fixed;
   top: 42%;
@@ -381,7 +382,7 @@ body {
 .checkout {
   justify-self: center;
   margin: 0.5rem 0;
-  padding: 5px; }
+  padding: 4px; }
 
 .profile {
   background-color: white;

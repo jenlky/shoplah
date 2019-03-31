@@ -33,6 +33,11 @@ const theme = createMuiTheme({
       root: {
         display: 'block',
       }
+    },
+    MuiAppBar: {
+      root: {
+        zIndex: '1',
+      }
     }
   }
 });

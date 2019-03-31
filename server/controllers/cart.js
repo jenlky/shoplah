@@ -1,13 +1,5 @@
 const Users = require('../models/users');
 
-const extractProduct = (user) => {
-  const product = {};
-  product.id = user.products.id;
-  product.qty = user.products.qty;
-
-  return product;
-}
-
 // if user is logged in, retrieve all cart products from database
 const getAllProducts = (req, res) => {
   // if (!req.user) return res.status(401).json({ error: 'Unauthorized' });
@@ -16,9 +8,6 @@ const getAllProducts = (req, res) => {
   return Users.findById(userId)
               .then(user => {
                 if (user.products.id !== undefined) {
-                  //const product = extractProduct(user);
-                  //console.log('GET all product', product);
-
                   return user;
                 }
                 console.log('user.products.id', user.products.id);
@@ -45,9 +34,6 @@ const addOneProduct = (req, res) => {
               })
               .then(user => {
                 console.log('ADD - after save promise', user.products);
-                /*
-                const product = extractProduct(user);
-                console.log('ADD one product', product);*/
                 return res.status(200).json(user.products); 
               })
               .catch(error => res.status(400).json({ error }));
@@ -88,9 +74,6 @@ const updateOneProduct = (req, res) => {
               })
               .then(user => {
                 console.log('UPDATE - After save promise', user.products);
-                /*
-                const product = extractProduct(user);
-                console.log('UPDATE one product', product);*/
                 return res.status(200).json(user.products);
               })
               .catch(error => res.status(400).json({ error }));
@@ -115,9 +98,6 @@ const deleteOneProduct = (req, res) => {
               })
               .then(user => {
                 console.log('REMOVE - After save promise', user.products);
-                /*
-                const product = extractProduct(user);
-                console.log('DELETE one product', product); */
                 return res.status(200).json(user.products);
               })
               .catch(error => res.status(400).json({ error }));

@@ -22,6 +22,7 @@ const mapStateToProps = state => ({
   products: state.productsReducer.products,
   idArray: state.productsReducer.id,
   isLoggedIn: state.userReducer.isLoggedIn,
+  showPopup: state.productsReducer.showPopup,
 });
 
 const mapDispatchToProps = dispatch => ({

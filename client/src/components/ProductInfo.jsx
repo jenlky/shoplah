@@ -5,13 +5,17 @@ class ProductInfo extends Component {
   handleClick = (event) => {
     // console.log('event', event.currentTarget);
     // console.log('data-event', event.currentTarget.dataset.event);
-    const { isLoggedIn, id, containsId, addProduct, updateCart, togglePopup } = this.props;
+    const { isLoggedIn, id, containsId, showPopup, addProduct, updateCart, togglePopup } = this.props;
 
     switch (isLoggedIn) {
       case true:
         togglePopup();
-        // I can add some transition css to mimic the Shopee look
-        //setTimeout(() => togglePopup(), 3000);
+
+        // once the condition passes, togglePopup will be called no matter if showPopup is true/false
+        if (!showPopup) {
+          setTimeout(() => togglePopup(), 2000);
+          console.log('setTimeout runs 2 sec later');
+        }
 
         if (!containsId) {
           return addProduct(id);
@@ -24,7 +28,6 @@ class ProductInfo extends Component {
         } else {
           window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
         }
-        break;
 
       default:
     }
@@ -32,6 +35,7 @@ class ProductInfo extends Component {
 
   render() {
     const { name, price } = this.props;
+
     return (
       <div className='product-info'>
         <div className='product-text'>
