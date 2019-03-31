@@ -3,14 +3,14 @@ import CartItem from './CartItem';
 import CartTotalContainer from '../containers/CartTotalContainer';
 import PropTypes from 'prop-types';
 
-const Cart = ({ idArray, qtyArray, products, removeProduct, updateCart }) => {
+// {...props} - removeProduct and updateCart
+const Cart = ({ idArray, products, qtyArray, ...props }) => { 
   if (!idArray || !qtyArray) {
     return null;
   } 
 
   return (
     <div className='shoplah'>
-      {/* <div className='horizontal-ruler'></div> */}
       <div className='shoplah-menu'>
         <h3>SHOPPING CART - {qtyArray.length !== 0 ? 
           qtyArray.reduce((acc, currentVal) => acc + currentVal) : '0'} items</h3>
@@ -28,8 +28,7 @@ const Cart = ({ idArray, qtyArray, products, removeProduct, updateCart }) => {
               id={id} 
               product={products[productIndex]} 
               qty={qtyArray[index]} 
-              removeProduct={removeProduct}
-              updateCart={updateCart}
+              {...props}
             />
           );
         })}

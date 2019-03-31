@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import { PURGE } from 'redux-persist';
 import Navbar from '../components/Navbar';
 
-const NavbarContainer = ({ username, isLoggedIn, purgeStore }) => (
-  <Navbar
-    username={username}
-    isLoggedIn={isLoggedIn} 
-    purgeStore={purgeStore}
-  />
+const NavbarContainer = ({ ...props }) => (
+  <Navbar {...props} />
 );
 
 const mapStateToProps = state => ({

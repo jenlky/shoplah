@@ -4,15 +4,10 @@ import RemoveProduct from '../actions/RemoveProduct';
 import UpdateCart from '../actions/UpdateCart';
 import Cart from '../components/Cart';
 
-const CartContainer = ({ idArray, qtyArray, products, removeProduct, updateCart }) => (
-  <Cart 
-    idArray={idArray} 
-    qtyArray={qtyArray} 
-    products={products}
-    removeProduct={removeProduct}
-    updateCart={updateCart}
-  />
+const CartContainer = ({ ...props }) => (
+  <Cart {...props} />
 );
+
 
 const mapStateToProps = state => ({
   idArray: state.productsReducer.id,

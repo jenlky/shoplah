@@ -3,14 +3,8 @@ import { connect } from 'react-redux';
 import RemoveProduct from '../actions/RemoveProduct';
 import DropdownCart from '../components/DropdownCart';
 
-const DropdownContainer = ({ products, idArray, qtyArray, removeProduct, isLoggedIn }) => (
-  <DropdownCart
-    products={products} 
-    idArray={idArray}
-    qtyArray={qtyArray}
-    removeProduct={removeProduct}
-    isLoggedIn={isLoggedIn}
-  />
+const DropdownContainer = ({ ...props }) => (
+  <DropdownCart {...props} />
 );
 
 const mapStateToProps = state => ({

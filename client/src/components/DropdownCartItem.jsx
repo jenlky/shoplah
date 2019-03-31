@@ -1,8 +1,9 @@
 import React from 'react';
 
 const DropdownCartItem = ({ product, id, qty, removeProduct }) => {
-  const price = `$${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
   //console.log('price:', product.price + ',  qty:', qty);
+  
+  const price = `$${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
 
   const Delete = () => {
     removeProduct(id);

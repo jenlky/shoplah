@@ -8,6 +8,7 @@ import Products from '../components/Products';
 class ProductsContainer extends Component {
   render() {
     const { ...props } = this.props;
+    
     if (!this.props.products) {
       return <div>loading</div>;
     } 

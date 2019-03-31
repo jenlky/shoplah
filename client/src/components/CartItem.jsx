@@ -11,26 +11,25 @@ class CartItem extends Component {
   handleEvent = (event) => {
     //console.log(event.currentTarget.dataset.event);
     //console.log(event.target.value);
+    const { id, qty, updateCart } = this.props;
 
-    if (this.props.qty === 0) {
+    if (qty === 0) {
       this.removeProduct();
     } else if (!event.target.value) {
-      this.props.updateCart(event.currentTarget.dataset.event, this.props.id);
+      updateCart(event.currentTarget.dataset.event, id);
     } else {
-      this.props.updateCart(event.target.value, this.props.id);
+      updateCart(event.target.value, id);
     }
   }
 
   render() {
-    const product = this.props.product;
-    const id = this.props.id;
-    const qty = this.props.qty;
-    const price = product.price.toLocaleString('en-US', { minimumFractionDigits: 2 });
-
     /*
     console.log('CartItems - product:', product);
     console.log('CartItems - productId:', id);
     console.log('CartItems - qty:', qty); */
+
+    const { id, qty, product } = this.props;
+    const price = product.price.toLocaleString('en-US', { minimumFractionDigits: 2 });
 
     // if a product was clicked return a row of product, else return null
     if (id.length !== 0 && qty > 0) {

@@ -56,7 +56,7 @@ const styles = {
 class Navbar extends Component {
   render() {
     //console.log(this.props.username);
-    const { classes } = this.props;
+    const { classes, isLoggedIn, username, purgeStore } = this.props;
 
     return (
       <MuiThemeProvider theme={theme}>
@@ -66,10 +66,10 @@ class Navbar extends Component {
               exact to='/'>ShopLah</NavLink>
             <div className='navbar-right-side'>
               <CartLogoContainer />
-              {this.props.isLoggedIn ? 
+              {isLoggedIn ? 
                 <LogoutMenu 
-                  username={this.props.username}
-                  purgeStore={this.props.purgeStore} 
+                  username={username}
+                  purgeStore={purgeStore} 
                 /> 
                   : 
                 <Login />
