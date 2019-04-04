@@ -1,4 +1,4 @@
-# Shopping-cart aka ShopLah
+# ShopLah aka Shopping Cart
 
 Link: https://jenlky-shopping-cart.herokuapp.com/
 
