@@ -1,6 +1,6 @@
 # ShopLah aka Shopping Cart
 
-Link: https://jenlky-shopping-cart.herokuapp.com/
+Link: https://shoplah.herokuapp.com/
 
 > Client: React (React Router), Redux (redux-thunk, redux-logger, redux-persist), Material-UI
 >
