@@ -2,6 +2,8 @@
 
 Link: https://shoplah.herokuapp.com/
 
+Blog: https://jenlky.com/projects/shoplah/
+
 > Client: React (React Router), Redux (redux-thunk, redux-logger, redux-persist), Material-UI
 >
 > Server: Node.js, Express, ejs, Mongoose, dotenv, CORS
