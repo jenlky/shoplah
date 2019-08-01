@@ -40,7 +40,7 @@ class App extends Component {
     if (process.env.NODE_ENV === 'development') {
       window.location.href = 'http://localhost:8080/auth/login';
     } else {
-      window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
+      window.location.href = 'https://shoplah.herokuapp.com/auth/login';
     }
 
     return null;
