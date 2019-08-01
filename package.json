@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helplah/shopping-cart.git"
+    "url": "git+https://github.com/jenlky/shoplah.git"
+  },
+  "engines": {
+    "node": "10.16.0"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/helplah/shopping-cart/issues"
-  },
-  "homepage": "https://github.com/helplah/shopping-cart#readme",
+  "homepage": "https://github.com/jenlky/shoplah#readme",
   "dependencies": {
     "auth0-lock": "^11.14.1",
     "body-parser": "^1.18.3",
