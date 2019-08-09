@@ -9,7 +9,7 @@ const DropdownCart = ({ isLoggedIn, products, idArray, qtyArray, removeProduct }
         if (process.env.NODE_ENV === 'development') {
           window.location.href = 'http://localhost:3000/cart';
         } else {
-          window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/cart';
+          window.location.href = 'https://shoplah.herokuapp.com/cart';
         }
         break;
 
@@ -17,7 +17,7 @@ const DropdownCart = ({ isLoggedIn, products, idArray, qtyArray, removeProduct }
         if (process.env.NODE_ENV === 'development') {
           window.location.href = 'http://localhost:8080/auth/login';
         } else {
-          window.location.href = 'https://jenlky-shopping-cart.herokuapp.com/auth/login';
+          window.location.href = 'https://shoplah.herokuapp.com/auth/login';
         }
         break;
 
