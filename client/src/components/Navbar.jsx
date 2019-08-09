@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  withStyles
+} from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import CartLogoContainer from '../containers/CartLogoContainer';
 import Login from './Login';
@@ -9,34 +13,34 @@ import LogoutMenu from './LogoutMenu';
 
 const theme = createMuiTheme({
   typography: {
-    useNextVariants: true,
+    useNextVariants: true
   },
   palette: {
-    primary:{
+    primary: {
       main: '#ffe9b4'
-    } 
+    }
   },
   overrides: {
     MuiButton: {
       root: {
         fontSize: '14px',
         textTransform: 'capitalize',
-        maxWidth: '11rem',
-      }, 
+        maxWidth: '11rem'
+      },
       label: {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis',
+        textOverflow: 'ellipsis'
       }
     },
     MuiButtonBase: {
       root: {
-        display: 'block',
+        display: 'block'
       }
     },
     MuiAppBar: {
       root: {
-        zIndex: '1',
+        zIndex: '1'
       }
     }
   }
@@ -49,31 +53,37 @@ const styles = {
       paddingLeft: '3rem',
       paddingRight: '3rem'
     }
-  },
+  }
 };
 
 // changing of Toolbar classes only work in class component
 class Navbar extends Component {
   render() {
-    //console.log(this.props.username);
     const { classes, isLoggedIn, username, purgeStore } = this.props;
 
     return (
       <MuiThemeProvider theme={theme}>
         <AppBar>
           <Toolbar classes={{ root: classes.toolbar }}>
-            <NavLink style={{ textDecoration: 'none', fontWeight: 'bold', color: 'black', fontSize: '24px' }} 
-              exact to='/'>ShopLah</NavLink>
-            <div className='navbar-right-side'>
+            <NavLink
+              style={{
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                color: 'black',
+                fontSize: '24px'
+              }}
+              exact
+              to="/"
+            >
+              ShopLah
+            </NavLink>
+            <div className="navbar-right-side">
               <CartLogoContainer />
-              {isLoggedIn ? 
-                <LogoutMenu 
-                  username={username}
-                  purgeStore={purgeStore} 
-                /> 
-                  : 
+              {isLoggedIn ? (
+                <LogoutMenu username={username} purgeStore={purgeStore} />
+              ) : (
                 <Login />
-              }
+              )}
             </div>
           </Toolbar>
         </AppBar>

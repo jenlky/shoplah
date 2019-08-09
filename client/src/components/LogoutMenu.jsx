@@ -9,34 +9,34 @@ import Popper from '@material-ui/core/Popper';
 const Profile = ({ user }) => {
   if (process.env.NODE_ENV === 'development') {
     return (
-      <Button href="http://localhost:3000/user/profile" user={user} children='Profile' />
+      <Button
+        href="http://localhost:3000/user/profile"
+        user={user}
+        children="Profile"
+      />
     );
   }
 
-  return (
-    <Button href="/user/profile" user={user} children='Profile' />
-  );
+  return <Button href="/user/profile" user={user} children="Profile" />;
 };
 
 const Logout = ({ purgeStore }) => {
   if (process.env.NODE_ENV === 'development') {
     return (
-      <Button 
-        href="http://localhost:8080/auth/logout" onClick={purgeStore} children='Logout'
+      <Button
+        href="http://localhost:8080/auth/logout"
+        onClick={purgeStore}
+        children="Logout"
       />
     );
   }
 
-  return (
-    <Button 
-      href="/auth/logout" children='Logout' onClick={purgeStore} 
-    />
-  );
+  return <Button href="/auth/logout" children="Logout" onClick={purgeStore} />;
 };
 
 class LogoutMenu extends Component {
   state = {
-    open: false,
+    open: false
   };
 
   handleToggle = () => {
@@ -52,8 +52,6 @@ class LogoutMenu extends Component {
   };
 
   render() {
-    //console.log(this.props.user);
-    //const { classes } = this.props;
     const { open } = this.state;
 
     return (
@@ -73,7 +71,10 @@ class LogoutMenu extends Component {
             <Grow
               {...TransitionProps}
               id="menu-list-grow"
-              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+              style={{
+                transformOrigin:
+                  placement === 'bottom' ? 'center top' : 'center bottom'
+              }}
             >
               <Paper>
                 <ClickAwayListener onClickAway={this.handleClose}>

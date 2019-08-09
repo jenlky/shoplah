@@ -9,36 +9,36 @@ const Product = ({ ...props }) => {
 
   if (id === 1) {
     return (
-      <div className='product first-product'>
-        <img src={image} alt={name} className='img-size'></img>
+      <div className="product first-product">
+        <img src={image} alt={name} className="img-size" />
         <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else if (id === 2) {
     return (
-      <div className='product left-products'>
-        <img src={image} alt={name} className='img-size'></img>
+      <div className="product left-products">
+        <img src={image} alt={name} className="img-size" />
         <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else if (id === 3) {
     return (
-      <div className='product left-products order'>
-        <img src={image} alt={name} className='img-size'></img>
+      <div className="product left-products order">
+        <img src={image} alt={name} className="img-size" />
         <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else if (id === 5) {
     return (
-      <div className='product order'>
-        <img src={image} alt={name} className='img-size'></img>
+      <div className="product order">
+        <img src={image} alt={name} className="img-size" />
         <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
   } else {
     return (
-      <div className='product'>
-        <img src={image} alt={name} className='img-size'></img>
+      <div className="product">
+        <img src={image} alt={name} className="img-size" />
         <ProductInfo id={id} name={name} price={price} {...props} />
       </div>
     );
