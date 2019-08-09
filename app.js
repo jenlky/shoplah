@@ -47,7 +47,7 @@ app.use(passport.session());
 
 const corsOption = {
   // in development - http://localhost:3000
-  origin: 'https://jenlky-shopping-cart.herokuapp.com/',
+  origin: 'https://shoplah.herokuapp.com/',
   credentials: true
 }
 
