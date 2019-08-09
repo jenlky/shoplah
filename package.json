@@ -14,7 +14,8 @@
     "url": "git+https://github.com/jenlky/shoplah.git"
   },
   "engines": {
-    "node": "10.16.0"
+    "node": "10.16.0",
+    "npm": "6.4.0"
   },
   "author": "",
   "license": "ISC",
